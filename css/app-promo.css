@@ -1,0 +1,232 @@
+/* ============================================
+   LittleFriends - App Promotion Section
+   App Store & Play Store download buttons
+   ============================================ */
+
+.app-section {
+  padding: var(--space-4xl) 0;
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.app-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+.app-visual {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.app-phone-mockup {
+  position: relative;
+  width: 260px;
+  height: 500px;
+  background: linear-gradient(135deg, #1a1a2e, #2d3436);
+  border-radius: 40px;
+  padding: 12px;
+  box-shadow: var(--shadow-xl);
+  transform: perspective(1000px) rotateY(-5deg) rotateX(3deg);
+  transition: transform var(--transition-slow);
+}
+
+.app-phone-mockup:hover {
+  transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+}
+
+.app-phone-screen {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #FFE66D 0%, #FF6B6B 30%, #A78BFA 70%, #4ECDC4 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease-in-out infinite;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  overflow: hidden;
+}
+
+.app-phone-screen .app-logo-emoji {
+  font-size: 60px;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+  animation: float 3s ease-in-out infinite;
+}
+
+.app-phone-screen .app-name {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.app-phone-screen .app-tagline {
+  font-size: var(--font-size-sm);
+  color: rgba(255,255,255,0.9);
+  font-weight: 600;
+}
+
+/* Floating elements around phone */
+.app-float {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.app-float-1 {
+  width: 50px;
+  height: 50px;
+  background: var(--accent-yellow);
+  top: -20px;
+  right: -30px;
+  animation: float 4s ease-in-out infinite;
+}
+
+.app-float-2 {
+  width: 30px;
+  height: 30px;
+  background: var(--primary-light);
+  bottom: 40px;
+  left: -20px;
+  animation: float 5s ease-in-out infinite 1s;
+}
+
+.app-float-3 {
+  width: 20px;
+  height: 20px;
+  background: var(--accent-green);
+  top: 50%;
+  right: -40px;
+  animation: float 3s ease-in-out infinite 2s;
+}
+
+/* App Info */
+.app-info {
+  padding: var(--space-xl) 0;
+}
+
+.app-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 6px 16px;
+  background: rgba(167, 139, 250, 0.1);
+  border-radius: 50px;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--accent-purple);
+  margin-bottom: var(--space-lg);
+}
+
+.app-badge-icon {
+  font-size: 16px;
+}
+
+.app-info h2 {
+  font-size: var(--font-size-3xl);
+  color: var(--text-heading);
+  margin-bottom: var(--space-md);
+  line-height: 1.2;
+}
+
+.app-info h2 .highlight {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.app-description {
+  font-size: var(--font-size-md);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  line-height: 1.8;
+  max-width: 450px;
+}
+
+.app-features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-2xl);
+}
+
+.app-feature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+}
+
+.app-feature-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.app-feature-icon .material-icons {
+  font-size: 18px;
+  color: white;
+}
+
+.app-feature:nth-child(1) .app-feature-icon { background: var(--primary); }
+.app-feature:nth-child(2) .app-feature-icon { background: var(--secondary); }
+.app-feature:nth-child(3) .app-feature-icon { background: var(--accent-purple); }
+
+/* Store Buttons */
+.app-store-buttons {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.store-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 14px 28px;
+  background: #1a1a2e;
+  color: white;
+  border-radius: var(--border-radius-md);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-md);
+}
+
+.store-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.store-btn-icon {
+  font-size: 28px;
+}
+
+.store-btn-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.store-btn-label {
+  font-size: var(--font-size-xs);
+  opacity: 0.8;
+}
+
+.store-btn-name {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+}

@@ -1,0 +1,166 @@
+/* ============================================
+   LittleFriends - Carousel Section
+   Auto-sliding image banner carousel
+   ============================================ */
+
+.carousel-section {
+  padding: var(--space-3xl) 0;
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-container {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+.carousel {
+  position: relative;
+  border-radius: var(--border-radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  aspect-ratio: 16/7;
+}
+
+.carousel-track {
+  display: flex;
+  width: 400%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-slide {
+  width: 25%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-slide-bg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  position: relative;
+}
+
+.carousel-slide-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 100%);
+}
+
+.carousel-slide:nth-child(1) .carousel-slide-bg {
+  background: linear-gradient(135deg, #FFE66D, #FF6B6B);
+}
+
+.carousel-slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-slide:nth-child(2) .carousel-slide-bg {
+  background: linear-gradient(135deg, #4ECDC4, #45B7D1);
+}
+.carousel-slide:nth-child(3) .carousel-slide-bg {
+  background: linear-gradient(135deg, #A78BFA, #F472B6);
+}
+.carousel-slide:nth-child(4) .carousel-slide-bg {
+  background: linear-gradient(135deg, #6BCB77, #FFE66D);
+}
+
+.carousel-slide-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-2xl);
+  background: linear-gradient(transparent, rgba(0,0,0,0.6));
+  color: white;
+  z-index: 1;
+}
+
+.carousel-slide-content h3 {
+  font-size: var(--font-size-2xl);
+  color: white;
+  margin-bottom: var(--space-sm);
+}
+
+.carousel-slide-content p {
+  color: rgba(255,255,255,0.9);
+  font-size: var(--font-size-base);
+}
+
+.carousel-slide-emoji {
+  font-size: 120px;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Carousel Controls */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  z-index: 5;
+  transition: all var(--transition-base);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.carousel-btn:hover {
+  background: white;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: var(--shadow-lg);
+}
+
+.carousel-btn-prev {
+  left: 20px;
+}
+
+.carousel-btn-next {
+  right: 20px;
+}
+
+/* Carousel Dots */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-xl);
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--border-color);
+  transition: all var(--transition-base);
+  cursor: pointer;
+  border: none;
+}
+
+.carousel-dot.active {
+  background: var(--primary);
+  width: 36px;
+  border-radius: 6px;
+}

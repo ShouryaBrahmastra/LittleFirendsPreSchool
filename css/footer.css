@@ -1,0 +1,449 @@
+/* ============================================
+   LittleFriends - Footer
+   Quick links, FAQs, social media, copyright
+   ============================================ */
+
+.footer {
+  background: var(--bg-footer);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-fun);
+}
+
+/* Footer Wave Top */
+.footer-wave {
+  position: relative;
+  top: -1px;
+  background: var(--bg-secondary);
+}
+
+.footer-wave svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Footer Main */
+.footer-main {
+  padding: var(--space-3xl) 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: var(--space-2xl);
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+/* Footer Brand */
+.footer-brand {
+  padding-right: var(--space-xl);
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.footer-logo-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--gradient-fun);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.footer-logo-icon-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: white;
+  padding: 3px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.footer-logo-text {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  color: white;
+}
+
+.footer-brand p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--font-size-sm);
+  line-height: 1.8;
+  margin-bottom: var(--space-xl);
+}
+
+.footer-social {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.footer-social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+  font-size: 18px;
+}
+
+.footer-social-link:hover {
+  background: var(--primary);
+  transform: translateY(-3px);
+}
+
+/* Footer Links */
+.footer-column h4 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  color: white;
+  margin-bottom: var(--space-lg);
+  position: relative;
+  padding-bottom: var(--space-sm);
+}
+
+.footer-column h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.footer-link {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.footer-link:hover {
+  color: var(--primary);
+  padding-left: 5px;
+}
+
+.footer-link .material-icons {
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.footer-link:hover .material-icons {
+  opacity: 1;
+}
+
+/* FAQs in Footer */
+.footer-faq {
+  margin-top: var(--space-2xl);
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) 0;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+}
+
+.faq-question .material-icons {
+  font-size: 20px;
+  transition: transform var(--transition-base);
+  color: var(--primary);
+}
+
+.faq-item.active .faq-question .material-icons {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-base);
+}
+
+.faq-item.active .faq-answer {
+  max-height: 200px;
+}
+
+.faq-answer p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: var(--font-size-sm);
+  padding-bottom: var(--space-md);
+  line-height: 1.7;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: var(--space-xl) 0;
+}
+
+.footer-bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.footer-copyright {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-copyright a {
+  color: var(--primary);
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.footer-bottom-links a {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.5);
+  transition: color var(--transition-fast);
+}
+
+.footer-bottom-links a:hover {
+  color: var(--primary);
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  left: 16px;
+  z-index: var(--z-whatsapp);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.whatsapp-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #25D366;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  transition: all var(--transition-base);
+  animation: pulse 2s ease-in-out infinite;
+  text-decoration: none;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-tooltip {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  padding: 8px 16px;
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  box-shadow: var(--shadow-md);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all var(--transition-base);
+  pointer-events: none;
+}
+
+.whatsapp-float:hover .whatsapp-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Back to Top */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-whatsapp);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all var(--transition-base);
+}
+
+.back-to-top-img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+}
+
+/* Rocket Smoke Effect */
+.rocket-smoke {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 40px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.smoke-particle {
+  position: absolute;
+  bottom: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 200, 200, 0.8) 0%, rgba(180, 180, 180, 0.3) 60%, transparent 100%);
+  opacity: 0;
+  filter: blur(3px);
+}
+
+.back-to-top.visible .smoke-particle {
+  animation: smokeRise 1.2s ease-out infinite;
+}
+
+.smoke-particle:nth-child(1) {
+  width: 14px; height: 14px;
+  left: 50%; margin-left: -7px;
+  animation-delay: 0s;
+}
+.smoke-particle:nth-child(2) {
+  width: 18px; height: 18px;
+  left: 50%; margin-left: -9px;
+  animation-delay: 0.15s;
+}
+.smoke-particle:nth-child(3) {
+  width: 12px; height: 12px;
+  left: 40%; margin-left: -6px;
+  animation-delay: 0.3s;
+}
+.smoke-particle:nth-child(4) {
+  width: 16px; height: 16px;
+  left: 60%; margin-left: -8px;
+  animation-delay: 0.45s;
+}
+.smoke-particle:nth-child(5) {
+  width: 10px; height: 10px;
+  left: 30%; margin-left: -5px;
+  animation-delay: 0.6s;
+}
+.smoke-particle:nth-child(6) {
+  width: 20px; height: 20px;
+  left: 50%; margin-left: -10px;
+  animation-delay: 0.75s;
+}
+.smoke-particle:nth-child(7) {
+  width: 11px; height: 11px;
+  left: 70%; margin-left: -5px;
+  animation-delay: 0.9s;
+}
+.smoke-particle:nth-child(8) {
+  width: 15px; height: 15px;
+  left: 45%; margin-left: -7px;
+  animation-delay: 1.05s;
+}
+
+@keyframes smokeRise {
+  0% {
+    opacity: 0.7;
+    transform: translateY(0) scale(0.5);
+  }
+  30% {
+    opacity: 0.5;
+    transform: translateY(10px) scale(1);
+  }
+  60% {
+    opacity: 0.3;
+    transform: translateY(25px) scale(1.5) translateX(var(--drift, 5px));
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(45px) scale(2) translateX(var(--drift, 10px));
+  }
+}
+
+.smoke-particle:nth-child(odd) {
+  --drift: -8px;
+}
+.smoke-particle:nth-child(even) {
+  --drift: 8px;
+}
+
+.back-to-top:hover .smoke-particle {
+  animation-duration: 0.6s;
+  background: radial-gradient(circle, rgba(255, 160, 60, 0.6) 0%, rgba(200, 200, 200, 0.4) 40%, transparent 100%);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--primary-dark);
+  transform: translateY(-3px);
+}

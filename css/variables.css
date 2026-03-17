@@ -1,0 +1,123 @@
+/* ============================================
+   LittleFriends - Theme Variables
+   Light & Dark mode CSS custom properties
+   ============================================ */
+
+:root {
+  /* Primary Palette - Playful & Warm */
+  --primary: #FF6B6B;
+  --primary-light: #FF8E8E;
+  --primary-dark: #E55555;
+  --secondary: #4ECDC4;
+  --secondary-light: #7EDDD6;
+  --secondary-dark: #3BACA5;
+  --accent-yellow: #FFE66D;
+  --accent-orange: #FFA07A;
+  --accent-purple: #A78BFA;
+  --accent-pink: #F472B6;
+  --accent-green: #6BCB77;
+  --accent-blue: #45B7D1;
+  --accent-coral: #FF7979;
+  --accent-mint: #7DCEA0;
+  --accent-lavender: #C4B5FD;
+
+  /* Light Mode (default) */
+  --bg-primary: #FFFBF5;
+  --bg-secondary: #FFF5EB;
+  --bg-card: #FFFFFF;
+  --bg-header: rgba(255, 251, 245, 0.95);
+  --bg-footer: #2D3436;
+  --bg-info-strip: #4ECDC4;
+  --bg-announcement: #FF6B6B;
+
+  --text-primary: #2D3436;
+  --text-secondary: #636E72;
+  --text-light: #B2BEC3;
+  --text-inverse: #FFFFFF;
+  --text-heading: #2D3436;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 12px 48px rgba(0, 0, 0, 0.15);
+  --shadow-glow: 0 0 20px rgba(78, 205, 196, 0.3);
+
+  --border-color: rgba(0, 0, 0, 0.06);
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+  --border-radius-xl: 32px;
+  --border-radius-full: 50%;
+
+  /* Gradient Presets */
+  --gradient-hero: linear-gradient(135deg, #FFE66D 0%, #FF6B6B 50%, #A78BFA 100%);
+  --gradient-card: linear-gradient(145deg, #FFFFFF 0%, #FFF5EB 100%);
+  --gradient-button: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+  --gradient-button-hover: linear-gradient(135deg, #E55555 0%, #FF6B6B 100%);
+  --gradient-secondary-btn: linear-gradient(135deg, #4ECDC4 0%, #7EDDD6 100%);
+  --gradient-fun: linear-gradient(135deg, #FFE66D 0%, #4ECDC4 50%, #A78BFA 100%);
+
+  /* Typography */
+  --font-heading: 'Bubblegum Sans', cursive;
+  --font-body: 'Nunito', sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+  --font-size-4xl: 3rem;
+  --font-size-5xl: 4rem;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* Z-indices */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-whatsapp: 500;
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+  --bg-primary: #1A1A2E;
+  --bg-secondary: #16213E;
+  --bg-card: #1F2940;
+  --bg-header: rgba(26, 26, 46, 0.95);
+  --bg-footer: #0F0F1A;
+  --bg-info-strip: #2D6A65;
+  --bg-announcement: #C0504D;
+
+  --text-primary: #E8E8E8;
+  --text-secondary: #B0B0C0;
+  --text-light: #6B6B80;
+  --text-inverse: #FFFFFF;
+  --text-heading: #F0F0F0;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 12px 48px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(78, 205, 196, 0.2);
+
+  --border-color: rgba(255, 255, 255, 0.08);
+  --gradient-card: linear-gradient(145deg, #1F2940 0%, #16213E 100%);
+  --gradient-hero: linear-gradient(135deg, #2D3436 0%, #1A1A2E 50%, #16213E 100%);
+}

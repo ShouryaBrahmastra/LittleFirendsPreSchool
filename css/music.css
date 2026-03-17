@@ -1,0 +1,56 @@
+/* ============================================
+   MUSIC TOGGLE BUTTON
+   ============================================ */
+
+.music-toggle {
+  position: fixed;
+  bottom: 30px;
+  left: 84px;
+  z-index: var(--z-whatsapp);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+  transition: all var(--transition-base);
+}
+
+.music-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(255, 107, 107, 0.5);
+}
+
+.music-toggle .material-icons {
+  font-size: 24px;
+}
+
+/* Playing state - pulsing ring */
+.music-toggle.playing {
+  animation: musicPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes musicPulse {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4),
+                0 0 0 8px rgba(255, 107, 107, 0.15);
+  }
+}
+
+/* Stopped state */
+.music-toggle.stopped {
+  background: var(--text-secondary);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.music-toggle.stopped:hover {
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,119 @@
+/* ============================================
+   LittleFriends - Testimonials Section
+   Parent testimonials carousel/cards
+   ============================================ */
+
+.testimonials-section {
+  padding: var(--space-4xl) 0;
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+
+.testimonial-card {
+  background: var(--bg-card);
+  border-radius: var(--border-radius-xl);
+  padding: var(--space-2xl);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.testimonial-card:nth-child(1)::before { background: var(--gradient-button); }
+.testimonial-card:nth-child(2)::before { background: var(--gradient-secondary-btn); }
+.testimonial-card:nth-child(3)::before { background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink)); }
+
+.testimonial-quote-icon {
+  font-size: 36px;
+  color: var(--accent-yellow);
+  opacity: 0.4;
+  margin-bottom: var(--space-md);
+  font-family: Georgia, serif;
+}
+
+.testimonial-text {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: var(--space-xl);
+  min-height: 120px;
+}
+
+.testimonial-stars {
+  display: flex;
+  gap: 2px;
+  margin-bottom: var(--space-md);
+}
+
+.testimonial-stars .material-icons {
+  font-size: 18px;
+  color: var(--accent-yellow);
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.testimonial-card:nth-child(1) .testimonial-avatar {
+  background: linear-gradient(135deg, #FFE66D, #FFA07A);
+}
+.testimonial-card:nth-child(2) .testimonial-avatar {
+  background: linear-gradient(135deg, #4ECDC4, #45B7D1);
+}
+.testimonial-card:nth-child(3) .testimonial-avatar {
+  background: linear-gradient(135deg, #A78BFA, #F472B6);
+}
+
+.testimonial-author-info h4 {
+  font-size: var(--font-size-base);
+  color: var(--text-heading);
+  font-family: var(--font-body);
+  font-weight: 700;
+}
+
+.testimonial-author-info p {
+  font-size: var(--font-size-xs);
+  color: var(--text-light);
+}

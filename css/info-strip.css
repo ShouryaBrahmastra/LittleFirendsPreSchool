@@ -1,0 +1,155 @@
+/* ============================================
+   LittleFriends - Info Strip
+   Dynamic text strip with sliding animation
+   ============================================ */
+
+.info-strip {
+  background: var(--bg-info-strip);
+  color: white;
+  padding: 14px 0;
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+}
+
+/* Shimmer sweep across the strip */
+.info-strip-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 40%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.08) 60%,
+    transparent 100%
+  );
+  animation: stripShimmer 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes stripShimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.info-strip-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xl);
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+.info-strip-time {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-weight: 700;
+  font-size: var(--font-size-base);
+  white-space: nowrap;
+}
+
+.info-strip-time-text {
+  animation: fadeInSlideRight 1s ease-out both;
+}
+
+@keyframes fadeInSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Glowing icon animation */
+.info-strip-icon-glow {
+  font-size: 20px;
+  animation: iconGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes iconGlow {
+  0% {
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+    transform: scale(1);
+  }
+  100% {
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.4);
+    transform: scale(1.15);
+  }
+}
+
+.info-strip-divider {
+  width: 2px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 1px;
+  animation: dividerPulse 2s ease-in-out infinite;
+}
+
+@keyframes dividerPulse {
+  0%, 100% { opacity: 0.3; height: 18px; }
+  50% { opacity: 1; height: 28px; }
+}
+
+.info-strip-slider {
+  position: relative;
+  height: 24px;
+  overflow: hidden;
+  flex: 1;
+  max-width: 550px;
+}
+
+.info-strip-slider-track {
+  display: flex;
+  flex-direction: column;
+  animation: verticalSlide4 12s cubic-bezier(0.45, 0, 0.15, 1) infinite;
+}
+
+@keyframes verticalSlide4 {
+  0%, 20%   { transform: translateY(0); }
+  25%, 45%  { transform: translateY(-25%); }
+  50%, 70%  { transform: translateY(-50%); }
+  75%, 95%  { transform: translateY(-75%); }
+  100%      { transform: translateY(0); }
+}
+
+.info-strip-slider-item {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+}
+
+.info-strip-slider-item .material-icons {
+  font-size: 16px;
+}
+
+/* NEP Badge */
+.nep-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  animation: badgeShine 3s ease-in-out infinite;
+}
+
+@keyframes badgeShine {
+  0%, 100% { background: rgba(255, 255, 255, 0.2); }
+  50% { background: rgba(255, 255, 255, 0.35); }
+}

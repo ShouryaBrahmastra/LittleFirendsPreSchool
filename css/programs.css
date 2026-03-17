@@ -1,0 +1,192 @@
+/* ============================================
+   LittleFriends - Programs Section
+   Card layout with images for each program
+   ============================================ */
+
+.programs-section {
+  padding: var(--space-4xl) 0;
+  background: var(--bg-secondary);
+  position: relative;
+}
+
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xl);
+  max-width: 1280px;
+  margin: 0 auto var(--space-3xl);
+  padding: 0 var(--space-xl);
+}
+
+.program-card {
+  background: var(--bg-card);
+  border-radius: var(--border-radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  border: 1px solid var(--border-color);
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.program-card:hover {
+  transform: translateY(-10px) perspective(1000px) rotateX(2deg);
+  box-shadow: var(--shadow-xl);
+}
+
+.program-card-image {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 70px;
+  position: relative;
+  overflow: hidden;
+}
+
+.program-card:nth-child(1) .program-card-image {
+  background: linear-gradient(135deg, #FFE66D 0%, #FFA07A 100%);
+}
+.program-card:nth-child(2) .program-card-image {
+  background: linear-gradient(135deg, #4ECDC4 0%, #45B7D1 100%);
+}
+.program-card:nth-child(3) .program-card-image {
+  background: linear-gradient(135deg, #A78BFA 0%, #F472B6 100%);
+}
+.program-card:nth-child(4) .program-card-image {
+  background: linear-gradient(135deg, #6BCB77 0%, #4ECDC4 100%);
+}
+
+.program-card-image .program-emoji {
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2));
+}
+
+.program-card-image .program-age-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.program-card-body {
+  padding: var(--space-xl);
+}
+
+.program-card-body h3 {
+  font-size: var(--font-size-lg);
+  color: var(--text-heading);
+  margin-bottom: var(--space-sm);
+}
+
+.program-card-body p {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.program-card-footer {
+  padding: 0 var(--space-xl) var(--space-xl);
+}
+
+.program-learn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--primary);
+  transition: all var(--transition-fast);
+}
+
+.program-learn-more:hover {
+  gap: 8px;
+}
+
+.program-learn-more .material-icons {
+  font-size: 16px;
+}
+
+/* Additional Offerings */
+.offerings-title {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.offerings-title h3 {
+  font-size: var(--font-size-xl);
+  color: var(--text-heading);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.offerings-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+.offering-card {
+  background: var(--bg-card);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-xl);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.offering-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.offering-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 4px 4px 0 0;
+}
+
+.offering-card:nth-child(1)::before { background: var(--primary); }
+.offering-card:nth-child(2)::before { background: var(--secondary); }
+.offering-card:nth-child(3)::before { background: var(--accent-purple); }
+.offering-card:nth-child(4)::before { background: var(--accent-yellow); }
+.offering-card:nth-child(5)::before { background: var(--accent-green); }
+.offering-card:nth-child(6)::before { background: var(--accent-blue); }
+.offering-card:nth-child(7)::before { background: var(--accent-pink); }
+.offering-card:nth-child(8)::before { background: var(--accent-orange); }
+
+.offering-icon {
+  font-size: 40px;
+  margin-bottom: var(--space-md);
+  display: block;
+}
+
+.offering-card h4 {
+  font-size: var(--font-size-base);
+  color: var(--text-heading);
+  margin-bottom: var(--space-xs);
+  font-family: var(--font-heading);
+}
+
+.offering-card p {
+  font-size: var(--font-size-xs);
+  color: var(--text-light);
+}
