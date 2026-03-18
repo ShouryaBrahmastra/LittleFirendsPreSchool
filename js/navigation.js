@@ -53,6 +53,10 @@ const Navigation = (() => {
     // Smooth scroll for nav links
     document.querySelectorAll('a[href^="#"]').forEach(link => {
       link.addEventListener('click', (e) => {
+        // On mobile, skip parent nav-links that have dropdowns (handled by dropdown toggle)
+        if (window.innerWidth <= 992 && link.classList.contains('nav-link') && link.closest('.nav-item')?.querySelector('.dropdown')) {
+          return;
+        }
         const targetId = link.getAttribute('href');
         if (targetId === '#') return;
         const target = document.querySelector(targetId);
