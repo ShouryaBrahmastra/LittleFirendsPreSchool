@@ -98,11 +98,11 @@
           </li>
           <!-- Events & Updates -->
           <li class="nav-item">
-            <a href="index.html#carousel" class="nav-link">
+            <a href="events.html" class="nav-link">
               Events <span class="material-icons">expand_more</span>
             </a>
             <div class="dropdown">
-              <a href="index.html#carousel" class="dropdown-link">
+              <a href="events.html" class="dropdown-link">
                 <span class="material-icons">celebration</span> Events
               </a>
               <a href="index.html#carousel" class="dropdown-link">
@@ -1466,7 +1466,7 @@
             <a href="index.html" class="footer-link"><span class="material-icons">chevron_right</span> Home</a>
             <a href="our-story.html" class="footer-link"><span class="material-icons">chevron_right</span> Our Story</a>
             <a href="index.html#programs" class="footer-link"><span class="material-icons">chevron_right</span> Programs</a>
-            <a href="index.html#carousel" class="footer-link"><span class="material-icons">chevron_right</span> Events</a>
+            <a href="events.html" class="footer-link"><span class="material-icons">chevron_right</span> Events</a>
             <a href="index.html#testimonials" class="footer-link"><span class="material-icons">chevron_right</span> Testimonials</a>
             <a href="index.html#enquiry" class="footer-link"><span class="material-icons">chevron_right</span> Contact</a>
             <a href="index.html#app" class="footer-link"><span class="material-icons">chevron_right</span> Toondemy App</a>
@@ -1585,41 +1585,7 @@
   <!-- Main (Back to Top, etc.) -->
   <script src="js/main.js"></script>
 
-  <!-- Page-specific init -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      ThemeManager.init();
-      Navigation.init();
 
-      // FAQ Accordion
-      const faqItems = document.querySelectorAll('.faq-item');
-      faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        if (question) {
-          question.addEventListener('click', () => {
-            const isActive = item.classList.contains('active');
-            faqItems.forEach(other => other.classList.remove('active'));
-            if (!isActive) item.classList.add('active');
-          });
-        }
-      });
-
-      // Back to Top
-      const backToTop = document.querySelector('.back-to-top');
-      if (backToTop) {
-        window.addEventListener('scroll', () => {
-          if (window.scrollY > 500) {
-            backToTop.classList.add('visible');
-          } else {
-            backToTop.classList.remove('visible');
-          }
-        }, { passive: true });
-        backToTop.addEventListener('click', () => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-      }
-    });
-  </script>
 
 </body>
 </html>

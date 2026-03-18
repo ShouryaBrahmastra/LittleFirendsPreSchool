@@ -7,9 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize all modules
   ThemeManager.init();
   Navigation.init();
-  CarouselController.initMain();
-  CarouselController.initAlumni();
-  AnimationController.init();
+  if (typeof CarouselController !== 'undefined') {
+    CarouselController.initMain();
+    CarouselController.initAlumni();
+  }
+  if (typeof AnimationController !== 'undefined') {
+    AnimationController.init();
+  }
 
   // FAQ Accordion
   initFAQ();

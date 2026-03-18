@@ -116,11 +116,6 @@ document.querySelector('[data-component="programs"]').outerHTML = `
       <h4>Rubik's Cube</h4>
       <p>Problem-solving &amp; logic</p>
     </div>
-    <div class="offering-card reveal delay-4">
-      <span class="offering-icon">🎵</span>
-      <h4>Music &amp; Dance</h4>
-      <p>Rhythm, melody, and movement</p>
-    </div>
   </div>
 </section>
 `;
