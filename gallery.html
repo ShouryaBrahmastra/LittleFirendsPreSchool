@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gallery – Memories Down the Lane at Little Friends Preschool and Day Care. A nostalgic walk through creative art, science, sports, cultural events and more.">
+  <meta name="keywords" content="preschool gallery, daycare photos, Little Friends, memories, creative art, annual day, sports, cultural events">
+  <meta name="author" content="Little Friends Preschool and Day Care">
+  <meta name="theme-color" content="#FF6B6B">
+  <link rel="icon" type="image/png" href="assets/song/little_friends_logo.png">
+  <title>Gallery – Memories Down the Lane | Little Friends Preschool and Day Care</title>
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Google Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Modular CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/gallery.css">
+</head>
+<body>
+
+  <!-- ============== HEADER ============== -->
+  <header class="header" role="banner">
+    <div class="header-inner">
+      <!-- Logo -->
+      <a href="index.html" class="logo" aria-label="Little Friends Preschool and Day Care Home">
+        <img src="assets/song/little_friends_logo.png" alt="Little Friends Logo" class="logo-icon-img">
+        <span class="logo-text">Little Friends Preschool and Day Care</span>
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Navigation -->
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <button class="nav-close-btn" aria-label="Close menu">
+          <span class="material-icons">close</span>
+        </button>
+        <ul class="nav-list">
+          <!-- About Us -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              About Us <span class="material-icons">expand_more</span>
+            </a>
+            <div class="dropdown">
+              <a href="our-story.html" class="dropdown-link">
+                <span class="material-icons">auto_stories</span> Our Story
+              </a>
+              <a href="vision-mission.html" class="dropdown-link">
+                <span class="material-icons">flag</span> Vision &amp; Mission
+              </a>
+              <a href="safety-security.html" class="dropdown-link">
+                <span class="material-icons">security</span> Safety &amp; Security
+              </a>
+            </div>
+          </li>
+          <!-- Academics -->
+          <li class="nav-item">
+            <a href="achievements.html" class="nav-link">
+              Academics <span class="material-icons">expand_more</span>
+            </a>
+            <div class="dropdown">
+              <a href="achievements.html" class="dropdown-link">
+                <span class="material-icons">emoji_events</span> Achievements
+              </a>
+            </div>
+          </li>
+          <!-- Extra Curriculum -->
+          <li class="nav-item">
+            <a href="index.html#programs" class="nav-link">
+              Extra Curriculum <span class="material-icons">expand_more</span>
+            </a>
+            <div class="dropdown">
+              <a href="index.html#programs" class="dropdown-link">
+                <span class="material-icons">sports_martial_arts</span> Activities
+              </a>
+            </div>
+          </li>
+          <!-- Events & Updates -->
+          <li class="nav-item">
+            <a href="events.html" class="nav-link">
+              Events <span class="material-icons">expand_more</span>
+            </a>
+            <div class="dropdown">
+              <a href="events.html" class="dropdown-link">
+                <span class="material-icons">celebration</span> Events
+              </a>
+              <a href="gallery.html" class="dropdown-link">
+                <span class="material-icons">photo_library</span> Gallery
+              </a>
+            </div>
+          </li>
+          <!-- Social -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Social <span class="material-icons">expand_more</span>
+            </a>
+            <div class="dropdown">
+              <a href="#" class="dropdown-link" target="_blank" rel="noopener noreferrer">
+                <span class="material-icons">thumb_up</span> Facebook
+              </a>
+              <a href="#" class="dropdown-link" target="_blank" rel="noopener noreferrer">
+                <span class="material-icons">camera_alt</span> Instagram
+              </a>
+              <a href="#" class="dropdown-link" target="_blank" rel="noopener noreferrer">
+                <span class="material-icons">work</span> LinkedIn
+              </a>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Theme Toggle -->
+        <div class="theme-toggle">
+          <button class="theme-toggle-btn" aria-label="Toggle dark mode" role="switch" aria-checked="false"></button>
+        </div>
+
+        <!-- CTA -->
+        <div class="nav-cta">
+          <a href="index.html#enquiry" class="btn btn-primary">Enquire Now</a>
+        </div>
+      </nav>
+
+      <!-- Mobile Overlay -->
+      <div class="nav-overlay"></div>
+    </div>
+  </header>
+
+
+  <!-- ============== HERO BANNER ============== -->
+  <section class="gallery-hero parallax-section" id="gallery-top">
+    <!-- Film strips -->
+    <div class="gallery-film-strip top"></div>
+    <div class="gallery-film-strip bottom"></div>
+
+    <!-- Floating shapes -->
+    <span class="gallery-hero-shape parallax-decor" data-parallax-depth="2">📷</span>
+    <span class="gallery-hero-shape parallax-decor" data-parallax-depth="3">🎨</span>
+    <span class="gallery-hero-shape parallax-decor" data-parallax-depth="2">🖼️</span>
+    <span class="gallery-hero-shape parallax-decor" data-parallax-depth="4">🎞️</span>
+
+    <div class="gallery-hero-content reveal">
+      <div class="gallery-hero-badge">
+        <span class="material-icons">photo_library</span>
+        Our Gallery
+      </div>
+      <h1 class="gallery-hero-title">
+        <span>Memories</span> Down the Lane
+      </h1>
+      <p class="gallery-hero-subtitle">
+        A nostalgic walk through the beautiful moments we've shared — art, laughter, discovery, and love, all captured in time.
+      </p>
+      <div class="gallery-scroll-hint">
+        <span>Scroll to explore</span>
+        <span class="material-icons">keyboard_double_arrow_down</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============== CREATIVE ART ============== -->
+  <section class="gallery-section parallax-section" id="creative-art">
+    <div class="cork-bg"></div>
+
+    <!-- Parallax decorations -->
+    <span class="gallery-decor parallax-decor" data-parallax-depth="2" style="top:10%;left:5%;">🎨</span>
+    <span class="gallery-decor parallax-decor" data-parallax-depth="3" style="top:60%;right:4%;">✨</span>
+    <span class="gallery-decor parallax-decor" data-parallax-depth="1" style="bottom:15%;left:8%;">🖌️</span>
+
+    <div class="gallery-section-header reveal">
+      <div class="gallery-section-tag">
+        <span class="material-icons">palette</span>
+        <h2>Creative Art</h2>
+      </div>
+      <p class="gallery-section-subtitle">Where tiny hands paint big dreams</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-card reveal" style="--rotate: -2deg; --tilt: -1deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/art1.jpeg" alt="Creative art activity at Little Friends" loading="lazy">
+          <p class="gallery-card-caption">Colours of Imagination</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: 1.5deg; --tilt: 2deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/art2.jpeg" alt="Children painting at preschool" loading="lazy">
+          <p class="gallery-card-caption">Little Masterpieces</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: -1deg; --tilt: -2deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/art3.jpeg" alt="Art and craft session" loading="lazy">
+          <p class="gallery-card-caption">Craft & Create</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: 2.5deg; --tilt: 1deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/art4.jpeg" alt="Kids with their artwork" loading="lazy">
+          <p class="gallery-card-caption">Proudly Handmade</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: -1.5deg; --tilt: 2deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/art5.jpeg" alt="Finger painting activity" loading="lazy">
+          <p class="gallery-card-caption">Finger Painting Fun</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: 1deg; --tilt: -1deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/art6.jpeg" alt="Creative arts showcase" loading="lazy">
+          <p class="gallery-card-caption">Art Showcase</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============== SCIENCE & FUN ============== -->
+  <section class="gallery-section parallax-section" id="science-fun">
+    <div class="cork-bg"></div>
+
+    <span class="gallery-decor parallax-decor" data-parallax-depth="3" style="top:8%;right:6%;">🔬</span>
+    <span class="gallery-decor parallax-decor" data-parallax-depth="2" style="bottom:12%;left:5%;">🧪</span>
+    <span class="gallery-decor parallax-decor" data-parallax-depth="4" style="top:50%;left:3%;">💡</span>
+
+    <div class="gallery-section-header reveal">
+      <div class="gallery-section-tag">
+        <span class="material-icons">science</span>
+        <h2>Science &amp; Fun</h2>
+      </div>
+      <p class="gallery-section-subtitle">Curious minds exploring the world around them</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-card reveal" style="--rotate: 2deg; --tilt: 1deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/olympiad.jpeg" alt="Science exploration at preschool" loading="lazy">
+          <p class="gallery-card-caption">Little Explorers</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: -1.5deg; --tilt: -2deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/olympiad2.jpeg" alt="Kids doing science experiments" loading="lazy">
+          <p class="gallery-card-caption">Discovery Time</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: 1deg; --tilt: 2deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/olympiad3.jpeg" alt="Fun with science learning" loading="lazy">
+          <p class="gallery-card-caption">Science Wonders</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: -2.5deg; --tilt: -1deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/olympiad4.jpeg" alt="Olympiad preparation" loading="lazy">
+          <p class="gallery-card-caption">Bright Minds</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============== NURTURING ============== -->
+  <section class="gallery-section parallax-section" id="nurturing">
+    <div class="cork-bg"></div>
+
+    <span class="gallery-decor parallax-decor" data-parallax-depth="2" style="top:12%;left:4%;">💛</span>
+    <span class="gallery-decor parallax-decor" data-parallax-depth="3" style="bottom:10%;right:6%;">🌱</span>
+    <span class="gallery-decor parallax-decor" data-parallax-depth="1" style="top:45%;right:3%;">🤗</span>
+
+    <div class="gallery-section-header reveal">
+      <div class="gallery-section-tag">
+        <span class="material-icons">favorite</span>
+        <h2>Nurturing</h2>
+      </div>
+      <p class="gallery-section-subtitle">Growing with care, love, and gentle hands</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-card reveal" style="--rotate: -1deg; --tilt: 2deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/home/principal.png" alt="Nurturing environment at preschool" loading="lazy">
+          <p class="gallery-card-caption">Guided with Love</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: 2deg; --tilt: -1deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/culture3.jpeg" alt="Teacher and student bonding" loading="lazy">
+          <p class="gallery-card-caption">Warm Bonds</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: -2deg; --tilt: 1deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/culture4.jpeg" alt="Children learning together" loading="lazy">
+          <p class="gallery-card-caption">Learning Together</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: 1.5deg; --tilt: -2deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/annual4.png" alt="Happy moments at preschool" loading="lazy">
+          <p class="gallery-card-caption">Happy Moments</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============== CULTURAL CELEBRATIONS ============== -->
+  <section class="gallery-section parallax-section" id="cultural">
+    <div class="cork-bg"></div>
+
+    <span class="gallery-decor parallax-decor" data-parallax-depth="3" style="top:8%;left:6%;">🎭</span>
+    <span class="gallery-decor parallax-decor" data-parallax-depth="2" style="bottom:15%;right:5%;">🪔</span>
+    <span class="gallery-decor parallax-decor" data-parallax-depth="4" style="top:55%;left:4%;">🎉</span>
+
+    <div class="gallery-section-header reveal">
+      <div class="gallery-section-tag">
+        <span class="material-icons">diversity_3</span>
+        <h2>Cultural Celebrations</h2>
+      </div>
+      <p class="gallery-section-subtitle">Embracing traditions, celebrating togetherness</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-card reveal" style="--rotate: 1.5deg; --tilt: 2deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/culture1.jpeg" alt="Cultural celebration at preschool" loading="lazy">
+          <p class="gallery-card-caption">Festival of Colours</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: -2deg; --tilt: -1deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/culture2.jpeg" alt="Children in cultural attire" loading="lazy">
+          <p class="gallery-card-caption">Cultural Heritage</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: 1deg; --tilt: 1deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/culture3.jpeg" alt="Traditional dance performance" loading="lazy">
+          <p class="gallery-card-caption">Dance of Joy</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: -1.5deg; --tilt: -2deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/culture4.jpeg" alt="Festival celebrations" loading="lazy">
+          <p class="gallery-card-caption">Celebrations Galore</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: 2.5deg; --tilt: 1deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/culture5.jpg" alt="Unity in diversity event" loading="lazy">
+          <p class="gallery-card-caption">Unity in Diversity</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: -1deg; --tilt: 2deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/culture6.jpeg" alt="Festive decorations by children" loading="lazy">
+          <p class="gallery-card-caption">Festive Spirit</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============== SPORTS & PLAY ============== -->
+  <section class="gallery-section parallax-section" id="sports-play">
+    <div class="cork-bg"></div>
+
+    <span class="gallery-decor parallax-decor" data-parallax-depth="2" style="top:10%;right:5%;">⚽</span>
+    <span class="gallery-decor parallax-decor" data-parallax-depth="3" style="bottom:12%;left:6%;">🏅</span>
+    <span class="gallery-decor parallax-decor" data-parallax-depth="1" style="top:40%;left:3%;">🏃</span>
+
+    <div class="gallery-section-header reveal">
+      <div class="gallery-section-tag">
+        <span class="material-icons">sports_soccer</span>
+        <h2>Sports &amp; Play</h2>
+      </div>
+      <p class="gallery-section-subtitle">Active bodies, happy hearts</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-card reveal" style="--rotate: -2deg; --tilt: 1deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/sports1.jpeg" alt="Sports day at preschool" loading="lazy">
+          <p class="gallery-card-caption">Sports Day Fun</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: 1.5deg; --tilt: -2deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/sports5.jpg" alt="Kids playing outdoors" loading="lazy">
+          <p class="gallery-card-caption">Outdoor Adventures</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: -1deg; --tilt: 2deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/home/sportsoly.png" alt="Sports olympiad event" loading="lazy">
+          <p class="gallery-card-caption">Champions in the Making</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============== ANNUAL DAY ============== -->
+  <section class="gallery-section parallax-section" id="annual-day">
+    <div class="cork-bg"></div>
+
+    <span class="gallery-decor parallax-decor" data-parallax-depth="3" style="top:8%;left:5%;">🎓</span>
+    <span class="gallery-decor parallax-decor" data-parallax-depth="2" style="bottom:10%;right:4%;">🎊</span>
+    <span class="gallery-decor parallax-decor" data-parallax-depth="4" style="top:50%;right:3%;">🌟</span>
+
+    <div class="gallery-section-header reveal">
+      <div class="gallery-section-tag">
+        <span class="material-icons">celebration</span>
+        <h2>Annual Day</h2>
+      </div>
+      <p class="gallery-section-subtitle">The grandest day of the year — stars on stage</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-card reveal" style="--rotate: 1deg; --tilt: -1deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/annual1.JPG" alt="Annual day celebration" loading="lazy">
+          <p class="gallery-card-caption">Under the Spotlight</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: -2.5deg; --tilt: 2deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/annual2.JPG" alt="Children performing on stage" loading="lazy">
+          <p class="gallery-card-caption">Stage Stars</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: 2deg; --tilt: -2deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/annual3.JPG" alt="Annual day performance" loading="lazy">
+          <p class="gallery-card-caption">A Night to Remember</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: -1deg; --tilt: 1deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/annual4.png" alt="Prize ceremony" loading="lazy">
+          <p class="gallery-card-caption">Moments of Pride</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: 1.5deg; --tilt: 2deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/annual5.JPG" alt="Group performances" loading="lazy">
+          <p class="gallery-card-caption">Together We Shine</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal" style="--rotate: -1.5deg; --tilt: -1deg;">
+        <div class="gallery-pin"></div>
+        <div class="gallery-card-inner">
+          <img src="assets/annual6.JPG" alt="Annual day finale" loading="lazy">
+          <p class="gallery-card-caption">Grand Finale</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============== LIGHTBOX ============== -->
+  <div class="gallery-lightbox" id="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button class="gallery-lightbox-close" aria-label="Close preview">
+      <span class="material-icons">close</span>
+    </button>
+    <img src="" alt="Gallery preview">
+  </div>
+
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="footer" id="footer">
+    <!-- Wave -->
+    <div class="footer-wave">
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,40 C320,100 640,0 960,50 C1120,75 1280,60 1440,40 L1440,100 L0,100 Z" fill="var(--bg-footer)"/>
+      </svg>
+    </div>
+
+    <!-- Footer Main -->
+    <div class="footer-main">
+      <div class="footer-grid">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="assets/song/little_friends_logo.png" alt="Little Friends Logo" class="footer-logo-icon-img">
+            <span class="footer-logo-text">Little Friends Preschool and Day Care</span>
+          </div>
+          <p>
+            A premier preschool in Newtown, nurturing little minds with love, creativity, and the best of modern education.
+            Aligned to NEP 2020 and International Standards.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="footer-social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">📘</a>
+            <a href="#" class="footer-social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">📷</a>
+            <a href="#" class="footer-social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">💼</a>
+            <a href="#" class="footer-social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">📺</a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link"><span class="material-icons">chevron_right</span> Home</a>
+            <a href="our-story.html" class="footer-link"><span class="material-icons">chevron_right</span> Our Story</a>
+            <a href="index.html#programs" class="footer-link"><span class="material-icons">chevron_right</span> Programs</a>
+            <a href="events.html" class="footer-link"><span class="material-icons">chevron_right</span> Events</a>
+            <a href="gallery.html" class="footer-link"><span class="material-icons">chevron_right</span> Gallery</a>
+            <a href="index.html#testimonials" class="footer-link"><span class="material-icons">chevron_right</span> Testimonials</a>
+            <a href="index.html#enquiry" class="footer-link"><span class="material-icons">chevron_right</span> Contact</a>
+          </div>
+        </div>
+
+        <!-- Programs -->
+        <div class="footer-column">
+          <h4>Our Programs</h4>
+          <div class="footer-links">
+            <a href="index.html#programs" class="footer-link"><span class="material-icons">chevron_right</span> Playgroup</a>
+            <a href="index.html#programs" class="footer-link"><span class="material-icons">chevron_right</span> Nursery</a>
+            <a href="index.html#programs" class="footer-link"><span class="material-icons">chevron_right</span> LKG</a>
+            <a href="index.html#programs" class="footer-link"><span class="material-icons">chevron_right</span> UKG</a>
+            <a href="index.html#programs" class="footer-link"><span class="material-icons">chevron_right</span> Day Care</a>
+            <a href="index.html#programs" class="footer-link"><span class="material-icons">chevron_right</span> Crèche</a>
+          </div>
+        </div>
+
+        <!-- FAQs -->
+        <div class="footer-column">
+          <h4>FAQs</h4>
+          <div class="footer-faq">
+            <div class="faq-item">
+              <button class="faq-question">
+                What is the admission age?
+                <span class="material-icons">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <p>Children between 2 to 6 years of age can be enrolled in our various programs ranging from Playgroup to UKG.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                What safety measures are in place?
+                <span class="material-icons">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <p>Our campus is fully CCTV monitored, air-conditioned, and follows strict child safety protocols with trained staff.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                Do you offer day care?
+                <span class="material-icons">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <p>Yes, we offer both day care and after-school care services, as well as cradle/crèche facilities for infants.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                What are the Saturday timings?
+                <span class="material-icons">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <p>On Saturdays, the school operates from 9:00 AM to 3:00 PM.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p class="footer-copyright">
+          &copy; 2026 <a href="index.html">Little Friends Preschool and Day Care</a>. All rights reserved. Made with ❤️ for little learners.
+        </p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============== HOME FLOATING BUTTON ============== -->
+  <div class="home-float">
+    <a href="index.html" class="home-float-btn" aria-label="Go to Home">
+      <img src="assets/icon/home_icon.png" alt="Home">
+    </a>
+  </div>
+
+
+  <!-- ============== WHATSAPP FLOATING BUTTON ============== -->
+  <div class="whatsapp-float">
+    <a href="https://wa.me/918902098125?text=Hi%2C%20I%20am%20interested%20in%20enquiring%20about%20your%20preschool."
+       class="whatsapp-btn"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Chat on WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+    <span class="whatsapp-tooltip">Chat with us!</span>
+  </div>
+
+
+  <!-- ============== BACK TO TOP ============== -->
+  <button class="back-to-top" aria-label="Back to top">
+    <img src="assets/return_to_top.png" alt="Back to top" class="back-to-top-img">
+    <div class="rocket-smoke">
+      <span class="smoke-particle"></span>
+      <span class="smoke-particle"></span>
+      <span class="smoke-particle"></span>
+      <span class="smoke-particle"></span>
+      <span class="smoke-particle"></span>
+      <span class="smoke-particle"></span>
+      <span class="smoke-particle"></span>
+      <span class="smoke-particle"></span>
+    </div>
+  </button>
+
+
+  <!-- Theme (loads first to prevent flash) -->
+  <script src="js/theme.js"></script>
+
+  <!-- Navigation & Interactions -->
+  <script src="js/navigation.js"></script>
+
+  <!-- Animations (scroll reveals, parallax, 3D cards) -->
+  <script src="js/animations.js"></script>
+
+  <!-- Gallery-specific JS (lightbox) -->
+  <script src="js/gallery.js"></script>
+
+  <!-- Main (Back to Top, FAQ, etc.) -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>

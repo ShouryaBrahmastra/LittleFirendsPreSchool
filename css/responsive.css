@@ -304,6 +304,10 @@
   .whatsapp-float { bottom: 20px; left: 58px; }
   .whatsapp-btn { width: 52px; height: 52px; font-size: 26px; }
 
+  .home-float { bottom: 20px; left: 10px; }
+  .home-float-btn { width: 40px; height: 40px; }
+  .home-float-btn img { width: 22px; height: 22px; }
+
   .music-toggle { bottom: 20px; left: 10px; width: 40px; height: 40px; }
 
   .back-to-top { bottom: 20px; right: 20px; width: 64px; height: 64px; }

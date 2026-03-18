@@ -309,6 +309,51 @@
   transform: translateX(0);
 }
 
+/* Home Floating Button */
+.home-float {
+  position: fixed;
+  bottom: 36px;
+  left: 16px;
+  z-index: var(--z-whatsapp);
+}
+
+.home-float-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: all var(--transition-base);
+  text-decoration: none;
+  animation: homeFloat 3s ease-in-out infinite;
+  border: 2px solid var(--primary);
+}
+
+.home-float-btn:hover {
+  transform: scale(1.15) translateY(-4px);
+  box-shadow: 0 8px 30px rgba(255, 107, 107, 0.4);
+  animation: none;
+}
+
+.home-float-btn img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  transition: transform var(--transition-base);
+}
+
+.home-float-btn:hover img {
+  transform: rotate(-10deg) scale(1.1);
+}
+
+@keyframes homeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
 /* Back to Top */
 .back-to-top {
   position: fixed;

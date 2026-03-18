@@ -1,0 +1,803 @@
+/* ============================================
+   LittleFriends - Achievements Page
+   Trophy showcase, Olympiad stats, Carousel
+   with celebration animations
+   ============================================ */
+
+/* ---- Hero Banner ---- */
+.ach-hero {
+  position: relative;
+  min-height: 55vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 25% 30%, rgba(255, 230, 109, 0.18) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 70%, rgba(167, 139, 250, 0.12) 0%, transparent 50%),
+    var(--bg-primary);
+  padding: calc(var(--space-4xl) + 80px) var(--space-xl) var(--space-3xl);
+}
+
+.ach-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+
+.ach-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--gradient-card);
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+  padding: var(--space-sm) var(--space-lg);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.ach-hero-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-5xl);
+  color: var(--text-heading);
+  line-height: 1.1;
+  margin-bottom: var(--space-lg);
+}
+
+.ach-hero-title span {
+  background: linear-gradient(135deg, #FFE66D 0%, #FF6B6B 50%, #A78BFA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ach-hero-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+/* Floating shapes in hero */
+.ach-hero-shape {
+  position: absolute;
+  pointer-events: none;
+  font-size: 2.5rem;
+  opacity: 0.15;
+  z-index: 1;
+}
+
+.ach-hero-shape:nth-child(1) { top: 12%; left: 6%; animation: float 5s ease-in-out infinite; }
+.ach-hero-shape:nth-child(2) { top: 20%; right: 8%; animation: float 6s ease-in-out infinite 1s; }
+.ach-hero-shape:nth-child(3) { bottom: 18%; left: 10%; animation: float 4.5s ease-in-out infinite 0.5s; }
+.ach-hero-shape:nth-child(4) { bottom: 12%; right: 6%; animation: float 5.5s ease-in-out infinite 1.5s; }
+
+
+/* ---- Section Container ---- */
+.ach-section {
+  padding: var(--space-4xl) var(--space-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.ach-section:nth-child(even) {
+  background: var(--bg-secondary);
+}
+
+.ach-section:nth-child(odd) {
+  background: var(--bg-primary);
+}
+
+.ach-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.ach-section-header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.ach-section-icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-md);
+  display: block;
+}
+
+.ach-section-header h2 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  color: var(--text-heading);
+  margin-bottom: var(--space-sm);
+}
+
+.ach-section-header p {
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  font-size: var(--font-size-md);
+  font-style: italic;
+}
+
+
+/* ============================================
+   Women's Day Trophy Section
+   ============================================ */
+.trophy-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+/* Image Frame */
+.trophy-frame-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.trophy-frame {
+  position: relative;
+  background: linear-gradient(145deg, #d4a574, #c4955a, #e6c88a, #b8863c);
+  padding: 16px;
+  border-radius: 6px;
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.15),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+  max-width: 420px;
+  width: 100%;
+}
+
+.trophy-frame::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 2px solid rgba(180, 140, 80, 0.5);
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.trophy-frame img {
+  width: 100%;
+  border-radius: 3px;
+  display: block;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Sparkle / shine floating around frame */
+.trophy-sparkle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 1.2rem;
+  animation: sparkle 2s ease-in-out infinite;
+}
+.trophy-sparkle:nth-child(1) { top: -10px; left: 10%; animation-delay: 0s; }
+.trophy-sparkle:nth-child(2) { top: 20%; right: -15px; animation-delay: 0.5s; }
+.trophy-sparkle:nth-child(3) { bottom: -10px; left: 30%; animation-delay: 1s; }
+.trophy-sparkle:nth-child(4) { top: 50%; left: -15px; animation-delay: 1.5s; }
+
+/* Text side */
+.trophy-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.trophy-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: linear-gradient(135deg, #FFE66D, #FFA07A);
+  color: #5a3e1b;
+  border-radius: 50px;
+  padding: 6px 18px;
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+  width: fit-content;
+  box-shadow: 0 2px 8px rgba(255, 160, 122, 0.3);
+}
+
+.trophy-content h3 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  color: var(--text-heading);
+  line-height: 1.2;
+}
+
+.trophy-content h3 span {
+  color: var(--primary);
+}
+
+.trophy-content .trophy-text {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.trophy-highlight {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  background: var(--bg-card);
+  border-left: 4px solid var(--accent-yellow);
+  padding: var(--space-lg);
+  border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.trophy-highlight .material-icons {
+  font-size: 2.5rem;
+  color: var(--accent-yellow);
+}
+
+.trophy-highlight p {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.trophy-highlight p strong {
+  color: var(--text-heading);
+}
+
+
+/* ============================================
+   Olympiad Section
+   ============================================ */
+.olympiad-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-3xl);
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-2xl) var(--space-xl);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.stat-card:nth-child(1)::before { background: var(--secondary); }
+.stat-card:nth-child(2)::before { background: var(--accent-yellow); }
+.stat-card:nth-child(3)::before { background: var(--primary); }
+
+.stat-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-md);
+  display: block;
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-4xl);
+  color: var(--text-heading);
+  line-height: 1;
+  margin-bottom: var(--space-xs);
+}
+
+.stat-label {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Gold stars grid */
+.gold-stars-section {
+  text-align: center;
+  margin-top: var(--space-2xl);
+}
+
+.gold-stars-section h3 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  color: var(--text-heading);
+  margin-bottom: var(--space-xl);
+}
+
+.gold-stars-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.gold-star-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: linear-gradient(135deg, #fff9e6, #fff3cc);
+  border: 2px solid #ffd700;
+  border-radius: 50px;
+  padding: 8px 20px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  color: #7a5c00;
+  box-shadow: 0 2px 10px rgba(255, 215, 0, 0.2);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.gold-star-badge:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px rgba(255, 215, 0, 0.35);
+}
+
+
+/* ============================================
+   Celebration Carousel Section
+   ============================================ */
+.carousel-section {
+  padding: var(--space-4xl) var(--space-xl);
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(255, 107, 107, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(78, 205, 196, 0.06) 0%, transparent 50%),
+    var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-section .ach-container {
+  max-width: 900px;
+}
+
+/* Carousel Wrapper */
+.ach-carousel {
+  position: relative;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  background: #000;
+}
+
+.ach-carousel-track {
+  display: flex;
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.ach-carousel-slide {
+  min-width: 100%;
+  position: relative;
+}
+
+.ach-carousel-slide img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+/* Slide overlay with caption */
+.ach-slide-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-2xl) var(--space-xl) var(--space-xl);
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  color: #fff;
+}
+
+.ach-slide-overlay h3 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-xs);
+}
+
+.ach-slide-overlay p {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  opacity: 0.85;
+}
+
+/* Navigation buttons */
+.ach-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  transition: all var(--transition-base);
+}
+
+.ach-carousel-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.ach-carousel-btn.prev { left: 16px; }
+.ach-carousel-btn.next { right: 16px; }
+
+/* Dots */
+.ach-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: var(--space-md) 0;
+}
+
+.ach-carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: var(--border-color);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  padding: 0;
+}
+
+.ach-carousel-dot.active {
+  background: var(--primary);
+  width: 28px;
+  border-radius: 5px;
+}
+
+
+/* ============================================
+   Celebration Animations — Trumpets & Drums
+   ============================================ */
+
+/* Side decorations container */
+.celebration-decor {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Trumpet */
+.trumpet {
+  font-size: 3rem;
+  display: inline-block;
+}
+
+.trumpet.left {
+  position: absolute;
+  left: 3%;
+  top: 30%;
+  transform: scaleX(-1);
+  animation: trumpetBlowLeft 1.5s ease-in-out infinite;
+}
+
+.trumpet.right {
+  position: absolute;
+  right: 3%;
+  top: 30%;
+  animation: trumpetBlowRight 1.5s ease-in-out infinite;
+}
+
+@keyframes trumpetBlowLeft {
+  0%, 100% { transform: scaleX(-1) rotate(0deg) scale(1); }
+  15% { transform: scaleX(-1) rotate(-8deg) scale(1.12); }
+  30% { transform: scaleX(-1) rotate(0deg) scale(1); }
+  50% { transform: scaleX(-1) rotate(-5deg) scale(1.08); }
+}
+
+@keyframes trumpetBlowRight {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  15% { transform: rotate(8deg) scale(1.12); }
+  30% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(5deg) scale(1.08); }
+}
+
+/* Sound wave pulses from trumpets */
+.sound-wave {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-yellow);
+  opacity: 0;
+  animation: soundPulse 1.5s ease-out infinite;
+}
+
+.trumpet.left .sound-wave {
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.trumpet.right .sound-wave {
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.sound-wave:nth-child(2) { animation-delay: 0.3s; }
+.sound-wave:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes soundPulse {
+  0% { opacity: 0.8; transform: translateY(-50%) scale(0.5); }
+  100% { opacity: 0; transform: translateY(-50%) scale(2.5); }
+}
+
+/* Drums */
+.drum {
+  font-size: 2.8rem;
+  display: inline-block;
+}
+
+.drum.left {
+  position: absolute;
+  left: 4%;
+  bottom: 18%;
+  animation: drumBeatLeft 0.8s ease-in-out infinite;
+}
+
+.drum.right {
+  position: absolute;
+  right: 4%;
+  bottom: 18%;
+  animation: drumBeatRight 0.8s ease-in-out infinite 0.4s;
+}
+
+@keyframes drumBeatLeft {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  20% { transform: scale(1.15) rotate(-3deg); }
+  40% { transform: scale(0.95) rotate(1deg); }
+}
+
+@keyframes drumBeatRight {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  20% { transform: scale(1.15) rotate(3deg); }
+  40% { transform: scale(0.95) rotate(-1deg); }
+}
+
+/* Drum stick hits */
+.drumstick {
+  position: absolute;
+  font-size: 1.5rem;
+}
+
+.drum.left .drumstick {
+  top: -18px;
+  right: -5px;
+  animation: stickHitLeft 0.8s ease-in-out infinite;
+}
+
+.drum.right .drumstick {
+  top: -18px;
+  left: -5px;
+  animation: stickHitRight 0.8s ease-in-out infinite 0.4s;
+}
+
+@keyframes stickHitLeft {
+  0%, 100% { transform: rotate(-30deg); }
+  20% { transform: rotate(10deg); }
+  40% { transform: rotate(-30deg); }
+}
+
+@keyframes stickHitRight {
+  0%, 100% { transform: rotate(30deg); }
+  20% { transform: rotate(-10deg); }
+  40% { transform: rotate(30deg); }
+}
+
+/* Confetti burst */
+.confetti-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 6;
+}
+
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  opacity: 0;
+  animation: confettiFall 4s ease-in infinite;
+}
+
+@keyframes confettiFall {
+  0% { opacity: 1; transform: translateY(-20px) rotate(0deg) scale(1); }
+  100% { opacity: 0; transform: translateY(100vh) rotate(720deg) scale(0.5); }
+}
+
+/* Note particles from trumpets */
+.music-note {
+  position: absolute;
+  font-size: 1.2rem;
+  opacity: 0;
+  animation: noteFloat 2s ease-out infinite;
+}
+
+@keyframes noteFloat {
+  0% { opacity: 0.9; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--note-dx, 30px), var(--note-dy, -50px)) scale(0.4); }
+}
+
+
+/* ============================================
+   Dark Mode
+   ============================================ */
+[data-theme="dark"] .trophy-frame {
+  background: linear-gradient(145deg, #5a4a3a, #4a3a2a, #6a5a4a, #3a2a1a);
+}
+
+[data-theme="dark"] .trophy-highlight {
+  background: var(--bg-card);
+}
+
+[data-theme="dark"] .stat-card {
+  background: var(--bg-card);
+}
+
+[data-theme="dark"] .gold-star-badge {
+  background: linear-gradient(135deg, #3d3520, #2d2510);
+  border-color: #b8960a;
+  color: #ffd700;
+}
+
+[data-theme="dark"] .ach-hero {
+  background:
+    radial-gradient(ellipse at 25% 30%, rgba(255, 230, 109, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 70%, rgba(167, 139, 250, 0.05) 0%, transparent 50%),
+    var(--bg-primary);
+}
+
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 992px) {
+  .ach-hero {
+    min-height: 40vh;
+  }
+
+  .ach-hero-title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .trophy-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--space-2xl);
+  }
+
+  .trophy-frame-wrapper { order: -1; }
+  .trophy-frame { max-width: 360px; margin: 0 auto; }
+
+  .trophy-tag { margin: 0 auto; }
+  .trophy-highlight { text-align: left; }
+}
+
+@media (max-width: 768px) {
+  .ach-hero {
+    min-height: 35vh;
+    padding: calc(var(--space-3xl) + 80px) var(--space-md) var(--space-2xl);
+  }
+
+  .ach-hero-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .ach-hero-subtitle {
+    font-size: var(--font-size-base);
+  }
+
+  .ach-hero-shape { display: none; }
+
+  .ach-section {
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  .ach-section-header h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .olympiad-stats {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .stat-card {
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .stat-number {
+    font-size: var(--font-size-3xl);
+  }
+
+  .gold-star-badge {
+    font-size: var(--font-size-xs);
+    padding: 6px 14px;
+  }
+
+  .trophy-frame { max-width: 300px; }
+
+  /* Hide celebration side decorations on mobile */
+  .trumpet, .drum {
+    font-size: 2rem;
+  }
+
+  .trumpet.left { left: 1%; top: 10%; }
+  .trumpet.right { right: 1%; top: 10%; }
+  .drum.left { left: 1%; bottom: 10%; }
+  .drum.right { right: 1%; bottom: 10%; }
+
+  .ach-carousel-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .ach-carousel-btn.prev { left: 8px; }
+  .ach-carousel-btn.next { right: 8px; }
+
+  .ach-slide-overlay {
+    padding: var(--space-lg) var(--space-md) var(--space-md);
+  }
+
+  .ach-slide-overlay h3 {
+    font-size: var(--font-size-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .ach-hero-title {
+    font-size: 1.75rem;
+  }
+
+  .olympiad-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .stat-card {
+    padding: var(--space-md) var(--space-sm);
+  }
+
+  .stat-icon { font-size: 1.5rem; }
+  .stat-number { font-size: var(--font-size-2xl); }
+  .stat-label { font-size: var(--font-size-xs); letter-spacing: 0; }
+
+  .trumpet, .drum { display: none; }
+}
