@@ -1,0 +1,1427 @@
+/* ============================================
+   LittleFriends - Our Story Page
+   School info, Principal, Teachers sections
+   ============================================ */
+
+/* Page Hero / Breadcrumb */
+.page-hero {
+  background: var(--gradient-hero);
+  padding: calc(var(--space-4xl) + 80px) 0 var(--space-3xl);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: var(--bg-primary);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+
+.page-hero h1 {
+  font-size: var(--font-size-4xl);
+  color: var(--text-inverse);
+  margin-bottom: var(--space-sm);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.page-hero .breadcrumb {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.page-hero .breadcrumb a {
+  color: rgba(255, 255, 255, 0.8);
+  transition: color var(--transition-fast);
+}
+
+.page-hero .breadcrumb a:hover {
+  color: var(--accent-yellow);
+}
+
+/* ===== School About Section ===== */
+.school-about {
+  padding: var(--space-4xl) 0;
+  background: var(--bg-primary);
+}
+
+.school-about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+.school-photo-frame {
+  position: relative;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 4px solid var(--primary);
+}
+
+.school-photo-frame::before {
+  content: '🏫';
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  font-size: 28px;
+  z-index: 2;
+  background: var(--bg-card);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+}
+
+.school-photo-frame img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.school-photo-frame:hover img {
+  transform: scale(1.03);
+}
+
+.school-info h2 {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--space-lg);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.school-info p {
+  font-size: var(--font-size-base);
+  line-height: 1.9;
+  margin-bottom: var(--space-lg);
+  color: var(--text-secondary);
+}
+
+.school-info .highlight-box {
+  background: var(--gradient-card);
+  border-left: 4px solid var(--secondary);
+  padding: var(--space-lg) var(--space-xl);
+  border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.school-info .highlight-box p {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0;
+}
+
+/* ===== Principal Section ===== */
+.principal-section {
+  padding: var(--space-4xl) 0;
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.principal-section::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 200px;
+  height: 200px;
+  background: var(--accent-yellow);
+  opacity: 0.1;
+  border-radius: 50%;
+}
+
+.principal-section .section-title {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.principal-section .section-title h2 {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--space-sm);
+}
+
+.principal-section .section-title p {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+}
+
+.principal-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+.principal-video-frame {
+  position: relative;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  border: 4px solid var(--accent-purple);
+  background: var(--bg-card);
+}
+
+.principal-video-frame img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+}
+
+.play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.25);
+  transition: background var(--transition-base);
+  cursor: pointer;
+}
+
+.play-overlay:hover {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.play-btn {
+  width: 72px;
+  height: 72px;
+  background: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(255, 107, 107, 0.4);
+  transition: transform var(--transition-base);
+}
+
+.play-btn .material-icons {
+  font-size: 36px;
+  color: white;
+  margin-left: 4px;
+}
+
+.play-overlay:hover .play-btn {
+  transform: scale(1.1);
+}
+
+.principal-message h3 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-lg);
+  color: var(--text-heading);
+}
+
+.principal-message blockquote {
+  font-size: var(--font-size-md);
+  font-style: italic;
+  color: var(--text-secondary);
+  border-left: 3px solid var(--secondary);
+  padding-left: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  line-height: 1.8;
+}
+
+.principal-message .principal-name {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+}
+
+.principal-message .principal-title {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* ===== Teachers Section ===== */
+.teachers-section {
+  padding: var(--space-4xl) 0 var(--space-2xl);
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+.teachers-section .section-title {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.teachers-section .section-title h2 {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--space-sm);
+}
+
+.teachers-section .section-title p {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+}
+
+/* ===== Tree Scene (full wrapper) ===== */
+.tree-scene {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  min-height: 1600px;
+}
+
+/* ===========================
+   REALISTIC ANIMATED BIRDS
+   =========================== */
+.bird {
+  position: absolute;
+  width: 65px;
+  height: 42px;
+  z-index: 10;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+
+.bird svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Realistic wing flap — top wing sweeps up/down */
+.bird .wing-top {
+  animation: flapTop 0.28s ease-in-out infinite alternate;
+  transform-origin: 34px 28px;
+}
+
+.bird .wing-bottom {
+  animation: flapBottom 0.28s ease-in-out infinite alternate;
+  transform-origin: 36px 32px;
+}
+
+@keyframes flapTop {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-30deg); }
+}
+
+@keyframes flapBottom {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-18deg); }
+}
+
+/* Subtle body bob while flying */
+.bird .bird-body-group {
+  animation: bodyBob 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes bodyBob {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-1.5px); }
+}
+
+/* Bird flight paths — smooth, swooping, and natural */
+.bird-1 {
+  animation: flyPath1 14s ease-in-out infinite;
+}
+.bird-2 {
+  animation: flyPath2 18s ease-in-out infinite;
+}
+.bird-3 {
+  animation: flyPath3 16s ease-in-out infinite;
+}
+.bird-4 {
+  width: 55px; height: 36px;
+  animation: flyPath4 20s ease-in-out infinite;
+}
+.bird-5 {
+  animation: flyPath5 17s ease-in-out infinite;
+}
+.bird-6 {
+  width: 55px; height: 36px;
+  animation: flyPath6 15s ease-in-out infinite;
+}
+
+@keyframes flyPath1 {
+  0%   { left: -8%;  top: 3%;  transform: scaleX(1) rotate(-2deg); }
+  15%  { left: 18%;  top: 6%;  transform: scaleX(1) rotate(3deg); }
+  35%  { left: 45%;  top: 1%;  transform: scaleX(1) rotate(-4deg); }
+  55%  { left: 72%;  top: 7%;  transform: scaleX(1) rotate(2deg); }
+  70%  { left: 95%;  top: 3%;  transform: scaleX(1) rotate(-1deg); }
+  71%  { left: 95%;  top: 3%;  transform: scaleX(-1) rotate(1deg); }
+  85%  { left: 50%;  top: 9%;  transform: scaleX(-1) rotate(-3deg); }
+  100% { left: -8%;  top: 3%;  transform: scaleX(-1) rotate(2deg); }
+}
+
+@keyframes flyPath2 {
+  0%   { left: 108%; top: 16%; transform: scaleX(-1) rotate(2deg); }
+  20%  { left: 70%;  top: 10%; transform: scaleX(-1) rotate(-4deg); }
+  40%  { left: 38%;  top: 18%; transform: scaleX(-1) rotate(3deg); }
+  60%  { left: 10%;  top: 12%; transform: scaleX(-1) rotate(-2deg); }
+  75%  { left: -6%;  top: 16%; transform: scaleX(-1) rotate(1deg); }
+  76%  { left: -6%;  top: 16%; transform: scaleX(1) rotate(-1deg); }
+  90%  { left: 50%;  top: 10%; transform: scaleX(1) rotate(3deg); }
+  100% { left: 108%; top: 16%; transform: scaleX(1) rotate(-2deg); }
+}
+
+@keyframes flyPath3 {
+  0%   { left: 8%;   top: 28%; transform: scaleX(1) rotate(-3deg); }
+  20%  { left: 35%;  top: 22%; transform: scaleX(1) rotate(4deg); }
+  40%  { left: 58%;  top: 30%; transform: scaleX(1) rotate(-2deg); }
+  55%  { left: 82%;  top: 24%; transform: scaleX(1) rotate(3deg); }
+  70%  { left: 60%;  top: 32%; transform: scaleX(-1) rotate(-3deg); }
+  85%  { left: 32%;  top: 26%; transform: scaleX(-1) rotate(4deg); }
+  100% { left: 8%;   top: 28%; transform: scaleX(-1) rotate(-2deg); }
+}
+
+@keyframes flyPath4 {
+  0%   { left: 88%;  top: 5%;  transform: scaleX(-1) rotate(1deg); }
+  25%  { left: 55%;  top: 2%;  transform: scaleX(-1) rotate(-3deg); }
+  50%  { left: 22%;  top: 8%;  transform: scaleX(-1) rotate(4deg); }
+  70%  { left: 40%;  top: 1%;  transform: scaleX(1) rotate(-2deg); }
+  90%  { left: 70%;  top: 7%;  transform: scaleX(1) rotate(3deg); }
+  100% { left: 88%;  top: 5%;  transform: scaleX(1) rotate(-1deg); }
+}
+
+@keyframes flyPath5 {
+  0%   { left: -8%;  top: 36%; transform: scaleX(1) rotate(-2deg); }
+  25%  { left: 22%;  top: 30%; transform: scaleX(1) rotate(3deg); }
+  50%  { left: 52%;  top: 38%; transform: scaleX(1) rotate(-3deg); }
+  75%  { left: 78%;  top: 32%; transform: scaleX(1) rotate(2deg); }
+  100% { left: 110%; top: 36%; transform: scaleX(1) rotate(-1deg); }
+}
+
+@keyframes flyPath6 {
+  0%   { left: 110%; top: 22%; transform: scaleX(-1) rotate(2deg); }
+  30%  { left: 60%;  top: 17%; transform: scaleX(-1) rotate(-4deg); }
+  60%  { left: 18%;  top: 24%; transform: scaleX(-1) rotate(3deg); }
+  100% { left: -8%;  top: 20%; transform: scaleX(-1) rotate(-2deg); }
+}
+
+/* ===========================
+   FLYING KITES
+   =========================== */
+.kite {
+  position: absolute;
+  z-index: 9;
+  pointer-events: none;
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,0.12));
+}
+
+.kite svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.kite-1 {
+  width: 60px;
+  height: 98px;
+  animation: kiteFly1 20s ease-in-out infinite, kiteTilt 3s ease-in-out infinite;
+}
+
+.kite-2 {
+  width: 50px;
+  height: 85px;
+  animation: kiteFly2 24s ease-in-out infinite, kiteTilt 3.5s ease-in-out infinite 0.5s;
+}
+
+.kite-3 {
+  width: 38px;
+  height: 65px;
+  opacity: 0.75;
+  animation: kiteFly3 18s ease-in-out infinite, kiteTilt 2.8s ease-in-out infinite 1s;
+}
+
+/* Kite wobble/tilt */
+@keyframes kiteTilt {
+  0%, 100% { transform: rotate(-6deg); }
+  25% { transform: rotate(4deg); }
+  50% { transform: rotate(-3deg); }
+  75% { transform: rotate(7deg); }
+}
+
+/* Kite 1 — large, slow drift */
+@keyframes kiteFly1 {
+  0%   { left: 12%;  top: 40%; }
+  15%  { left: 22%;  top: 35%; }
+  30%  { left: 38%;  top: 42%; }
+  45%  { left: 55%;  top: 34%; }
+  60%  { left: 70%;  top: 40%; }
+  75%  { left: 58%;  top: 36%; }
+  90%  { left: 30%;  top: 42%; }
+  100% { left: 12%;  top: 40%; }
+}
+
+/* Kite 2 — opposite side, higher */
+@keyframes kiteFly2 {
+  0%   { left: 78%;  top: 32%; }
+  20%  { left: 62%;  top: 28%; }
+  40%  { left: 45%;  top: 34%; }
+  60%  { left: 30%;  top: 28%; }
+  80%  { left: 50%;  top: 35%; }
+  100% { left: 78%;  top: 32%; }
+}
+
+/* Kite 3 — small, drifts far, higher up */
+@keyframes kiteFly3 {
+  0%   { left: 82%;  top: 18%; }
+  25%  { left: 65%;  top: 14%; }
+  50%  { left: 42%;  top: 20%; }
+  75%  { left: 58%;  top: 15%; }
+  100% { left: 82%;  top: 18%; }
+}
+
+/* ===== Chirp Music Notes ===== */
+.chirp-note {
+  position: absolute;
+  font-size: 22px;
+  color: var(--accent-yellow);
+  z-index: 11;
+  pointer-events: none;
+  opacity: 0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.note-1 {
+  top: 5%; left: 28%;
+  animation: floatNote 4s 0s infinite;
+}
+.note-2 {
+  top: 12%; left: 72%;
+  animation: floatNote 5s 1.2s infinite;
+}
+.note-3 {
+  top: 22%; left: 18%;
+  animation: floatNote 4.5s 2s infinite;
+}
+.note-4 {
+  top: 8%; left: 82%;
+  animation: floatNote 3.8s 0.6s infinite;
+}
+
+@keyframes floatNote {
+  0%   { opacity: 0; transform: translateY(0) scale(0.6); }
+  20%  { opacity: 1; transform: translateY(-10px) scale(1); }
+  80%  { opacity: 0.6; transform: translateY(-30px) scale(0.9) rotate(15deg); }
+  100% { opacity: 0; transform: translateY(-50px) scale(0.5) rotate(30deg); }
+}
+
+/* ===========================
+   THE CSS TREE
+   =========================== */
+.css-tree {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== Canopy (Leafy top) ===== */
+.tree-canopy {
+  position: relative;
+  width: 340px;
+  height: 180px;
+  margin-bottom: -30px;
+  z-index: 3;
+}
+
+.canopy-layer {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, #3CB371 0%, #228B22 60%, #1a6b1a 100%);
+  box-shadow: inset 0 -8px 20px rgba(0,0,0,0.15), 0 4px 20px rgba(34,139,34,0.3);
+}
+
+.canopy-1 {
+  width: 200px;
+  height: 140px;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.canopy-2 {
+  width: 160px;
+  height: 120px;
+  left: 10px;
+  top: 30px;
+  z-index: 2;
+  background: radial-gradient(ellipse at center, #45c76a 0%, #2d9b2d 60%, #1e7a1e 100%);
+}
+
+.canopy-3 {
+  width: 160px;
+  height: 120px;
+  right: 10px;
+  top: 30px;
+  z-index: 2;
+  background: radial-gradient(ellipse at center, #45c76a 0%, #2d9b2d 60%, #1e7a1e 100%);
+}
+
+/* Animate canopy gently */
+.tree-canopy {
+  animation: canopySway 5s ease-in-out infinite;
+}
+
+@keyframes canopySway {
+  0%, 100% { transform: rotate(-0.5deg); }
+  50% { transform: rotate(0.5deg); }
+}
+
+/* ===== Tree Trunk ===== */
+.tree-trunk-body {
+  width: 50px;
+  height: 160px;
+  background: linear-gradient(180deg, #8B6914 0%, #6B4E11 40%, #5C4210 100%);
+  border-radius: 8px 8px 12px 12px;
+  position: relative;
+  z-index: 2;
+  box-shadow: inset -8px 0 12px rgba(0,0,0,0.2), 4px 0 8px rgba(0,0,0,0.1);
+}
+
+.trunk-texture {
+  position: absolute;
+  width: 22px;
+  height: 6px;
+  background: rgba(0,0,0,0.15);
+  border-radius: 4px;
+  left: 14px;
+  top: 35%;
+}
+
+.trunk-texture.t2 {
+  left: 10px;
+  top: 65%;
+  width: 18px;
+}
+
+/* ===== Tree Roots ===== */
+.tree-roots {
+  position: relative;
+  width: 400px;
+  text-align: center;
+  margin-top: -8px;
+  z-index: 1;
+  transform: translateX(-0.5px); /* align with trunk */
+}
+
+.roots-svg {
+  width: 100%;
+  height: 160px;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.12));
+}
+
+/* Soil mound beneath the trunk */
+.soil-mound {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 28px;
+  background: radial-gradient(ellipse at 50% 100%, #6B4E11 0%, #5C4210 40%, transparent 72%);
+  border-radius: 50%;
+  z-index: 2;
+  opacity: 0.55;
+}
+
+.tree-tagline {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-top: var(--space-xs);
+}
+
+/* ===========================
+   GROUND CRITTERS (Squirrels & Rabbits)
+   =========================== */
+.ground-critters {
+  position: relative;
+  width: 560px;
+  height: 140px;
+  margin-top: -30px;
+  z-index: 5;
+}
+
+.critter {
+  position: absolute;
+  bottom: 0;
+}
+
+/* Flip class for mirrored critters */
+.flipped {
+  transform: scaleX(-1);
+}
+
+/* --- Squirrels --- */
+.squirrel svg {
+  width: 76px;
+  height: 60px;
+}
+
+.squirrel-1 {
+  right: 30px;
+  bottom: 8px;
+  animation: squirrelRun1 12s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
+.squirrel-2 {
+  left: 15px;
+  bottom: 12px;
+  animation: squirrelScurry2 10s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite 3s;
+}
+
+/* Squirrel leg gallop – front legs reach forward, hind legs push back */
+.squirrel-1 .sq-front-leg-g,
+.squirrel-1 .sq-front-leg2-g {
+  animation: sqFrontGallop 0.25s ease-in-out infinite;
+  transform-origin: 68px 62px;
+}
+.squirrel-1 .sq-front-leg2-g { animation-delay: 0.12s; }
+
+.squirrel-1 .sq-hind-leg-g,
+.squirrel-1 .sq-hind-leg2-g {
+  animation: sqHindGallop 0.25s ease-in-out infinite;
+  transform-origin: 38px 58px;
+}
+.squirrel-1 .sq-hind-leg2-g { animation-delay: 0.12s; }
+
+/* Squirrel 2 leg animations (same gallop when moving) */
+.squirrel-2 .sq-front-leg-g,
+.squirrel-2 .sq-front-leg2-g {
+  animation: sqFrontGallop 0.3s ease-in-out infinite;
+  transform-origin: 68px 62px;
+}
+.squirrel-2 .sq-front-leg2-g { animation-delay: 0.15s; }
+
+.squirrel-2 .sq-hind-leg-g,
+.squirrel-2 .sq-hind-leg2-g {
+  animation: sqHindGallop 0.3s ease-in-out infinite;
+  transform-origin: 38px 58px;
+}
+.squirrel-2 .sq-hind-leg2-g { animation-delay: 0.15s; }
+
+/* Tail bounces with running rhythm */
+.squirrel-1 .sq-tail {
+  animation: sqTailBounce 0.5s ease-in-out infinite;
+  transform-origin: 30px 48px;
+}
+
+/* Squirrel 2 tail sway (idling) */
+.squirrel-2 .sq-tail {
+  animation: sqTailSway 2.5s ease-in-out infinite;
+  transform-origin: 30px 48px;
+}
+
+@keyframes sqFrontGallop {
+  0%   { transform: rotate(-12deg); }
+  50%  { transform: rotate(12deg); }
+  100% { transform: rotate(-12deg); }
+}
+
+@keyframes sqHindGallop {
+  0%   { transform: rotate(15deg); }
+  50%  { transform: rotate(-12deg); }
+  100% { transform: rotate(15deg); }
+}
+
+@keyframes sqTailBounce {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  25%      { transform: rotate(-6deg) translateY(-3px); }
+  50%      { transform: rotate(3deg) translateY(1px); }
+  75%      { transform: rotate(-4deg) translateY(-2px); }
+}
+
+@keyframes sqTailSway {
+  0%, 100% { transform: rotate(0deg); }
+  30%      { transform: rotate(-8deg); }
+  60%      { transform: rotate(6deg); }
+  80%      { transform: rotate(-3deg); }
+}
+
+/* Squirrel 1 – realistic gallop run: accelerate, sprint, decelerate, pause, turn, repeat */
+@keyframes squirrelRun1 {
+  0%   { transform: translateX(0) translateY(0) scaleX(1); }
+  2%   { transform: translateX(5px) translateY(-4px) scaleX(1); }
+  5%   { transform: translateX(18px) translateY(-8px) scaleX(1); }
+  10%  { transform: translateX(40px) translateY(-3px) scaleX(1); }
+  16%  { transform: translateX(65px) translateY(-6px) scaleX(1); }
+  22%  { transform: translateX(85px) translateY(-2px) scaleX(1); }
+  26%  { transform: translateX(95px) translateY(0) scaleX(1); }
+  28%  { transform: translateX(98px) translateY(0) scaleX(1) scaleY(0.95); } /* land squash */
+  30%  { transform: translateX(98px) translateY(0) scaleX(1) scaleY(1); }
+  38%  { transform: translateX(98px) translateY(0) scaleX(1); } /* pause – look around */
+  39%  { transform: translateX(98px) translateY(-2px) scaleX(1); } /* startled upward */
+  40%  { transform: translateX(98px) translateY(0) scaleX(1); }
+  42%  { transform: translateX(98px) translateY(0) scaleX(-1); } /* flip direction */
+  44%  { transform: translateX(92px) translateY(-5px) scaleX(-1); }
+  50%  { transform: translateX(70px) translateY(-8px) scaleX(-1); }
+  56%  { transform: translateX(48px) translateY(-4px) scaleX(-1); }
+  62%  { transform: translateX(25px) translateY(-7px) scaleX(-1); }
+  68%  { transform: translateX(8px) translateY(-3px) scaleX(-1); }
+  72%  { transform: translateX(0) translateY(0) scaleX(-1); }
+  74%  { transform: translateX(0) translateY(0) scaleX(-1) scaleY(0.95); } /* land squash */
+  76%  { transform: translateX(0) translateY(0) scaleX(1); } /* flip back */
+  100% { transform: translateX(0) translateY(0) scaleX(1); } /* idle pause */
+}
+
+/* Squirrel 2 – cautious scurry: quick dashes with freezes */
+@keyframes squirrelScurry2 {
+  0%   { transform: translateX(0) translateY(0); }
+  3%   { transform: translateX(-8px) translateY(-3px); }
+  8%   { transform: translateX(-28px) translateY(-6px); }
+  12%  { transform: translateX(-45px) translateY(-2px); }
+  16%  { transform: translateX(-55px) translateY(0); }
+  18%  { transform: translateX(-55px) translateY(0) scaleY(0.96); } /* land */
+  20%  { transform: translateX(-55px) translateY(0) scaleY(1); }
+  28%  { transform: translateX(-55px) translateY(0); } /* freeze / sniff */
+  30%  { transform: translateX(-55px) translateY(-2px); } /* head bob up */
+  32%  { transform: translateX(-55px) translateY(0); }
+  34%  { transform: translateX(-55px) translateY(-2px); } /* sniff again */
+  36%  { transform: translateX(-55px) translateY(0); }
+  40%  { transform: translateX(-62px) translateY(-5px); } /* short dash */
+  44%  { transform: translateX(-72px) translateY(0); }
+  52%  { transform: translateX(-72px) translateY(0); } /* freeze again */
+  56%  { transform: translateX(-60px) translateY(-4px); }
+  62%  { transform: translateX(-40px) translateY(-6px); }
+  68%  { transform: translateX(-20px) translateY(-3px); }
+  74%  { transform: translateX(-5px) translateY(-1px); }
+  78%  { transform: translateX(0) translateY(0) scaleY(0.96); }
+  80%  { transform: translateX(0) translateY(0) scaleY(1); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+/* --- Rabbits --- */
+.rabbit svg {
+  width: 58px;
+  height: 65px;
+}
+
+.rabbit-1 {
+  right: 90px;
+  bottom: 3px;
+  animation: rabbitHop1 8s ease-in-out infinite;
+}
+
+.rabbit-2 {
+  left: 80px;
+  bottom: 6px;
+  animation: rabbitHop2 9s ease-in-out infinite 2s;
+}
+
+.rabbit-3 {
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  animation: babyNibble 5s ease-in-out infinite;
+}
+
+.rabbit-3 svg {
+  width: 42px;
+  height: 48px;
+}
+
+/* Ear twitch – realistic: ears rotate independently, twitch at random intervals */
+.rabbit .rabbit-ear-r {
+  animation: earTwitchR 4s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+.rabbit .rabbit-ear-l {
+  animation: earTwitchL 4s ease-in-out infinite 2s;
+  transform-origin: center bottom;
+}
+
+@keyframes earTwitchR {
+  0%, 80%, 100% { transform: rotate(0deg); }
+  83% { transform: rotate(-10deg); }
+  86% { transform: rotate(4deg); }
+  89% { transform: rotate(-6deg); }
+  92% { transform: rotate(2deg); }
+  95% { transform: rotate(0deg); }
+}
+
+@keyframes earTwitchL {
+  0%, 75%, 100% { transform: rotate(0deg); }
+  78% { transform: rotate(8deg); }
+  81% { transform: rotate(-3deg); }
+  84% { transform: rotate(5deg); }
+  87% { transform: rotate(0deg); }
+}
+
+/* Rabbit leg animations – proper hop mechanics */
+/* Hind legs: powerful push then tuck */
+.rabbit .rab-hind-leg-g {
+  animation: rabHindHop 0.6s ease-in-out infinite;
+  transform-origin: 28px 74px;
+}
+
+/* Front legs: reach forward then absorb landing */
+.rabbit .rab-front-leg-g,
+.rabbit .rab-front-leg2-g {
+  animation: rabFrontHop 0.6s ease-in-out infinite;
+  transform-origin: 50px 78px;
+}
+.rabbit .rab-front-leg2-g { animation-delay: 0.08s; }
+
+@keyframes rabHindHop {
+  0%   { transform: rotate(0deg); }
+  20%  { transform: rotate(-20deg); } /* push off */
+  50%  { transform: rotate(15deg); }  /* tuck forward mid-air */
+  80%  { transform: rotate(-5deg); }  /* extend for landing */
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes rabFrontHop {
+  0%   { transform: rotate(0deg); }
+  20%  { transform: rotate(10deg); }  /* tuck under body */
+  50%  { transform: rotate(-15deg); } /* reach forward in air */
+  80%  { transform: rotate(5deg); }   /* absorb impact */
+  100% { transform: rotate(0deg); }
+}
+
+/* Baby rabbit – gentler leg motion */
+.rabbit-3 .rab-hind-leg-g {
+  animation: babyLegKick 1.5s ease-in-out infinite;
+  transform-origin: 24px 56px;
+}
+.rabbit-3 .rab-front-leg-g {
+  animation: babyLegKick 1.5s ease-in-out infinite 0.75s;
+  transform-origin: 40px 56px;
+}
+
+@keyframes babyLegKick {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-5deg); }
+}
+
+/* Rabbit 1 – realistic hop arcs: crouch → launch → arc → land (squash) → pause → repeat */
+@keyframes rabbitHop1 {
+  0%   { transform: translateX(0) translateY(0) scaleY(1); }
+  3%   { transform: translateX(0) translateY(2px) scaleY(0.92); }      /* crouch */
+  5%   { transform: translateX(5px) translateY(-8px) scaleY(1.05); }   /* launch stretch */
+  10%  { transform: translateX(16px) translateY(-28px) scaleY(1.02); } /* peak arc */
+  15%  { transform: translateX(28px) translateY(-12px) scaleY(0.98); } /* descending */
+  18%  { transform: translateX(35px) translateY(0) scaleY(0.9); }      /* land squash */
+  20%  { transform: translateX(35px) translateY(0) scaleY(1); }        /* recover */
+  24%  { transform: translateX(35px) translateY(0); }                  /* sniff pause */
+  27%  { transform: translateX(35px) translateY(2px) scaleY(0.92); }   /* crouch again */
+  29%  { transform: translateX(40px) translateY(-8px) scaleY(1.05); }
+  34%  { transform: translateX(52px) translateY(-30px) scaleY(1.02); }
+  39%  { transform: translateX(64px) translateY(-10px) scaleY(0.98); }
+  42%  { transform: translateX(70px) translateY(0) scaleY(0.9); }
+  44%  { transform: translateX(70px) translateY(0) scaleY(1); }
+  52%  { transform: translateX(70px) translateY(0); }                  /* long pause */
+  54%  { transform: translateX(70px) translateY(0) scaleX(-1); }       /* turn around */
+  57%  { transform: translateX(70px) translateY(2px) scaleX(-1) scaleY(0.92); }
+  59%  { transform: translateX(65px) translateY(-8px) scaleX(-1) scaleY(1.05); }
+  64%  { transform: translateX(52px) translateY(-28px) scaleX(-1) scaleY(1.02); }
+  69%  { transform: translateX(40px) translateY(-10px) scaleX(-1); }
+  72%  { transform: translateX(35px) translateY(0) scaleX(-1) scaleY(0.9); }
+  74%  { transform: translateX(35px) translateY(0) scaleX(-1) scaleY(1); }
+  77%  { transform: translateX(35px) translateY(2px) scaleX(-1) scaleY(0.92); }
+  79%  { transform: translateX(30px) translateY(-8px) scaleX(-1) scaleY(1.05); }
+  84%  { transform: translateX(16px) translateY(-26px) scaleX(-1); }
+  89%  { transform: translateX(5px) translateY(-8px) scaleX(-1); }
+  92%  { transform: translateX(0) translateY(0) scaleX(-1) scaleY(0.9); }
+  94%  { transform: translateX(0) translateY(0) scaleX(1) scaleY(1); }
+  100% { transform: translateX(0) translateY(0) scaleX(1); }
+}
+
+/* Rabbit 2 – similar hop physics, opposite direction */
+@keyframes rabbitHop2 {
+  0%   { transform: translateX(0) translateY(0) scaleY(1); }
+  3%   { transform: translateX(0) translateY(2px) scaleY(0.92); }
+  5%   { transform: translateX(-5px) translateY(-8px) scaleY(1.05); }
+  10%  { transform: translateX(-18px) translateY(-26px) scaleY(1.02); }
+  16%  { transform: translateX(-32px) translateY(-8px) scaleY(0.98); }
+  19%  { transform: translateX(-38px) translateY(0) scaleY(0.9); }
+  21%  { transform: translateX(-38px) translateY(0) scaleY(1); }
+  28%  { transform: translateX(-38px) translateY(0); }
+  31%  { transform: translateX(-38px) translateY(2px) scaleY(0.92); }
+  33%  { transform: translateX(-43px) translateY(-8px) scaleY(1.05); }
+  38%  { transform: translateX(-56px) translateY(-28px) scaleY(1.02); }
+  44%  { transform: translateX(-70px) translateY(-8px); }
+  47%  { transform: translateX(-75px) translateY(0) scaleY(0.9); }
+  49%  { transform: translateX(-75px) translateY(0) scaleY(1); }
+  56%  { transform: translateX(-75px) translateY(0); }
+  58%  { transform: translateX(-75px) translateY(0) scaleX(-1); }
+  61%  { transform: translateX(-75px) translateY(2px) scaleX(-1) scaleY(0.92); }
+  63%  { transform: translateX(-70px) translateY(-8px) scaleX(-1) scaleY(1.05); }
+  68%  { transform: translateX(-56px) translateY(-26px) scaleX(-1); }
+  74%  { transform: translateX(-38px) translateY(-8px) scaleX(-1); }
+  78%  { transform: translateX(-20px) translateY(-24px) scaleX(-1); }
+  84%  { transform: translateX(-8px) translateY(-8px) scaleX(-1); }
+  88%  { transform: translateX(0) translateY(0) scaleX(-1) scaleY(0.9); }
+  90%  { transform: translateX(0) translateY(0) scaleX(1) scaleY(1); }
+  100% { transform: translateX(0) translateY(0) scaleX(1); }
+}
+
+/* Baby rabbit – gentle nibble with head bobs and occasional look-around */
+@keyframes babyNibble {
+  0%, 100% { transform: translateX(-50%) translateY(0) scaleY(1); }
+  5%       { transform: translateX(-50%) translateY(-2px) scaleY(1); }   /* head up */
+  8%       { transform: translateX(-50%) translateY(1px) scaleY(0.98); } /* nibble down */
+  12%      { transform: translateX(-50%) translateY(-2px); }
+  15%      { transform: translateX(-50%) translateY(1px) scaleY(0.98); }
+  18%      { transform: translateX(-50%) translateY(-2px); }
+  22%      { transform: translateX(-50%) translateY(1px) scaleY(0.98); }
+  28%      { transform: translateX(-50%) translateY(0) scaleY(1); }      /* pause */
+  35%      { transform: translateX(-50%) translateY(-4px) scaleY(1.02); } /* alert! head high */
+  38%      { transform: translateX(-50%) translateY(-4px) scaleY(1.02); }
+  42%      { transform: translateX(-50%) translateY(0) scaleY(1); }      /* settle */
+  55%      { transform: translateX(-50%) translateY(0) scaleX(-1); }     /* turn around */
+  58%      { transform: translateX(-50%) translateY(-2px) scaleX(-1); }
+  61%      { transform: translateX(-50%) translateY(1px) scaleX(-1) scaleY(0.98); }
+  65%      { transform: translateX(-50%) translateY(-2px) scaleX(-1); }
+  68%      { transform: translateX(-50%) translateY(1px) scaleX(-1) scaleY(0.98); }
+  75%      { transform: translateX(-50%) translateY(0) scaleX(-1); }
+  85%      { transform: translateX(-50%) translateY(0) scaleX(1); }      /* turn back */
+  92%      { transform: translateX(-50%) translateY(-3px) scaleY(1.01); } /* stretch up */
+  95%      { transform: translateX(-50%) translateY(0); }
+}
+
+/* Ground grass tufts */
+.ground-grass {
+  position: absolute;
+  bottom: 0;
+}
+
+.grass-1 {
+  left: 5%;
+  bottom: 5px;
+  width: 30px;
+}
+
+.grass-2 {
+  right: 8%;
+  bottom: 5px;
+  width: 28px;
+}
+
+.grass-3 {
+  left: 42%;
+  bottom: 2px;
+  width: 22px;
+}
+
+.ground-grass svg {
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
+}
+
+/* ===========================
+   BRANCHES + HANGING TILES
+   =========================== */
+.tree-branches {
+  position: relative;
+  width: 100%;
+  z-index: 4;
+  margin-top: -60px;
+  margin-bottom: -20px;
+}
+
+.branch {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.branch-svg {
+  display: block;
+  filter: drop-shadow(0 3px 4px rgba(0,0,0,0.15));
+}
+
+/* SVG leaf animation — gentle sway */
+.svg-leaf {
+  animation: svgLeafSway 3s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+@keyframes svgLeafSway {
+  0%, 100% { transform: rotate(-4deg) translateY(0); opacity: 0.85; }
+  50% { transform: rotate(4deg) translateY(-1.5px); opacity: 1; }
+}
+
+/* --- Left Branches --- */
+.branch-left-1,
+.branch-left-2 {
+  width: 50%;
+  margin-right: auto;
+  margin-left: 0;
+  transform: translateX(-10px);
+}
+
+.branch-left-1 .branch-svg,
+.branch-left-2 .branch-svg {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  float: right;
+}
+
+/* --- Right Branches --- */
+.branch-right-1,
+.branch-right-2 {
+  width: 50%;
+  margin-left: auto;
+  margin-right: 0;
+  transform: translateX(10px);
+}
+
+.branch-right-1 .branch-svg,
+.branch-right-2 .branch-svg {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  float: left;
+}
+
+/* --- Center Branch --- */
+.branch-center {
+  width: 200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.branch-svg-center {
+  width: 120px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+/* ===== Hanging Ropes (dashed lines from branch tip to tile) ===== */
+.hanging-rope {
+  position: absolute;
+  width: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #8B6914 0px,
+    #8B6914 6px,
+    transparent 6px,
+    transparent 10px
+  );
+  z-index: 3;
+}
+
+/* Left branch ropes */
+.rope-left-1 {
+  left: 15%;
+  top: 100%;
+  height: 30px;
+}
+.rope-left-2 {
+  left: 20%;
+  top: 100%;
+  height: 30px;
+}
+
+/* Right branch ropes */
+.rope-right-1 {
+  right: 15%;
+  top: 100%;
+  height: 30px;
+}
+.rope-right-2 {
+  right: 20%;
+  top: 100%;
+  height: 30px;
+}
+
+/* Center rope */
+.rope-center {
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100%;
+  height: 20px;
+}
+
+/* ===== Hanging Teacher Tiles ===== */
+.hanging-tile {
+  background: var(--bg-card);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  max-width: 280px;
+  width: 100%;
+  border: 2px solid var(--border-color);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  animation: tileSwing 4s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.hanging-tile:hover {
+  box-shadow: var(--shadow-xl);
+  animation-play-state: paused;
+  transform: scale(1.03);
+}
+
+@keyframes tileSwing {
+  0%, 100% { transform: rotate(-1.5deg); }
+  50% { transform: rotate(1.5deg); }
+}
+
+/* Positioning tiles under branches */
+.tile-left-1 {
+  position: relative;
+  left: 8%;
+  top: 5px;
+  animation-delay: 0s;
+}
+.tile-right-1 {
+  position: relative;
+  left: auto;
+  right: -8%;
+  margin-left: auto;
+  top: 5px;
+  animation-delay: 0.8s;
+}
+.tile-left-2 {
+  position: relative;
+  left: 12%;
+  top: 5px;
+  animation-delay: 0.4s;
+}
+.tile-right-2 {
+  position: relative;
+  left: auto;
+  right: -12%;
+  margin-left: auto;
+  top: 5px;
+  animation-delay: 1.2s;
+}
+.tile-center {
+  margin: 5px auto 0;
+  animation-delay: 0.6s;
+}
+
+/* ===== Teacher Tile Inner Styles ===== */
+.teacher-photo {
+  position: relative;
+  overflow: hidden;
+}
+
+.teacher-photo img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.hanging-tile:hover .teacher-photo img {
+  transform: scale(1.05);
+}
+
+.teacher-photo .teacher-badge {
+  position: absolute;
+  bottom: var(--space-sm);
+  right: var(--space-sm);
+  color: white;
+  padding: 4px 12px;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+}
+
+.teacher-badge.playgroup { background: var(--primary); }
+.teacher-badge.nursery { background: var(--secondary); }
+.teacher-badge.lkg { background: var(--accent-purple); }
+.teacher-badge.ukg { background: var(--accent-orange); }
+.teacher-badge.special { background: var(--accent-green); }
+
+.teacher-info {
+  padding: var(--space-lg);
+}
+
+.teacher-info h4 {
+  font-size: var(--font-size-base);
+  margin-bottom: var(--space-xs);
+  color: var(--text-heading);
+}
+
+.teacher-info .teacher-role {
+  font-size: var(--font-size-sm);
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+}
+
+.teacher-info .teacher-quote {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ===== Responsive ===== */
+
+@media (max-width: 992px) {
+  .school-about-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .school-photo-frame {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .school-info .highlight-box {
+    border-left: none;
+    border-top: 4px solid var(--secondary);
+    border-radius: var(--border-radius-md);
+  }
+
+  .principal-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .principal-video-frame {
+    max-width: 550px;
+    margin: 0 auto;
+  }
+
+  .principal-message blockquote {
+    border-left: none;
+    border-top: 3px solid var(--secondary);
+    padding-left: 0;
+    padding-top: var(--space-lg);
+  }
+
+  .page-hero h1 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .tree-canopy {
+    width: 260px;
+    height: 140px;
+  }
+  .canopy-1 { width: 160px; height: 110px; }
+  .canopy-2, .canopy-3 { width: 120px; height: 90px; }
+
+  .hanging-tile {
+    max-width: 240px;
+  }
+
+  .bird { width: 45px; height: 30px; }
+  .bird-4, .bird-6 { width: 38px; height: 25px; }
+
+  .kite-1 { width: 45px; height: 74px; }
+  .kite-2 { width: 38px; height: 64px; }
+  .kite-3 { width: 28px; height: 48px; }
+
+  .ground-critters { width: 460px; height: 110px; }
+  .squirrel svg { width: 60px; height: 48px; }
+  .rabbit svg { width: 48px; height: 54px; }
+  .rabbit-3 svg { width: 34px; height: 39px; }
+}
+
+@media (max-width: 768px) {
+  .tree-scene {
+    min-height: auto;
+  }
+
+  /* Stack all branches vertically centered */
+  .branch-left-1, .branch-left-2,
+  .branch-right-1, .branch-right-2 {
+    width: 100%;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .branch-left-1 .branch-svg,
+  .branch-left-2 .branch-svg,
+  .branch-right-1 .branch-svg,
+  .branch-right-2 .branch-svg {
+    float: none;
+    max-width: 200px;
+  }
+
+  .tile-left-1, .tile-left-2,
+  .tile-right-1, .tile-right-2 {
+    left: auto;
+    right: auto;
+    margin: 5px auto 0;
+  }
+
+  .hanging-tile {
+    max-width: 260px;
+  }
+
+  .tree-canopy {
+    width: 200px;
+    height: 110px;
+  }
+  .canopy-1 { width: 130px; height: 90px; }
+  .canopy-2, .canopy-3 { width: 100px; height: 75px; }
+
+  .tree-trunk-body {
+    width: 38px;
+    height: 120px;
+  }
+
+  .bird { width: 35px; height: 22px; }
+  .bird-4, .bird-6 { width: 30px; height: 19px; }
+  .chirp-note { font-size: 16px; }
+
+  .kite-1 { width: 36px; height: 60px; }
+  .kite-2 { width: 30px; height: 52px; }
+  .kite-3 { display: none; }
+
+  .ground-critters { width: 380px; height: 90px; }
+  .squirrel svg { width: 50px; height: 40px; }
+  .rabbit svg { width: 42px; height: 47px; }
+  .rabbit-3 svg { width: 28px; height: 32px; }
+  .ground-grass { display: none; }
+}
+
+@media (max-width: 640px) {
+  .page-hero {
+    padding-top: calc(var(--space-3xl) + 80px);
+  }
+
+  .page-hero h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .tree-canopy {
+    width: 160px;
+    height: 90px;
+  }
+  .canopy-1 { width: 110px; height: 76px; }
+  .canopy-2, .canopy-3 { width: 80px; height: 60px; }
+
+  .bird { width: 28px; height: 18px; }
+  .bird-3, .bird-4, .bird-5, .bird-6 { display: none; }
+
+  .kite-1 { width: 28px; height: 48px; }
+  .kite-2, .kite-3 { display: none; }
+
+  .ground-critters { width: 280px; height: 70px; }
+  .squirrel svg { width: 42px; height: 33px; }
+  .squirrel-2 { display: none; }
+  .rabbit svg { width: 34px; height: 38px; }
+  .rabbit-3 { display: none; }
+}
