@@ -32,7 +32,7 @@ document.querySelector('[data-component="hero"]').outerHTML = `
         are Nurtured into future ready leaders ✨
       </h1>
       <p class="hero-subtitle">
-        A nurturing preschool where every child discovers the joy of learning through play, creativity, and love. Aligned to NEP &amp; International Standards.
+        A nurturing preschool where every child discovers the joy of learning through play, creativity, and love. <span class="highlight-warm">Aligned to NEP &amp; International Standards.</span>
       </p>
       <div class="hero-ctas">
         <a href="#enquiry" class="btn btn-primary">
