@@ -81,41 +81,41 @@ document.querySelector('[data-component="programs"]').outerHTML = `
     <h3>✨ Additional Offerings</h3>
   </div>
   <div class="offerings-grid">
-    <div class="offering-card reveal delay-1">
+    <a href="activities.html#special-ed" class="offering-card reveal delay-1">
       <span class="offering-icon">♿</span>
       <h4>Special Education</h4>
       <p>Classes for differently-abled children</p>
-    </div>
-    <div class="offering-card reveal delay-2">
+    </a>
+    <a href="activities.html#daycare" class="offering-card reveal delay-2">
       <span class="offering-icon">🏠</span>
       <h4>Day Care</h4>
       <p>After-school care facility</p>
-    </div>
-    <div class="offering-card reveal delay-3">
+    </a>
+    <a href="activities.html#creche" class="offering-card reveal delay-3">
       <span class="offering-icon">👶</span>
       <h4>Cradle / Crèche</h4>
       <p>Safe infant care facility</p>
-    </div>
-    <div class="offering-card reveal delay-4">
+    </a>
+    <a href="activities.html#karate" class="offering-card reveal delay-4">
       <span class="offering-icon">🥋</span>
       <h4>Karate</h4>
       <p>Discipline &amp; self-defense</p>
-    </div>
-    <div class="offering-card reveal delay-1">
+    </a>
+    <a href="activities.html#art" class="offering-card reveal delay-1">
       <span class="offering-icon">🎨</span>
       <h4>Drawing &amp; Art</h4>
       <p>Creative expression classes</p>
-    </div>
-    <div class="offering-card reveal delay-2">
+    </a>
+    <a href="activities.html#abacus" class="offering-card reveal delay-2">
       <span class="offering-icon">🧮</span>
       <h4>Abacus</h4>
       <p>Mental math mastery</p>
-    </div>
-    <div class="offering-card reveal delay-3">
+    </a>
+    <a href="activities.html#rubik" class="offering-card reveal delay-3">
       <span class="offering-icon">🧩</span>
       <h4>Rubik's Cube</h4>
       <p>Problem-solving &amp; logic</p>
-    </div>
+    </a>
   </div>
 </section>
 `;
