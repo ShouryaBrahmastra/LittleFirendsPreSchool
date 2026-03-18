@@ -4,8 +4,8 @@
 
 .music-toggle {
   position: fixed;
-  bottom: 30px;
-  left: 84px;
+  bottom: 36px;
+  left: 16px;
   z-index: var(--z-whatsapp);
   width: 48px;
   height: 48px;

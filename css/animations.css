@@ -275,3 +275,151 @@
   pointer-events: none;
   animation: float 6s ease-in-out infinite;
 }
+
+/* ============================================
+   PARALLAX SYSTEM
+   Multi-layer depth scrolling
+   ============================================ */
+
+/* Section parallax wrapper */
+.parallax-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Parallax floating decorations */
+.parallax-decor {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* Shapes — playful blobs, stars, circles */
+.parallax-blob {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  opacity: 0.12;
+}
+
+.parallax-circle {
+  border-radius: 50%;
+  opacity: 0.1;
+}
+
+.parallax-star {
+  opacity: 0.15;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.parallax-ring {
+  border-radius: 50%;
+  border: 3px solid;
+  opacity: 0.1;
+  background: transparent;
+}
+
+/* Size variants */
+.parallax-sm { width: 40px; height: 40px; }
+.parallax-md { width: 70px; height: 70px; }
+.parallax-lg { width: 110px; height: 110px; }
+.parallax-xl { width: 160px; height: 160px; }
+
+/* Color variants */
+.parallax-primary { background: var(--primary); }
+.parallax-secondary { background: var(--secondary); }
+.parallax-yellow { background: var(--accent-yellow); }
+.parallax-purple { background: var(--accent-purple); }
+.parallax-pink { background: var(--accent-pink); }
+.parallax-green { background: var(--accent-green); }
+.parallax-blue { background: var(--accent-blue); }
+.parallax-orange { background: var(--accent-orange); }
+
+.parallax-ring.parallax-primary { border-color: var(--primary); background: transparent; }
+.parallax-ring.parallax-secondary { border-color: var(--secondary); background: transparent; }
+.parallax-ring.parallax-purple { border-color: var(--accent-purple); background: transparent; }
+.parallax-ring.parallax-yellow { border-color: var(--accent-yellow); background: transparent; }
+
+/* Soft idle animations on parallax shapes */
+.parallax-decor.parallax-blob {
+  animation: blobFloat 8s ease-in-out infinite;
+}
+
+.parallax-decor.parallax-circle {
+  animation: float 6s ease-in-out infinite;
+}
+
+.parallax-decor.parallax-ring {
+  animation: spinSlow 20s linear infinite;
+}
+
+.parallax-decor.parallax-star {
+  animation: sparkle 4s ease-in-out infinite;
+}
+
+/* Section title parallax lift */
+.parallax-title {
+  will-change: transform;
+}
+
+/* Parallax tilt effect on scroll for cards */
+.parallax-tilt {
+  will-change: transform;
+  transition: transform 0.3s ease-out;
+}
+
+/* Staggered parallax depth classes (applied via JS) */
+[data-parallax-depth="1"] { --parallax-speed: 0.02; }
+[data-parallax-depth="2"] { --parallax-speed: 0.04; }
+[data-parallax-depth="3"] { --parallax-speed: 0.06; }
+[data-parallax-depth="4"] { --parallax-speed: 0.08; }
+[data-parallax-depth="5"] { --parallax-speed: 0.12; }
+
+/* ============================================
+   PARALLAX DECORATION POSITIONS
+   Per-section placement of floating elements
+   ============================================ */
+
+/* Hero */
+.hero .pd-1 { top: 10%; left: 5%; }
+.hero .pd-2 { top: 70%; right: 8%; }
+.hero .pd-3 { bottom: 15%; left: 15%; }
+.hero .pd-4 { top: 25%; right: 15%; }
+.hero .pd-5 { top: 50%; left: 50%; }
+
+/* Principal */
+.principal-section .pd-1 { top: -5%; right: -3%; }
+.principal-section .pd-2 { top: 60%; left: 3%; }
+.principal-section .pd-3 { bottom: 10%; right: 10%; }
+.principal-section .pd-4 { top: 15%; left: 20%; }
+
+/* Programs */
+.programs-section .pd-1 { top: 5%; right: 5%; }
+.programs-section .pd-2 { top: 40%; left: 2%; }
+.programs-section .pd-3 { bottom: 8%; left: 8%; }
+.programs-section .pd-4 { bottom: 20%; right: 3%; }
+.programs-section .pd-5 { top: 12%; left: 12%; }
+
+/* Testimonials */
+.testimonials-section .pd-1 { top: 8%; left: 4%; }
+.testimonials-section .pd-2 { top: 55%; right: 5%; }
+.testimonials-section .pd-3 { bottom: 12%; left: 12%; }
+.testimonials-section .pd-4 { top: 20%; right: 12%; }
+
+/* Alumni */
+.alumni-section .pd-1 { top: 10%; right: 6%; }
+.alumni-section .pd-2 { bottom: 15%; left: 4%; }
+.alumni-section .pd-3 { top: 50%; right: 12%; }
+
+/* App Promo */
+.app-section .pd-1 { top: 10%; left: 5%; }
+.app-section .pd-2 { bottom: 20%; right: 8%; }
+.app-section .pd-3 { top: 60%; left: 12%; }
+.app-section .pd-4 { top: 15%; right: 20%; }
+
+/* Enquiry */
+.enquiry-section .pd-1 { top: 8%; right: 5%; }
+.enquiry-section .pd-2 { bottom: 10%; left: 3%; }
+.enquiry-section .pd-3 { top: 45%; left: 8%; }
+.enquiry-section .pd-4 { bottom: 25%; right: 15%; }

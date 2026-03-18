@@ -7,6 +7,7 @@ const AnimationController = (() => {
   function init() {
     initScrollReveal();
     initParallax();
+    initParallaxDecor();
     init3DCards();
     initCounters();
   }
@@ -28,22 +29,101 @@ const AnimationController = (() => {
     revealElements.forEach(el => observer.observe(el));
   }
 
-  /* Parallax scroll effect */
+  /* Parallax scroll effect for [data-parallax] elements */
   function initParallax() {
     const parallaxElements = document.querySelectorAll('[data-parallax]');
     if (!parallaxElements.length) return;
 
+    // Check for reduced motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let ticking = false;
+
     window.addEventListener('scroll', () => {
-      const scrollY = window.pageYOffset;
-      parallaxElements.forEach(el => {
-        const speed = parseFloat(el.dataset.parallax) || 0.3;
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-          const yPos = (scrollY - el.offsetTop) * speed;
-          el.style.transform = `translateY(${yPos}px)`;
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollY = window.pageYOffset;
+          parallaxElements.forEach(el => {
+            const speed = parseFloat(el.dataset.parallax) || 0.3;
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+              const yPos = (scrollY - el.offsetTop) * speed;
+              el.style.transform = `translateY(${yPos}px)`;
+            }
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  /* Multi-layer parallax decorations */
+  function initParallaxDecor() {
+    const decors = document.querySelectorAll('.parallax-decor[data-parallax-depth]');
+    if (!decors.length) return;
+
+    // Respect reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    // Disable on mobile for performance
+    if (window.innerWidth < 768) return;
+
+    let ticking = false;
+    let scrollY = window.pageYOffset;
+
+    // Track visible sections for performance
+    const sections = new Set();
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          sections.add(entry.target);
+        } else {
+          sections.delete(entry.target);
         }
       });
+    }, { rootMargin: '100px' });
+
+    // Observe parent sections
+    const parentSections = new Set();
+    decors.forEach(d => {
+      const section = d.closest('section, .hero, footer');
+      if (section) parentSections.add(section);
+    });
+    parentSections.forEach(s => sectionObserver.observe(s));
+
+    function updateParallax() {
+      scrollY = window.pageYOffset;
+
+      decors.forEach(el => {
+        const section = el.closest('section, .hero, footer');
+        if (section && !sections.has(section)) return;
+
+        const depth = parseInt(el.dataset.parallaxDepth, 10) || 2;
+        const speed = depth * 0.02;
+        const direction = el.dataset.parallaxDir === 'down' ? 1 : -1;
+
+        const rect = el.getBoundingClientRect();
+        const sectionRect = section ? section.getBoundingClientRect() : rect;
+        const centerOffset = sectionRect.top + sectionRect.height / 2 - window.innerHeight / 2;
+        const yMove = centerOffset * speed * direction;
+        const xMove = centerOffset * speed * 0.3 * (el.dataset.parallaxX === 'true' ? 1 : 0);
+
+        el.style.transform = `translate3d(${xMove}px, ${yMove}px, 0)`;
+      });
+
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
     }, { passive: true });
+
+    // Initial position
+    updateParallax();
   }
 
   /* 3D tilt effect on cards */

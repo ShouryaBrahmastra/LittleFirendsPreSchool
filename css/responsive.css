@@ -301,10 +301,10 @@
 
   .enquiry-form-wrapper { padding: var(--space-xl); }
 
-  .whatsapp-float { bottom: 20px; left: 10px; }
+  .whatsapp-float { bottom: 20px; left: 58px; }
   .whatsapp-btn { width: 52px; height: 52px; font-size: 26px; }
 
-  .music-toggle { bottom: 20px; left: 70px; width: 40px; height: 40px; }
+  .music-toggle { bottom: 20px; left: 10px; width: 40px; height: 40px; }
 
   .back-to-top { bottom: 20px; right: 20px; width: 64px; height: 64px; }
   .back-to-top .back-to-top-img { width: 64px; height: 64px; }
@@ -333,6 +333,17 @@
     transition-duration: 0.01ms !important;
   }
   html { scroll-behavior: auto; }
+  .parallax-decor { display: none !important; }
+}
+
+/* Hide parallax decorations on small screens */
+@media (max-width: 768px) {
+  .parallax-decor { opacity: 0.06; }
+  .parallax-decor.parallax-xl,
+  .parallax-decor.parallax-lg { display: none; }
+}
+@media (max-width: 480px) {
+  .parallax-decor { display: none; }
 }
 
 /* Print Styles */

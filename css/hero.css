@@ -8,7 +8,7 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  overflow: visible;
+  overflow: hidden;
   padding-top: 140px;
   padding-bottom: 80px;
   background: var(--bg-primary);
@@ -278,7 +278,7 @@
 
 .hero-float-card-3 {
   top: 55%;
-  right: -15%;
+  right: -5%;
   animation: float 6s ease-in-out infinite 0.5s;
 }
 

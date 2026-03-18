@@ -261,7 +261,7 @@
 .whatsapp-float {
   position: fixed;
   bottom: 30px;
-  left: 16px;
+  left: 72px;
   z-index: var(--z-whatsapp);
   display: flex;
   align-items: center;
@@ -299,7 +299,7 @@
   box-shadow: var(--shadow-md);
   white-space: nowrap;
   opacity: 0;
-  transform: translateX(-10px);
+  transform: translateX(10px);
   transition: all var(--transition-base);
   pointer-events: none;
 }
