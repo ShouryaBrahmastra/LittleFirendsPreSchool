@@ -1004,112 +1004,17 @@
   pointer-events: none;
 }
 
-/* Floor reflection */
-.rubik-stage::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 10%;
-  right: 10%;
-  height: 40%;
-  background: linear-gradient(to top, rgba(255,255,255,0.03) 0%, transparent 100%);
-  pointer-events: none;
-}
-
-.rubik-cube-3d {
-  width: 190px;
-  height: 190px;
-  perspective: 900px;
-  perspective-origin: 50% 42%;
+/* Three.js canvas container */
+.rubik-cube-wrap {
+  width: 100%;
+  height: 340px;
   position: relative;
   z-index: 2;
 }
-
-/* Ground shadow beneath cube */
-.rubik-shadow {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 140px;
-  height: 24px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(0,0,0,0.45) 0%, transparent 70%);
-  filter: blur(6px);
-  z-index: 1;
-  animation: rubikShadowPulse 4s ease-in-out infinite;
-}
-@keyframes rubikShadowPulse {
-  0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
-  50% { opacity: 1; transform: translateX(-50%) scale(1.08); }
-}
-
-.rubik-cube-inner {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-}
-
-.rubik-face {
-  position: absolute;
-  width: 190px;
-  height: 190px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3px;
-  padding: 5px;
-  background: #111;
-  border-radius: 8px;
-  backface-visibility: visible;
-  /* subtle plastic sheen on the black body */
-  box-shadow: inset 0 0 12px rgba(255,255,255,0.03);
-}
-.rubik-face.front  { transform: translateZ(95px); }
-.rubik-face.back   { transform: rotateY(180deg) translateZ(95px); }
-.rubik-face.right  { transform: rotateY(90deg) translateZ(95px); }
-.rubik-face.left   { transform: rotateY(-90deg) translateZ(95px); }
-.rubik-face.top    { transform: rotateX(90deg) translateZ(95px); }
-.rubik-face.bottom { transform: rotateX(-90deg) translateZ(95px); }
-
-.rubik-cell {
-  border-radius: 4px;
-  position: relative;
-  overflow: hidden;
-  /* multi-layer realistic sticker look */
-  box-shadow:
-    inset 0 1px 1px rgba(255,255,255,0.4),
-    inset 0 -1px 2px rgba(0,0,0,0.35),
-    inset 1px 0 1px rgba(255,255,255,0.08),
-    inset -1px 0 1px rgba(0,0,0,0.12),
-    0 0 0 0.5px rgba(0,0,0,0.7);
-  transition: background 0.35s ease;
-}
-/* plastic surface highlight + subtle wear scratches */
-.rubik-cell::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background:
-    linear-gradient(135deg, rgba(255,255,255,0.28) 0%, transparent 45%, transparent 55%, rgba(0,0,0,0.1) 100%);
-  pointer-events: none;
-}
-/* micro-scratch texture */
-.rubik-cell::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background:
-    repeating-linear-gradient(
-      110deg,
-      transparent 0px,
-      transparent 8px,
-      rgba(255,255,255,0.03) 8px,
-      rgba(255,255,255,0.03) 8.5px
-    );
-  pointer-events: none;
+.rubik-cube-wrap canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
 }
 
 .rubik-benefits {

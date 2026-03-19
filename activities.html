@@ -619,43 +619,11 @@
       </div>
 
       <div class="rubik-showcase reveal">
-        <!-- Dark studio stage -->
+        <!-- Three.js Rubik's Cube -->
         <div class="rubik-stage">
-          <div class="rubik-shadow"></div>
-          <div class="rubik-cube-3d">
-            <div class="rubik-cube-inner">
-            <div class="rubik-face front">
-              <span class="rubik-cell"></span><span class="rubik-cell"></span><span class="rubik-cell"></span>
-              <span class="rubik-cell"></span><span class="rubik-cell"></span><span class="rubik-cell"></span>
-              <span class="rubik-cell"></span><span class="rubik-cell"></span><span class="rubik-cell"></span>
-            </div>
-            <div class="rubik-face back">
-              <span class="rubik-cell"></span><span class="rubik-cell"></span><span class="rubik-cell"></span>
-              <span class="rubik-cell"></span><span class="rubik-cell"></span><span class="rubik-cell"></span>
-              <span class="rubik-cell"></span><span class="rubik-cell"></span><span class="rubik-cell"></span>
-            </div>
-            <div class="rubik-face right">
-              <span class="rubik-cell"></span><span class="rubik-cell"></span><span class="rubik-cell"></span>
-              <span class="rubik-cell"></span><span class="rubik-cell"></span><span class="rubik-cell"></span>
-              <span class="rubik-cell"></span><span class="rubik-cell"></span><span class="rubik-cell"></span>
-            </div>
-            <div class="rubik-face left">
-              <span class="rubik-cell"></span><span class="rubik-cell"></span><span class="rubik-cell"></span>
-              <span class="rubik-cell"></span><span class="rubik-cell"></span><span class="rubik-cell"></span>
-              <span class="rubik-cell"></span><span class="rubik-cell"></span><span class="rubik-cell"></span>
-            </div>
-            <div class="rubik-face top">
-              <span class="rubik-cell"></span><span class="rubik-cell"></span><span class="rubik-cell"></span>
-              <span class="rubik-cell"></span><span class="rubik-cell"></span><span class="rubik-cell"></span>
-              <span class="rubik-cell"></span><span class="rubik-cell"></span><span class="rubik-cell"></span>
-            </div>
-            <div class="rubik-face bottom">
-              <span class="rubik-cell"></span><span class="rubik-cell"></span><span class="rubik-cell"></span>
-              <span class="rubik-cell"></span><span class="rubik-cell"></span><span class="rubik-cell"></span>
-              <span class="rubik-cell"></span><span class="rubik-cell"></span><span class="rubik-cell"></span>
-            </div>
+          <div class="rubik-cube-wrap" id="rubikCubeWrap">
+            <canvas id="rubikCubeCanvas"></canvas>
           </div>
-        </div>
         </div>
 
         <!-- benefits cards -->
@@ -849,6 +817,9 @@
   </button>
 
 
+  <!-- Three.js -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
   <!-- Theme (loads first to prevent flash) -->
   <script src="js/theme.js"></script>
 
@@ -860,6 +831,9 @@
 
   <!-- Activities-specific JS -->
   <script src="js/activities.js"></script>
+
+  <!-- Rubik's Cube Three.js -->
+  <script src="js/rubik3d.js"></script>
 
   <!-- Main (Back to Top, FAQ, etc.) -->
   <script src="js/main.js"></script>
