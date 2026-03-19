@@ -244,6 +244,32 @@
 
     </div>
 
+    <!-- ── Surveillance Visualizer: Camera → WiFi → Phone ── -->
+    <div class="surv-visualizer" id="survVisualizer">
+      <!-- 3D Dome Camera (smaller) -->
+      <div class="surv-cam" id="survCam">
+        <canvas id="survCamCanvas"></canvas>
+      </div>
+
+      <!-- Animated WiFi Signal -->
+      <div class="surv-wifi" id="survWifi">
+        <svg class="wifi-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="wifi-arc wifi-arc-3" d="M40 18C55.5 18 68 28 68 28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          <path class="wifi-arc wifi-arc-3b" d="M40 18C24.5 18 12 28 12 28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          <path class="wifi-arc wifi-arc-2" d="M40 32C50 32 57 38 57 38" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          <path class="wifi-arc wifi-arc-2b" d="M40 32C30 32 23 38 23 38" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          <path class="wifi-arc wifi-arc-1" d="M40 46C45 46 49 49 49 49" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          <path class="wifi-arc wifi-arc-1b" d="M40 46C35 46 31 49 31 49" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          <circle class="wifi-dot" cx="40" cy="58" r="4" fill="currentColor"/>
+        </svg>
+      </div>
+
+      <!-- 3D Phone in Landscape -->
+      <div class="surv-phone" id="survPhone">
+        <canvas id="survPhoneCanvas"></canvas>
+      </div>
+    </div>
+
     <!-- Live Streaming info -->
     <div class="live-stream-info">
       <div class="live-badge">
@@ -558,6 +584,12 @@
 
   <!-- Theme (loads first to prevent flash) -->
   <script src="js/theme.js"></script>
+
+  <!-- Three.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
+  <!-- Safety & Security 3D Effects -->
+  <script src="js/safety3d.js"></script>
 
   <!-- Navigation & Interactions -->
   <script src="js/navigation.js"></script>
