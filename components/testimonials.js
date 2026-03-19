@@ -16,6 +16,9 @@ document.querySelector('[data-component="testimonials"]').outerHTML = `
       <!-- Testimonial 1 -->
       <div class="testimonial-card testimonial-card--video reveal delay-1">
         <div class="testimonial-video-frame">
+          <div class="tv-brand-badge">
+            <img src="assets/song/little_friends_logo.png" alt="Little Friends" class="tv-brand-logo">
+          </div>
           <video class="testimonial-video" preload="metadata" playsinline>
             <source src="assets/testimonial/Sanvitha_basu.mp4" type="video/mp4">
             Your browser does not support the video tag.
@@ -52,6 +55,9 @@ document.querySelector('[data-component="testimonials"]').outerHTML = `
       <!-- Testimonial 2 -->
       <div class="testimonial-card testimonial-card--video reveal delay-2">
         <div class="testimonial-video-frame">
+          <div class="tv-brand-badge">
+            <img src="assets/song/little_friends_logo.png" alt="Little Friends" class="tv-brand-logo">
+          </div>
           <video class="testimonial-video" preload="metadata" playsinline>
             <source src="assets/testimonial/Jitishashukla_video.mp4" type="video/mp4">
             Your browser does not support the video tag.
