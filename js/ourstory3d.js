@@ -68,15 +68,19 @@
       var col = colors[i % colors.length];
       var mat = new THREE.MeshStandardMaterial({
         color: col, metalness: 0.15, roughness: 0.45,
-        envMap: envMap, transparent: true, opacity: 0.72,
+        envMap: envMap, transparent: true, opacity: 0.55,
       });
       var m = new THREE.Mesh(geo, mat);
-      m.position.set(
-        (Math.random() - 0.5) * 18,
-        (Math.random() - 0.5) * 8,
-        -2 - Math.random() * 6
-      );
-      var s = 0.6 + Math.random() * 0.8;
+      // Push shapes to edges so they don't crowd the title
+      var ex = (Math.random() - 0.5) * 22;
+      var ey = (Math.random() - 0.5) * 10;
+      // If too close to center, nudge outward
+      if (Math.abs(ex) < 5 && Math.abs(ey) < 2.5) {
+        ex = (ex >= 0 ? 1 : -1) * (5 + Math.random() * 5);
+        ey = (ey >= 0 ? 1 : -1) * (2.5 + Math.random() * 2);
+      }
+      m.position.set(ex, ey, -5 - Math.random() * 8);
+      var s = 0.4 + Math.random() * 0.5;
       m.scale.setScalar(s);
       m.userData = {
         baseY: m.position.y,
