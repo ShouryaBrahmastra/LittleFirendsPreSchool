@@ -168,3 +168,85 @@ function initStoreLinks() {
     });
   });
 }
+
+/* ============================================
+   Custom Video Player – Testimonial
+   ============================================ */
+function initTestimonialVideo() {
+  var frames = document.querySelectorAll('.testimonial-video-frame');
+  if (!frames.length) return;
+
+  frames.forEach(function (frame) {
+    var video     = frame.querySelector('.testimonial-video');
+    var playBtn   = frame.querySelector('.tv-play-btn');
+    var volBtn    = frame.querySelector('.tv-volume-btn');
+    var volSlider = frame.querySelector('.tv-volume-slider');
+    var fsBtn     = frame.querySelector('.tv-fs-btn');
+    var bgMusicWasPlaying = false; // track previous music state
+
+    // Play / Pause
+    function togglePlay() {
+      if (video.paused) {
+        // Save background music state and pause it
+        bgMusicWasPlaying = window.MusicController && window.MusicController.isPlaying();
+        if (window.MusicController) window.MusicController.pause();
+        video.play();
+        playBtn.classList.add('playing');
+        frame.classList.add('tv-playing');
+      } else {
+        video.pause();
+        playBtn.classList.remove('playing');
+        frame.classList.remove('tv-playing');
+        // Restore background music if it was playing before
+        if (bgMusicWasPlaying && window.MusicController) {
+          window.MusicController.resume();
+        }
+      }
+    }
+
+    playBtn.addEventListener('click', togglePlay);
+    video.addEventListener('click', togglePlay);
+
+    video.addEventListener('ended', function () {
+      playBtn.classList.remove('playing');
+      frame.classList.remove('tv-playing');
+      // Restore background music if it was playing before
+      if (bgMusicWasPlaying && window.MusicController) {
+        window.MusicController.resume();
+      }
+    });
+
+    // Volume
+    volBtn.addEventListener('click', function () {
+      video.muted = !video.muted;
+      volBtn.querySelector('.material-icons').textContent =
+        video.muted ? 'volume_off' : 'volume_up';
+    });
+
+    volSlider.addEventListener('input', function () {
+      video.volume = volSlider.value;
+      video.muted = (volSlider.value == 0);
+      volBtn.querySelector('.material-icons').textContent =
+        video.muted ? 'volume_off' : (video.volume < 0.5 ? 'volume_down' : 'volume_up');
+    });
+
+    // Fullscreen
+    fsBtn.addEventListener('click', function () {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else if (frame.requestFullscreen) {
+        frame.requestFullscreen();
+      } else if (frame.webkitRequestFullscreen) {
+        frame.webkitRequestFullscreen();
+      }
+    });
+
+    document.addEventListener('fullscreenchange', function () {
+      fsBtn.querySelector('.material-icons').textContent =
+        document.fullscreenElement === frame ? 'fullscreen_exit' : 'fullscreen';
+    });
+  });
+}
+
+// Run after components are injected (small delay for dynamic HTML)
+setTimeout(initTestimonialVideo, 100);

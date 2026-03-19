@@ -33,6 +33,27 @@
     btn.setAttribute('aria-label', 'Play music');
   }
 
+  // Expose state for other modules (e.g. testimonial video player)
+  window.MusicController = {
+    isPlaying: function () { return isPlaying; },
+    pause: function () {
+      if (isPlaying) {
+        audio.pause();
+        icon.textContent = 'volume_off';
+        btn.classList.remove('playing');
+        btn.classList.add('stopped');
+      }
+    },
+    resume: function () {
+      if (isPlaying) {
+        audio.play();
+        icon.textContent = 'volume_up';
+        btn.classList.add('playing');
+        btn.classList.remove('stopped');
+      }
+    }
+  };
+
   // Toggle on button click
   btn.addEventListener('click', function () {
     if (isPlaying) {

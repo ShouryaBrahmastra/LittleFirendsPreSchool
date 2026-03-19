@@ -14,45 +14,73 @@ document.querySelector('[data-component="testimonials"]').outerHTML = `
   <div class="testimonials-container">
     <div class="testimonials-grid">
       <!-- Testimonial 1 -->
-      <div class="testimonial-card reveal delay-1">
-        <div class="testimonial-quote-icon">&ldquo;</div>
-        <div class="testimonial-stars">
-          <span class="material-icons">star</span>
-          <span class="material-icons">star</span>
-          <span class="material-icons">star</span>
-          <span class="material-icons">star</span>
-          <span class="material-icons">star</span>
+      <div class="testimonial-card testimonial-card--video reveal delay-1">
+        <div class="testimonial-video-frame">
+          <video class="testimonial-video" preload="metadata" playsinline>
+            <source src="assets/testimonial/Sanvitha_basu.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <!-- Custom Play Button -->
+          <button class="tv-play-btn" aria-label="Play video">
+            <span class="tv-play-icon"></span>
+            <span class="tv-play-ripple"></span>
+          </button>
+          <!-- Bottom Controls -->
+          <div class="tv-controls">
+            <div class="tv-controls-left">
+              <button class="tv-ctrl-btn tv-volume-btn" aria-label="Mute">
+                <span class="material-icons">volume_up</span>
+              </button>
+              <input type="range" class="tv-volume-slider" min="0" max="1" step="0.05" value="1">
+            </div>
+            <div class="tv-controls-right">
+              <button class="tv-ctrl-btn tv-fs-btn" aria-label="Fullscreen">
+                <span class="material-icons">fullscreen</span>
+              </button>
+            </div>
+          </div>
         </div>
-        <p class="testimonial-text">
-          Little Friends Preschool and Day Care has been a second home for my daughter. The teachers are incredibly warm and the curriculum is so well-designed. She comes home excited every day!
-        </p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">👩</div>
           <div class="testimonial-author-info">
-            <h4>Priya Mukherjee</h4>
-            <p>Parent of Aadhira, Nursery</p>
+            <h4>Mother of Sanvitha Basu</h4>
+            <p>Nursery</p>
           </div>
         </div>
       </div>
 
       <!-- Testimonial 2 -->
-      <div class="testimonial-card reveal delay-2">
-        <div class="testimonial-quote-icon">&ldquo;</div>
-        <div class="testimonial-stars">
-          <span class="material-icons">star</span>
-          <span class="material-icons">star</span>
-          <span class="material-icons">star</span>
-          <span class="material-icons">star</span>
-          <span class="material-icons">star</span>
+      <div class="testimonial-card testimonial-card--video reveal delay-2">
+        <div class="testimonial-video-frame">
+          <video class="testimonial-video" preload="metadata" playsinline>
+            <source src="assets/testimonial/Jitishashukla_video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <!-- Custom Play Button -->
+          <button class="tv-play-btn" aria-label="Play video">
+            <span class="tv-play-icon"></span>
+            <span class="tv-play-ripple"></span>
+          </button>
+          <!-- Bottom Controls -->
+          <div class="tv-controls">
+            <div class="tv-controls-left">
+              <button class="tv-ctrl-btn tv-volume-btn" aria-label="Mute">
+                <span class="material-icons">volume_up</span>
+              </button>
+              <input type="range" class="tv-volume-slider" min="0" max="1" step="0.05" value="1">
+            </div>
+            <div class="tv-controls-right">
+              <button class="tv-ctrl-btn tv-fs-btn" aria-label="Fullscreen">
+                <span class="material-icons">fullscreen</span>
+              </button>
+            </div>
+          </div>
         </div>
-        <p class="testimonial-text">
-          The 1:8 teacher-student ratio truly makes a difference. My son gets individual attention and has grown so much in confidence and social skills since joining Little Friends Preschool and Day Care.
-        </p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">👨</div>
           <div class="testimonial-author-info">
-            <h4>Rajesh Banerjee</h4>
-            <p>Parent of Aryan, LKG</p>
+            <h4>Father of Jitisha Shukla</h4>
+            <p>Nursery</p>
           </div>
         </div>
       </div>
