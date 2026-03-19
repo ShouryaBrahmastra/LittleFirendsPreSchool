@@ -393,6 +393,7 @@
 
       var renderer = new THREE.WebGLRenderer({ canvas: cvs, antialias: true, alpha: true });
       renderer.setPixelRatio(PR); renderer.setSize(W, H);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.3;
 
@@ -400,10 +401,25 @@
       var camera = new THREE.PerspectiveCamera(32, W / H, 0.1, 50);
       camera.position.set(0, 0, 5);
 
-      scene.add(new THREE.AmbientLight(0x8888bb, 0.9));
-      var kL2 = new THREE.DirectionalLight(0xffffff, 2.5); kL2.position.set(3, 4, 5); scene.add(kL2);
-      scene.add(new THREE.DirectionalLight(0xa78bfa, 0.9).translateX(-3).translateY(2));
-      var sGlow = new THREE.PointLight(0x4ecdc4, 0, 4); sGlow.position.set(0, 0, 1.2); scene.add(sGlow);
+      /* Environment map for reflections */
+      var pmrem = new THREE.PMREMGenerator(renderer);
+      var envSc = new THREE.Scene();
+      envSc.background = new THREE.Color(0x101018);
+      envSc.add(new THREE.AmbientLight(0x334455, 0.5));
+      var eD1 = new THREE.DirectionalLight(0x5577aa, 0.6); eD1.position.set(3, 4, 2); envSc.add(eD1);
+      var eD2 = new THREE.DirectionalLight(0x334466, 0.3); eD2.position.set(-3, 2, -3); envSc.add(eD2);
+      var envMap = pmrem.fromScene(envSc, 0.02).texture; pmrem.dispose();
+
+      /* Lighting */
+      scene.add(new THREE.AmbientLight(0x8888bb, 0.8));
+      var kL2 = new THREE.DirectionalLight(0xffffff, 2.8);
+      kL2.position.set(3, 4, 5); kL2.castShadow = !MOB; scene.add(kL2);
+      var fL2 = new THREE.DirectionalLight(0xa78bfa, 1.0);
+      fL2.position.set(-4, 2, 3); scene.add(fL2);
+      var rimL = new THREE.DirectionalLight(0xffe66d, 0.5);
+      rimL.position.set(0, -3, -2); scene.add(rimL);
+      var sGlow = new THREE.PointLight(0x4ecdc4, 0, 4);
+      sGlow.position.set(0, 0, 1.2); scene.add(sGlow);
 
       /* Phone dims — LANDSCAPE */
       var PW = 3.2, PH = 1.6, PD = 0.08, CR = 0.12;
@@ -417,35 +433,140 @@
         s.quadraticCurveTo(-hw, -hh, -hw + r, -hh); return s;
       }
       function rrGeo(w, h, d, r) {
-        var g = new THREE.ExtrudeGeometry(rrShape(w, h, r), { depth: d, bevelEnabled: false, curveSegments: 12 });
+        var g = new THREE.ExtrudeGeometry(rrShape(w, h, r), { depth: d, bevelEnabled: false, curveSegments: 16 });
         g.translate(0, 0, -d / 2); return g;
       }
 
       var phoneGrp = new THREE.Group(); scene.add(phoneGrp);
 
-      /* Back */
-      phoneGrp.add(new THREE.Mesh(rrGeo(PW, PH, PD, CR),
-        new THREE.MeshStandardMaterial({ color: 0x1a1a2e, metalness: 0.3, roughness: 0.2, side: THREE.DoubleSide })));
-      /* Frame */
-      phoneGrp.add(new THREE.Mesh(rrGeo(PW + 0.03, PH + 0.03, PD + 0.04, CR + 0.015),
-        new THREE.MeshStandardMaterial({ color: 0x9e9ea3, metalness: 0.85, roughness: 0.25, side: THREE.DoubleSide })));
-      /* Screen */
-      var screenM = new THREE.Mesh(rrGeo(PW - 0.04, PH - 0.04, 0.02, CR - 0.02),
-        new THREE.MeshStandardMaterial({ color: 0x0a0a14, metalness: 0.1, roughness: 0.05, side: THREE.DoubleSide }));
+      /* ── Back Panel ── */
+      var matBack = new THREE.MeshStandardMaterial({
+        color: 0x1a1a2e, metalness: 0.35, roughness: 0.18,
+        envMap: envMap, envMapIntensity: 0.6, side: THREE.DoubleSide
+      });
+      var backMesh = new THREE.Mesh(rrGeo(PW, PH, PD, CR), matBack);
+      phoneGrp.add(backMesh);
+
+      /* Camera module on back (landscape: top-left corner) */
+      var camBlock = new THREE.Mesh(
+        new THREE.BoxGeometry(0.38, 0.38, 0.04),
+        new THREE.MeshStandardMaterial({ color: 0x111111, metalness: 0.3, roughness: 0.3, envMap: envMap })
+      );
+      camBlock.position.set(-PW / 2 + 0.35, PH / 2 - 0.32, -PD / 2 - 0.02);
+      backMesh.add(camBlock);
+
+      var matLens = new THREE.MeshStandardMaterial({
+        color: 0x1a237e, metalness: 0.4, roughness: 0.08,
+        emissive: 0x2196f3, emissiveIntensity: 0.12, envMap: envMap, envMapIntensity: 1.2
+      });
+      var lens1 = new THREE.Mesh(new THREE.CylinderGeometry(0.065, 0.065, 0.035, 24).rotateX(Math.PI / 2), matLens);
+      lens1.position.set(-0.06, 0.06, -0.02); camBlock.add(lens1);
+      var lensRing1 = new THREE.Mesh(new THREE.TorusGeometry(0.065, 0.008, 12, 24),
+        new THREE.MeshStandardMaterial({ color: 0x888888, metalness: 0.9, roughness: 0.15, envMap: envMap }));
+      lensRing1.position.copy(lens1.position); lensRing1.position.z -= 0.018; camBlock.add(lensRing1);
+
+      var lens2 = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.035, 24).rotateX(Math.PI / 2), matLens);
+      lens2.position.set(0.08, 0.06, -0.02); camBlock.add(lens2);
+      var lensRing2 = new THREE.Mesh(new THREE.TorusGeometry(0.05, 0.006, 12, 24),
+        new THREE.MeshStandardMaterial({ color: 0x888888, metalness: 0.9, roughness: 0.15, envMap: envMap }));
+      lensRing2.position.copy(lens2.position); lensRing2.position.z -= 0.018; camBlock.add(lensRing2);
+
+      var flash = new THREE.Mesh(new THREE.CylinderGeometry(0.022, 0.022, 0.015, 12).rotateX(Math.PI / 2),
+        new THREE.MeshStandardMaterial({ color: 0xffe66d, emissive: 0xffe66d, emissiveIntensity: 0.5 }));
+      flash.position.set(0.08, -0.06, -0.02); camBlock.add(flash);
+
+      /* ── Frame (metallic band) ── */
+      var matFrame = new THREE.MeshStandardMaterial({
+        color: 0xb0b0b5, metalness: 0.92, roughness: 0.18,
+        envMap: envMap, envMapIntensity: 1.4, side: THREE.DoubleSide
+      });
+      var frameMesh = new THREE.Mesh(rrGeo(PW + 0.03, PH + 0.03, PD + 0.04, CR + 0.015), matFrame);
+      phoneGrp.add(frameMesh);
+
+      /* Side buttons (landscape: on top edge = +Y) */
+      var btnMat = new THREE.MeshStandardMaterial({ color: 0xa0a0a5, metalness: 0.88, roughness: 0.2, envMap: envMap });
+      var volUp = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.03, 0.035), btnMat);
+      volUp.position.set(-0.5, PH / 2 + 0.026, 0); frameMesh.add(volUp);
+      var volDn = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.03, 0.035), btnMat);
+      volDn.position.set(-0.2, PH / 2 + 0.026, 0); frameMesh.add(volDn);
+      var pwrBtn = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.03, 0.035), btnMat);
+      pwrBtn.position.set(0.4, PH / 2 + 0.026, 0); frameMesh.add(pwrBtn);
+
+      /* Antenna lines (subtle cuts in frame) */
+      var antMat = new THREE.MeshBasicMaterial({ color: 0x666666, transparent: true, opacity: 0.3 });
+      for (var ai = 0; ai < 2; ai++) {
+        var antLine = new THREE.Mesh(new THREE.BoxGeometry(0.003, PH + 0.04, 0.005), antMat);
+        antLine.position.set((ai === 0 ? -1 : 1) * (PW / 2 - 0.3), 0, PD / 2 + 0.015);
+        frameMesh.add(antLine);
+      }
+
+      /* ── Screen bezel ── */
+      var matScreen = new THREE.MeshStandardMaterial({
+        color: 0x080810, metalness: 0.08, roughness: 0.04,
+        envMap: envMap, envMapIntensity: 0.3, side: THREE.DoubleSide
+      });
+      var screenM = new THREE.Mesh(rrGeo(PW - 0.04, PH - 0.04, 0.02, CR - 0.02), matScreen);
       phoneGrp.add(screenM);
 
-      /* OLED */
-      var oC = document.createElement('canvas'); oC.width = 512; oC.height = 256;
+      /* ── OLED display surface ── */
+      var oC = document.createElement('canvas'); oC.width = 640; oC.height = 320;
       var oCtx = oC.getContext('2d');
-      var oGr = oCtx.createLinearGradient(0, 0, 512, 256);
-      oGr.addColorStop(0, '#0a0a14'); oGr.addColorStop(0.5, '#111128'); oGr.addColorStop(1, '#0a0a14');
-      oCtx.fillStyle = oGr; oCtx.fillRect(0, 0, 512, 256);
+      var oGr = oCtx.createRadialGradient(320, 160, 0, 320, 160, 380);
+      oGr.addColorStop(0, '#12122a'); oGr.addColorStop(0.6, '#0d0d1e'); oGr.addColorStop(1, '#080812');
+      oCtx.fillStyle = oGr; oCtx.fillRect(0, 0, 640, 320);
+      /* Subtle vignette */
+      var vGr = oCtx.createRadialGradient(320, 160, 100, 320, 160, 380);
+      vGr.addColorStop(0, 'rgba(0,0,0,0)'); vGr.addColorStop(1, 'rgba(0,0,0,0.3)');
+      oCtx.fillStyle = vGr; oCtx.fillRect(0, 0, 640, 320);
       var oTex = new THREE.CanvasTexture(oC); oTex.colorSpace = THREE.SRGBColorSpace;
-      var matOLED = new THREE.MeshStandardMaterial({ map: oTex, emissive: 0x222244, emissiveIntensity: 0, roughness: 0.1, side: THREE.FrontSide });
-      var oledM = new THREE.Mesh(new THREE.ShapeGeometry(rrShape(PW - 0.12, PH - 0.12, CR - 0.03), 12), matOLED);
+      var matOLED = new THREE.MeshStandardMaterial({
+        map: oTex, emissive: 0x1a1a3a, emissiveIntensity: 0,
+        roughness: 0.06, metalness: 0.05, envMap: envMap, envMapIntensity: 0.15,
+        side: THREE.FrontSide
+      });
+      var oledM = new THREE.Mesh(new THREE.ShapeGeometry(rrShape(PW - 0.12, PH - 0.12, CR - 0.03), 16), matOLED);
       oledM.position.z = 0.012; screenM.add(oledM);
 
-      /* Play button */
+      /* Screen glass reflection layer */
+      var glassM = new THREE.Mesh(
+        new THREE.ShapeGeometry(rrShape(PW - 0.12, PH - 0.12, CR - 0.03), 16),
+        new THREE.MeshPhysicalMaterial({
+          color: 0x000000, transparent: true, opacity: 0.04,
+          roughness: 0.01, metalness: 0, clearcoat: 1.0, clearcoatRoughness: 0.03,
+          envMap: envMap, envMapIntensity: 0.5, side: THREE.FrontSide
+        })
+      );
+      glassM.position.z = 0.013; screenM.add(glassM);
+
+      /* Notch / Dynamic Island (landscape: on left edge) */
+      var niW = 0.06, niH = 0.22, niR = niW / 2;
+      var niShape = new THREE.Shape();
+      niShape.moveTo(-niW / 2 + niR, -niH / 2);
+      niShape.lineTo(niW / 2 - niR, -niH / 2);
+      niShape.absarc(niW / 2 - niR, 0, niR, -Math.PI / 2, Math.PI / 2, false);
+      niShape.lineTo(-niW / 2 + niR, niH / 2);
+      niShape.absarc(-niW / 2 + niR, 0, niR, Math.PI / 2, -Math.PI / 2, false);
+      var notch = new THREE.Mesh(
+        new THREE.ShapeGeometry(niShape, 16),
+        new THREE.MeshStandardMaterial({ color: 0x050508, roughness: 0.3, metalness: 0.1 })
+      );
+      notch.position.set(-PW / 2 + 0.16, 0, 0.0135); screenM.add(notch);
+
+      /* Front camera in notch */
+      var fCam = new THREE.Mesh(
+        new THREE.SphereGeometry(0.016, 16, 16),
+        new THREE.MeshStandardMaterial({ color: 0x1a237e, emissive: 0x2196f3, emissiveIntensity: 0.25, envMap: envMap })
+      );
+      fCam.position.set(-PW / 2 + 0.16, 0.03, 0.018); screenM.add(fCam);
+
+      /* Proximity sensor dot */
+      var proxDot = new THREE.Mesh(
+        new THREE.CircleGeometry(0.008, 12),
+        new THREE.MeshBasicMaterial({ color: 0x333333 })
+      );
+      proxDot.position.set(-PW / 2 + 0.16, -0.03, 0.014); screenM.add(proxDot);
+
+      /* ── Play button ── */
       var playGrp = new THREE.Group(); playGrp.position.set(0, 0, 0.015); screenM.add(playGrp);
       var cRing = new THREE.Mesh(new THREE.RingGeometry(0.22, 0.26, 48),
         new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0, depthTest: false }));
@@ -462,14 +583,14 @@
       /* Label */
       var lC = document.createElement('canvas'); lC.width = 512; lC.height = 64;
       var lCtx = lC.getContext('2d');
-      lCtx.fillStyle = '#ffffff'; lCtx.font = '24px Arial, sans-serif';
+      lCtx.fillStyle = '#ffffff'; lCtx.font = '600 24px Arial, sans-serif';
       lCtx.textAlign = 'center'; lCtx.textBaseline = 'middle';
       lCtx.fillText('Live Classroom Feed', 256, 32);
       var labMat = new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(lC), transparent: true, opacity: 0, depthTest: false });
       var labM = new THREE.Mesh(new THREE.PlaneGeometry(1.2, 0.15), labMat);
       labM.position.set(0, -0.32, 0.015); labM.renderOrder = 10; screenM.add(labM);
 
-      /* Assembly anim */
+      /* ── Assembly anim ── */
       var assembled = false, progress = 0;
       var pObs = new IntersectionObserver(function (en) {
         if (en[0].isIntersecting && !assembled) assembled = true;
@@ -494,12 +615,19 @@
         phoneGrp.position.y = lerp(MOB ? -1.5 : 0, 0, p);
         phoneGrp.rotation.y = lerp(0.6, 0, p) + mX2 * 0.2;
         phoneGrp.rotation.x = -mY2 * 0.12;
+
+        /* Screen power-on */
         var sPow = clamp((p - 0.6) / 0.4, 0, 1);
-        matOLED.emissiveIntensity = sPow * 0.3; sGlow.intensity = sPow * 1.2;
+        matOLED.emissiveIntensity = sPow * 0.35; sGlow.intensity = sPow * 1.2;
+        glassM.material.opacity = 0.04 + sPow * 0.02;
+
+        /* Play button fade-in */
         var bPow = clamp((p - 0.75) / 0.25, 0, 1);
         cRing.material.opacity = bPow * 0.9; cFill.material.opacity = bPow * 0.15;
         triMesh.material.opacity = bPow * 0.9; labMat.opacity = bPow * 0.7;
         if (bPow > 0) { var pu = 1 + Math.sin(t * 2) * 0.06; playGrp.scale.set(pu, pu, 1); }
+
+        /* Subtle camera drift */
         camera.position.x = Math.sin(t * 0.2) * 0.04;
         camera.position.y = Math.cos(t * 0.15) * 0.02;
         camera.lookAt(0, 0, 0);
