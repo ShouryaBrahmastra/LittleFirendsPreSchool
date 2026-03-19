@@ -8,18 +8,11 @@ document.querySelector('[data-component="app-promo"]').outerHTML = `
   <div class="parallax-decor parallax-star pd-4" data-parallax-depth="4">📱</div>
 
   <div class="app-container">
-    <!-- Phone Mockup -->
+    <!-- 3D Phone Assembly (Three.js) -->
     <div class="app-visual reveal-left">
-      <div class="app-phone-mockup">
-        <div class="app-phone-screen">
-          <img src="assets/icon/toondemy.png" alt="Toondemy App" class="app-logo-icon">
-          <span class="app-name">Toondemy</span>
-          <span class="app-tagline">Learn with Fun!</span>
-        </div>
+      <div class="phone3d-canvas-wrap" id="phone3dWrap">
+        <canvas id="phone3dCanvas"></canvas>
       </div>
-      <div class="app-float app-float-1"></div>
-      <div class="app-float app-float-2"></div>
-      <div class="app-float app-float-3"></div>
     </div>
 
     <!-- App Info -->
