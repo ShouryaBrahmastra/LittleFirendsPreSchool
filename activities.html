@@ -340,41 +340,9 @@
 
       <!-- Nunchaku + Video Row -->
       <div class="karate-showcase reveal" id="nunchaku-stage">
-        <!-- Nunchaku 3D Animation Stage -->
-        <div class="nunchaku-stage">
-          <!-- Particles -->
-          <div class="nunchaku-particles" id="nunchaku-particles"></div>
-          <!-- Ground shadow -->
-          <div class="nunchaku-shadow"></div>
-          <!-- 3D scene -->
-          <div class="nunchaku-scene">
-            <div class="nunchaku-weapon" id="nunchaku-weapon">
-              <!-- Handle A (top) -->
-              <div class="nunchaku-handle nunchaku-handle-a" id="nunchaku-handle-a">
-                <div class="nunchaku-grip"></div>
-                <div class="nunchaku-grip"></div>
-                <div class="nunchaku-grip"></div>
-                <div class="nunchaku-cap nunchaku-cap-top"></div>
-                <div class="nunchaku-cap nunchaku-cap-bottom"></div>
-              </div>
-              <!-- Chain -->
-              <div class="nunchaku-chain" id="nunchaku-chain">
-                <span class="nunchaku-link"></span>
-                <span class="nunchaku-link"></span>
-                <span class="nunchaku-link"></span>
-                <span class="nunchaku-link"></span>
-                <span class="nunchaku-link"></span>
-              </div>
-              <!-- Handle B (bottom) -->
-              <div class="nunchaku-handle nunchaku-handle-b" id="nunchaku-handle-b">
-                <div class="nunchaku-grip"></div>
-                <div class="nunchaku-grip"></div>
-                <div class="nunchaku-grip"></div>
-                <div class="nunchaku-cap nunchaku-cap-top"></div>
-                <div class="nunchaku-cap nunchaku-cap-bottom"></div>
-              </div>
-            </div>
-          </div>
+        <!-- Nunchaku 3D Three.js Stage -->
+        <div class="nunchaku-canvas-wrap" id="nunchakuWrap">
+          <canvas id="nunchakuCanvas"></canvas>
         </div>
 
         <!-- Video Frame -->
@@ -789,6 +757,9 @@
 
   <!-- Abacus Three.js -->
   <script src="js/abacus3d.js"></script>
+
+  <!-- Nunchaku Three.js -->
+  <script src="js/nunchaku3d.js"></script>
 
   <!-- Main (Back to Top, FAQ, etc.) -->
   <script src="js/main.js"></script>
