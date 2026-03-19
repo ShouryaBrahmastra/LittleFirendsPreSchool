@@ -721,6 +721,7 @@
 .abacus-stage {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 380px;
@@ -741,220 +742,18 @@
     radial-gradient(ellipse at 50% 5%, rgba(255,255,255,0.03) 0%, transparent 30%);
   pointer-events: none;
 }
-/* Floor reflection */
-.abacus-stage::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 10%;
-  right: 10%;
-  height: 35%;
-  background: linear-gradient(to top, rgba(255,200,100,0.03) 0%, transparent 100%);
-  pointer-events: none;
-}
 
-/* Ground shadow */
-.abacus-shadow {
-  position: absolute;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 200px;
-  height: 20px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(0,0,0,0.5) 0%, transparent 70%);
-  filter: blur(6px);
-  z-index: 1;
-}
-
-.abacus-3d {
-  position: relative;
-  z-index: 2;
-  perspective: 700px;
-}
-
-/* Wooden frame */
-.abacus-frame {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  width: 320px;
-  padding: 0;
-  background:
-    linear-gradient(180deg, #6B3A1F 0%, #8B4513 8%, #A0522D 50%, #8B4513 92%, #6B3A1F 100%);
-  border-radius: 10px;
-  box-shadow:
-    inset 0 2px 4px rgba(255,200,100,0.15),
-    inset 0 -2px 4px rgba(0,0,0,0.3),
-    0 8px 32px rgba(0,0,0,0.6),
-    0 2px 8px rgba(0,0,0,0.4);
-  position: relative;
-  transform: rotateX(4deg) rotateY(-2deg);
-  transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-/* Wood grain texture */
-.abacus-frame::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      transparent 0px,
-      transparent 12px,
-      rgba(0,0,0,0.04) 12px,
-      rgba(0,0,0,0.04) 13px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      transparent 0px,
-      transparent 40px,
-      rgba(255,200,100,0.03) 40px,
-      rgba(255,200,100,0.03) 41px
-    );
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Top & bottom rails */
-.abacus-rail {
-  height: 14px;
-  background:
-    linear-gradient(180deg, #7B4A2A 0%, #A0622D 40%, #8B5320 100%);
+/* Three.js canvas container */
+.abacus-cube-wrap {
+  width: 100%;
+  height: 340px;
   position: relative;
   z-index: 2;
 }
-.abacus-rail-top {
-  border-radius: 10px 10px 0 0;
-  box-shadow:
-    inset 0 2px 3px rgba(255,200,100,0.2),
-    0 2px 4px rgba(0,0,0,0.3);
-}
-.abacus-rail-bottom {
-  border-radius: 0 0 10px 10px;
-  box-shadow:
-    inset 0 -2px 3px rgba(0,0,0,0.2),
-    0 -1px 3px rgba(0,0,0,0.2);
-}
-
-/* Rod row */
-.abacus-rod {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0;
-  padding: 8px 14px;
-  position: relative;
-  height: 48px;
-  z-index: 1;
-}
-
-/* Metallic wire through each rod */
-.abacus-rod-wire {
-  position: absolute;
-  left: 14px;
-  right: 14px;
-  top: 50%;
-  height: 3px;
-  transform: translateY(-50%);
-  border-radius: 2px;
-  background:
-    linear-gradient(180deg, #C0C0C0 0%, #808080 40%, #A0A0A0 60%, #D0D0D0 100%);
-  box-shadow:
-    0 1px 2px rgba(0,0,0,0.4),
-    inset 0 0.5px 0 rgba(255,255,255,0.4);
-  z-index: 0;
-}
-
-/* Beads */
-.abacus-bead {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
+.abacus-cube-wrap canvas {
+  width: 100% !important;
+  height: 100% !important;
   display: block;
-  position: relative;
-  z-index: 1;
-  cursor: pointer;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              margin 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  margin-right: 2px;
-}
-/* Glossy specular highlight */
-.abacus-bead::before {
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 5px;
-  width: 10px;
-  height: 8px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(255,255,255,0.6) 0%, transparent 100%);
-  pointer-events: none;
-}
-/* Bottom shadow crescent */
-.abacus-bead::after {
-  content: '';
-  position: absolute;
-  bottom: 2px;
-  left: 4px;
-  right: 4px;
-  height: 6px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(0,0,0,0.2) 0%, transparent 100%);
-  pointer-events: none;
-}
-
-.abacus-bead:hover {
-  transform: scale(1.15);
-}
-
-/* Bead active (slid right) */
-.abacus-bead.slid {
-  filter: brightness(1.1);
-}
-
-/* Realistic bead materials */
-.abacus-bead.red {
-  background: radial-gradient(ellipse at 35% 30%, #FF8A8A 0%, #C41E3A 60%, #8B1525 100%);
-  box-shadow:
-    inset 0 2px 4px rgba(255,200,200,0.3),
-    inset 0 -2px 4px rgba(0,0,0,0.3),
-    0 2px 6px rgba(0,0,0,0.4),
-    0 0 1px rgba(0,0,0,0.5);
-}
-.abacus-bead.blue {
-  background: radial-gradient(ellipse at 35% 30%, #6ED0E8 0%, #0051BA 60%, #003080 100%);
-  box-shadow:
-    inset 0 2px 4px rgba(150,220,255,0.3),
-    inset 0 -2px 4px rgba(0,0,0,0.3),
-    0 2px 6px rgba(0,0,0,0.4),
-    0 0 1px rgba(0,0,0,0.5);
-}
-.abacus-bead.yellow {
-  background: radial-gradient(ellipse at 35% 30%, #FFF3A0 0%, #FFD500 60%, #CC9900 100%);
-  box-shadow:
-    inset 0 2px 4px rgba(255,255,200,0.4),
-    inset 0 -2px 4px rgba(0,0,0,0.2),
-    0 2px 6px rgba(0,0,0,0.4),
-    0 0 1px rgba(0,0,0,0.5);
-}
-.abacus-bead.green {
-  background: radial-gradient(ellipse at 35% 30%, #70E890 0%, #009E60 60%, #006840 100%);
-  box-shadow:
-    inset 0 2px 4px rgba(150,255,180,0.3),
-    inset 0 -2px 4px rgba(0,0,0,0.3),
-    0 2px 6px rgba(0,0,0,0.4),
-    0 0 1px rgba(0,0,0,0.5);
-}
-.abacus-bead.purple {
-  background: radial-gradient(ellipse at 35% 30%, #C8A0FF 0%, #7C3AED 60%, #5521A0 100%);
-  box-shadow:
-    inset 0 2px 4px rgba(200,180,255,0.3),
-    inset 0 -2px 4px rgba(0,0,0,0.3),
-    0 2px 6px rgba(0,0,0,0.4),
-    0 0 1px rgba(0,0,0,0.5);
 }
 
 /* Number display beneath frame */
@@ -965,9 +764,11 @@
   font-weight: 800;
   color: #FFD500;
   text-shadow: 0 0 12px rgba(255,213,0,0.4), 0 2px 4px rgba(0,0,0,0.5);
-  margin-top: var(--space-md);
+  margin-top: var(--space-sm);
   letter-spacing: 4px;
   min-height: 40px;
+  position: relative;
+  z-index: 2;
 }
 
 /* ─── 7 · RUBIK'S CUBE ─── */

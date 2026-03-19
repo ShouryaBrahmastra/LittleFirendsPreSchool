@@ -535,60 +535,12 @@
       </div>
 
       <div class="act-row reveal">
-        <!-- Dark studio stage for abacus -->
+        <!-- Three.js Abacus -->
         <div class="abacus-stage">
-          <div class="abacus-shadow"></div>
-          <div class="abacus-3d">
-            <div class="abacus-frame" id="abacus-frame">
-              <!-- Top rail -->
-              <div class="abacus-rail abacus-rail-top"></div>
-              <!-- Rods -->
-              <div class="abacus-rod" data-row="0">
-                <div class="abacus-rod-wire"></div>
-                <span class="abacus-bead red"></span>
-                <span class="abacus-bead red"></span>
-                <span class="abacus-bead red"></span>
-                <span class="abacus-bead red"></span>
-                <span class="abacus-bead red"></span>
-              </div>
-              <div class="abacus-rod" data-row="1">
-                <div class="abacus-rod-wire"></div>
-                <span class="abacus-bead blue"></span>
-                <span class="abacus-bead blue"></span>
-                <span class="abacus-bead blue"></span>
-                <span class="abacus-bead blue"></span>
-                <span class="abacus-bead blue"></span>
-              </div>
-              <div class="abacus-rod" data-row="2">
-                <div class="abacus-rod-wire"></div>
-                <span class="abacus-bead yellow"></span>
-                <span class="abacus-bead yellow"></span>
-                <span class="abacus-bead yellow"></span>
-                <span class="abacus-bead yellow"></span>
-                <span class="abacus-bead yellow"></span>
-              </div>
-              <div class="abacus-rod" data-row="3">
-                <div class="abacus-rod-wire"></div>
-                <span class="abacus-bead green"></span>
-                <span class="abacus-bead green"></span>
-                <span class="abacus-bead green"></span>
-                <span class="abacus-bead green"></span>
-                <span class="abacus-bead green"></span>
-              </div>
-              <div class="abacus-rod" data-row="4">
-                <div class="abacus-rod-wire"></div>
-                <span class="abacus-bead purple"></span>
-                <span class="abacus-bead purple"></span>
-                <span class="abacus-bead purple"></span>
-                <span class="abacus-bead purple"></span>
-                <span class="abacus-bead purple"></span>
-              </div>
-              <!-- Bottom rail -->
-              <div class="abacus-rail abacus-rail-bottom"></div>
-            </div>
-            <!-- Number display -->
-            <div class="abacus-display" id="abacus-display">0</div>
+          <div class="abacus-cube-wrap" id="abacusCubeWrap">
+            <canvas id="abacusCubeCanvas"></canvas>
           </div>
+          <div class="abacus-display" id="abacusDisplay">0</div>
         </div>
 
         <div class="act-text">
@@ -834,6 +786,9 @@
 
   <!-- Rubik's Cube Three.js -->
   <script src="js/rubik3d.js"></script>
+
+  <!-- Abacus Three.js -->
+  <script src="js/abacus3d.js"></script>
 
   <!-- Main (Back to Top, FAQ, etc.) -->
   <script src="js/main.js"></script>
