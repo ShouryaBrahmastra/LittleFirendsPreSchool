@@ -57,10 +57,23 @@
   overflow: hidden;
 }
 
-.app-phone-screen .app-logo-emoji {
-  font-size: 60px;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
-  animation: float 3s ease-in-out infinite;
+.app-phone-screen .app-logo-icon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 18px;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.25));
+  animation: giggle 2.5s ease-in-out infinite;
+}
+
+@keyframes giggle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  10% { transform: rotate(-6deg) scale(1.05); }
+  20% { transform: rotate(5deg) scale(1.08); }
+  30% { transform: rotate(-4deg) scale(1.05); }
+  40% { transform: rotate(3deg) scale(1.02); }
+  50% { transform: rotate(-1deg) scale(1); }
+  60% { transform: rotate(0deg) scale(1); }
 }
 
 .app-phone-screen .app-name {

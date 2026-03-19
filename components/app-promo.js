@@ -12,7 +12,7 @@ document.querySelector('[data-component="app-promo"]').outerHTML = `
     <div class="app-visual reveal-left">
       <div class="app-phone-mockup">
         <div class="app-phone-screen">
-          <span class="app-logo-emoji">🎬</span>
+          <img src="assets/icon/toondemy.png" alt="Toondemy App" class="app-logo-icon">
           <span class="app-name">Toondemy</span>
           <span class="app-tagline">Learn with Fun!</span>
         </div>
