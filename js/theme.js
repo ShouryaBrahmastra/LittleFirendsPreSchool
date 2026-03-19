@@ -8,8 +8,7 @@ const ThemeManager = (() => {
 
   function init() {
     const saved = localStorage.getItem(STORAGE_KEY);
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const theme = saved || (prefersDark ? 'dark' : 'light');
+    const theme = saved || 'light';
     applyTheme(theme);
 
     const toggleBtn = document.querySelector('.theme-toggle-btn');
@@ -20,12 +19,7 @@ const ThemeManager = (() => {
       updateAriaState(toggleBtn, theme);
     }
 
-    // Listen for system preference changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem(STORAGE_KEY)) {
-        applyTheme(e.matches ? 'dark' : 'light');
-      }
-    });
+
   }
 
   function toggle() {
