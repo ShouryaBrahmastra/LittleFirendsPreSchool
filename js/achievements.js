@@ -151,11 +151,36 @@ const AchievementsController = (() => {
   }
 
 
+  /* ======== 3D Card Tilt on Hover ======== */
+  function initCardTilt() {
+    const cards = document.querySelectorAll('.gold-star-card');
+    if (!cards.length) return;
+    const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (REDUCED) return;
+
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;  // -0.5 to 0.5
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        const tiltX = -y * 15; // degrees
+        const tiltY = x * 15;
+        card.style.transform = `perspective(600px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-6px)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
+
+
   /* ======== Init ======== */
   function init() {
     initCarousel();
     initCounters();
     initConfetti();
+    initCardTilt();
   }
 
   return { init };

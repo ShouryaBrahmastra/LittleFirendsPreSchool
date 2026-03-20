@@ -330,31 +330,107 @@
 }
 
 .gold-stars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.gold-star-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(145deg, #fffdf5, #fff8e1);
+  border: 2px solid #ffd700;
+  border-radius: var(--border-radius-xl);
+  padding: var(--space-xl) var(--space-md) var(--space-lg);
+  box-shadow: 0 3px 12px rgba(255, 215, 0, 0.15);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.gold-star-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ffd700, #ffb800, #ffd700);
+}
+
+.gold-star-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(255, 215, 0, 0.3);
+}
+
+.gold-star-medal-3d {
+  width: 80px;
+  height: 80px;
+  margin-bottom: var(--space-sm);
+  flex-shrink: 0;
+}
+
+.gold-star-medal-3d canvas {
+  display: block;
+}
+
+/* 3D tilt effect on hover */
+.gold-star-card {
+  transform-style: preserve-3d;
+  perspective: 600px;
+}
+
+.gold-star-name {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-base);
+  color: #5a4500;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.gold-star-class {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: #a07800;
+  background: rgba(255, 215, 0, 0.18);
+  padding: 2px 12px;
+  border-radius: 20px;
+  margin-bottom: var(--space-sm);
+}
+
+.gold-star-subjects {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--space-md);
+  gap: 6px;
+  margin-top: auto;
 }
 
-.gold-star-badge {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  background: linear-gradient(135deg, #fff9e6, #fff3cc);
-  border: 2px solid #ffd700;
-  border-radius: 50px;
-  padding: 8px 20px;
-  font-family: var(--font-body);
+.subject-tag {
+  font-size: 11px;
   font-weight: 700;
-  font-size: var(--font-size-sm);
-  color: #7a5c00;
-  box-shadow: 0 2px 10px rgba(255, 215, 0, 0.2);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.02em;
 }
 
-.gold-star-badge:hover {
-  transform: scale(1.08);
-  box-shadow: 0 4px 16px rgba(255, 215, 0, 0.35);
+.subject-math {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.subject-science {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.subject-english {
+  background: #fce4ec;
+  color: #c62828;
 }
 
 
@@ -671,10 +747,33 @@
   background: var(--bg-card);
 }
 
-[data-theme="dark"] .gold-star-badge {
-  background: linear-gradient(135deg, #3d3520, #2d2510);
+[data-theme="dark"] .gold-star-card {
+  background: linear-gradient(145deg, #2d2510, #3d3520);
   border-color: #b8960a;
+}
+
+[data-theme="dark"] .gold-star-name {
   color: #ffd700;
+}
+
+[data-theme="dark"] .gold-star-class {
+  color: #ffd700;
+  background: rgba(255, 215, 0, 0.12);
+}
+
+[data-theme="dark"] .subject-math {
+  background: rgba(21, 101, 192, 0.2);
+  color: #64b5f6;
+}
+
+[data-theme="dark"] .subject-science {
+  background: rgba(46, 125, 50, 0.2);
+  color: #81c784;
+}
+
+[data-theme="dark"] .subject-english {
+  background: rgba(198, 40, 40, 0.2);
+  color: #ef9a9a;
 }
 
 [data-theme="dark"] .ach-hero {
@@ -747,9 +846,21 @@
     font-size: var(--font-size-3xl);
   }
 
-  .gold-star-badge {
-    font-size: var(--font-size-xs);
-    padding: 6px 14px;
+  .gold-stars-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  .gold-star-card {
+    padding: var(--space-lg) var(--space-sm) var(--space-md);
+  }
+
+  .gold-star-medal {
+    font-size: 28px;
+  }
+
+  .gold-star-name {
+    font-size: var(--font-size-sm);
   }
 
   .trophy-frame { max-width: 300px; }
