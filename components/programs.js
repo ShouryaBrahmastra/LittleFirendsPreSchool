@@ -18,7 +18,7 @@ document.querySelector('[data-component="programs"]').outerHTML = `
     <!-- Playgroup -->
     <div class="program-card card-3d reveal delay-1">
       <div class="program-card-image">
-        <span class="program-emoji">🧸</span>
+        <img src="assets/home/playgroup.avif" alt="Playgroup" class="program-img">
         <span class="program-age-badge">2–3 Years</span>
       </div>
       <div class="program-card-body">
@@ -33,7 +33,7 @@ document.querySelector('[data-component="programs"]').outerHTML = `
     <!-- Nursery -->
     <div class="program-card card-3d reveal delay-2">
       <div class="program-card-image">
-        <span class="program-emoji">🎨</span>
+        <img src="assets/home/nusery.avif" alt="Nursery" class="program-img">
         <span class="program-age-badge">3–4 Years</span>
       </div>
       <div class="program-card-body">
@@ -48,7 +48,7 @@ document.querySelector('[data-component="programs"]').outerHTML = `
     <!-- LKG -->
     <div class="program-card card-3d reveal delay-3">
       <div class="program-card-image">
-        <span class="program-emoji">📖</span>
+        <img src="assets/home/lkg.png" alt="LKG" class="program-img">
         <span class="program-age-badge">4–5 Years</span>
       </div>
       <div class="program-card-body">
@@ -63,7 +63,7 @@ document.querySelector('[data-component="programs"]').outerHTML = `
     <!-- UKG -->
     <div class="program-card card-3d reveal delay-4">
       <div class="program-card-image">
-        <span class="program-emoji">🎓</span>
+        <img src="assets/home/ukg.jpg" alt="UKG" class="program-img">
         <span class="program-age-badge">5–6 Years</span>
       </div>
       <div class="program-card-body">
