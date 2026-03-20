@@ -310,8 +310,9 @@
 
   .music-toggle { bottom: 20px; left: 10px; width: 40px; height: 40px; }
 
-  .back-to-top { bottom: 20px; right: 20px; width: 64px; height: 64px; }
+  .back-to-top { bottom: 20px; right: 20px; width: 70px; height: 88px; }
   .back-to-top .back-to-top-img { width: 64px; height: 64px; }
+  .back-to-top-3d { width: 70px; height: 88px; }
 
   .offerings-grid { grid-template-columns: 1fr 1fr; }
 
