@@ -118,6 +118,58 @@
   color: var(--text-light);
 }
 
+/* Google Review Card */
+.testimonial-card--google {
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-google-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.testimonial-google-badge .google-icon {
+  flex-shrink: 0;
+}
+
+.google-badge-text {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--text-heading);
+  letter-spacing: 0.02em;
+}
+
+.testimonial-text--google {
+  font-size: var(--font-size-sm);
+  min-height: auto;
+  line-height: 1.75;
+}
+
+.testimonial-google-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: auto;
+  padding-top: var(--space-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--transition-base), gap var(--transition-base);
+}
+
+.testimonial-google-link:hover {
+  color: var(--accent-pink);
+  gap: 8px;
+}
+
+.testimonial-google-link .material-icons {
+  font-size: 16px;
+}
+
 /* Video Testimonial */
 .testimonial-video-frame {
   border-radius: var(--border-radius-xl);
