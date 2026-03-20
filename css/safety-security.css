@@ -630,6 +630,128 @@
     justify-items: center;
     text-align: center;
   }
+}
+
+
+/* =============================================
+   3D DRONE BACK-TO-TOP OVERRIDES
+   ============================================= */
+.drone-back-to-top {
+  width: 120px;
+  height: 130px;
+  border-radius: 16px;
+  flex-direction: column;
+  gap: 0;
+  background: transparent;
+}
+
+.drone-3d-wrap {
+  width: 110px;
+  height: 110px;
+  position: relative;
+  z-index: 2;
+  overflow: visible;
+}
+
+.drone-3d-wrap canvas {
+  display: block;
+  cursor: pointer;
+}
+
+.drone-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  opacity: 0.7;
+  margin-top: -6px;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.drone-back-to-top:hover .drone-label {
+  opacity: 1;
+}
+
+.drone-back-to-top:hover {
+  transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+  .back-to-top.drone-back-to-top {
+    width: 80px !important;
+    height: 90px !important;
+    bottom: 18px;
+    right: 8px;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+  }
+  .back-to-top.drone-back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  .drone-3d-wrap {
+    width: 72px;
+    height: 72px;
+    overflow: hidden;
+  }
+  .drone-label {
+    font-size: 7px;
+    margin-top: -4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .surv-cam {
+    width: 180px;
+    height: 180px;
+  }
+  .surv-wifi {
+    width: 44px;
+    height: 44px;
+  }
+  .surv-phone {
+    max-width: 280px;
+    height: 190px;
+  }
+  .back-to-top.drone-back-to-top {
+    width: 70px !important;
+    height: 80px !important;
+    bottom: 12px;
+    right: 6px;
+  }
+  .drone-3d-wrap {
+    width: 62px;
+    height: 62px;
+  }
+}
+
+@media (max-width: 768px) {
+  .surv-visualizer {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 16px;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .surv-cam {
+    width: 220px;
+    height: 220px;
+    flex-shrink: 0;
+  }
+  .surv-wifi {
+    width: 56px;
+    height: 56px;
+  }
+  .surv-phone {
+    width: 100%;
+    max-width: 340px;
+    height: 230px;
+    flex-shrink: 0;
+  }
 
   .nutrition-features {
     text-align: left;
@@ -637,26 +759,6 @@
 
   .page-hero h1 {
     font-size: var(--font-size-3xl);
-  }
-}
-
-@media (max-width: 768px) {
-  .surv-visualizer {
-    flex-direction: column;
-    gap: 16px;
-    padding: 0 16px;
-  }
-  .surv-cam {
-    width: 240px;
-    height: 240px;
-  }
-  .surv-wifi {
-    width: 60px;
-    height: 60px;
-  }
-  .surv-phone {
-    width: 380px;
-    height: 260px;
   }
 
   .cert-badge {
