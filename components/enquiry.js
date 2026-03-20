@@ -22,11 +22,13 @@ document.querySelector('[data-component="enquiry"]').outerHTML = `
       <div class="enquiry-contact-list">
         <div class="enquiry-contact-item">
           <div class="enquiry-contact-icon">
-            <span class="material-icons">location_on</span>
+            <a href="https://maps.app.goo.gl/2qVwQsaM91Tx7XYGA" target="_blank" rel="noopener noreferrer" aria-label="Open in Google Maps" style="color: inherit; text-decoration: none;">
+              <span class="material-icons">location_on</span>
+            </a>
           </div>
           <div class="enquiry-contact-text">
             <h4>Visit Us</h4>
-            <p>Newtown, Kolkata, West Bengal, India</p>
+            <p>DD 69, Street 273, Action Area 1, Besides The Newtown School (IndusInd Bank ATM), Newtown, Kolkata, India, 700156</p>
           </div>
         </div>
         <div class="enquiry-contact-item">
@@ -44,7 +46,7 @@ document.querySelector('[data-component="enquiry"]').outerHTML = `
           </div>
           <div class="enquiry-contact-text">
             <h4>Email Us</h4>
-            <p>info@littlefriends.edu</p>
+            <p>littlefriends.psdc@gmail.com</p>
           </div>
         </div>
         <div class="enquiry-contact-item">
