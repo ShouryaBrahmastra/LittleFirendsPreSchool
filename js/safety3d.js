@@ -696,73 +696,166 @@
 
 
   /* ═══════════════════════════════════════════
-     5 ▸ LIVE STREAM — Particle glow
+     5 ▸ LIVE STREAM — Neon Red 3D Particle Glow
      ═══════════════════════════════════════════ */
   function initLiveParticles() {
-    var sec = document.querySelector('.live-stream-info');
-    if (!sec || NOMO) return;
+    var sec = document.getElementById('liveStreamInfo');
+    var cvs = document.getElementById('liveNeonCanvas');
+    if (!sec || !cvs || NOMO) return;
+
     var w = sec.offsetWidth, h = sec.offsetHeight;
     var scene = new THREE.Scene();
-    var cam = new THREE.PerspectiveCamera(50, w / h, 0.1, 50);
-    cam.position.z = 8;
-    var renderer = makeRenderer(w, h);
-    var canvas = renderer.domElement;
-    canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;border-radius:inherit;';
-    sec.style.position = 'relative';
-    sec.insertBefore(canvas, sec.firstChild);
+    var cam = new THREE.PerspectiveCamera(50, w / h, 0.1, 80);
+    cam.position.z = 10;
 
-    var CT = MOB ? 25 : 50;
+    var renderer = new THREE.WebGLRenderer({ canvas: cvs, antialias: true, alpha: true });
+    renderer.setPixelRatio(PR);
+    renderer.setSize(w, h);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+    /* ── Red neon fog atmosphere ── */
+    scene.fog = new THREE.FogExp2(0x110000, 0.04);
+
+    /* ── Neon red ambient + point lights ── */
+    scene.add(new THREE.AmbientLight(0x220000, 0.3));
+    var neonPL1 = new THREE.PointLight(0xff2222, 1.2, 20);
+    neonPL1.position.set(0, 0, 5);
+    scene.add(neonPL1);
+    var neonPL2 = new THREE.PointLight(0xff0000, 0.6, 15);
+    neonPL2.position.set(-5, 2, 3);
+    scene.add(neonPL2);
+    var neonPL3 = new THREE.PointLight(0xff4444, 0.4, 12);
+    neonPL3.position.set(5, -2, 4);
+    scene.add(neonPL3);
+
+    /* ── Floating 3D neon particles ── */
+    var CT = MOB ? 40 : 80;
     var positions = new Float32Array(CT * 3);
     var sizes = new Float32Array(CT);
     var phases = [];
+    var depths = [];
     for (var i = 0; i < CT; i++) {
-      positions[i*3] = rand(-6, 6); positions[i*3+1] = rand(-3, 3); positions[i*3+2] = rand(-2, 2);
-      sizes[i] = rand(3, 9); phases.push(rand(0, Math.PI * 2));
+      positions[i * 3]     = rand(-8, 8);
+      positions[i * 3 + 1] = rand(-4, 4);
+      positions[i * 3 + 2] = rand(-6, 4);
+      sizes[i] = rand(4, 14);
+      phases.push(rand(0, Math.PI * 2));
+      depths.push(rand(0.3, 1.0));
     }
     var geo = new THREE.BufferGeometry();
     geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     geo.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
     var mat = new THREE.ShaderMaterial({
       transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
       uniforms: { uTime: { value: 0 } },
       vertexShader: [
-        'attribute float size;', 'varying float vAlpha;', 'uniform float uTime;',
-        'void main() {', '  vec4 mv = modelViewMatrix * vec4(position, 1.0);',
-        '  gl_PointSize = size * (6.0 / -mv.z);', '  gl_Position = projectionMatrix * mv;',
-        '  float pulse = sin(uTime * 1.5 + position.x * 2.0 + position.y) * 0.5 + 0.5;',
-        '  vAlpha = 0.12 + pulse * 0.3;', '}'
+        'attribute float size;',
+        'varying float vAlpha;',
+        'varying float vDepth;',
+        'uniform float uTime;',
+        'void main() {',
+        '  vec4 mv = modelViewMatrix * vec4(position, 1.0);',
+        '  gl_PointSize = size * (8.0 / -mv.z);',
+        '  gl_Position = projectionMatrix * mv;',
+        '  float pulse = sin(uTime * 2.0 + position.x * 1.5 + position.y * 0.8) * 0.5 + 0.5;',
+        '  vAlpha = 0.15 + pulse * 0.45;',
+        '  vDepth = clamp(-mv.z / 15.0, 0.0, 1.0);',
+        '}'
       ].join('\n'),
       fragmentShader: [
-        'varying float vAlpha;', 'void main() {',
-        '  float d = length(gl_PointCoord - vec2(0.5));', '  if (d > 0.5) discard;',
-        '  float glow = 1.0 - smoothstep(0.0, 0.5, d);', '  glow = pow(glow, 2.5);',
-        '  vec3 col = mix(vec3(1.0, 0.15, 0.15), vec3(0.0, 0.8, 1.0), glow);',
-        '  gl_FragColor = vec4(col, glow * vAlpha);', '}'
+        'varying float vAlpha;',
+        'varying float vDepth;',
+        'void main() {',
+        '  float d = length(gl_PointCoord - vec2(0.5));',
+        '  if (d > 0.5) discard;',
+        '  float glow = 1.0 - smoothstep(0.0, 0.5, d);',
+        '  glow = pow(glow, 2.0);',
+        '  // Neon red core fading to dark red at edges',
+        '  vec3 core = vec3(1.0, 0.2, 0.15);',
+        '  vec3 edge = vec3(0.6, 0.04, 0.02);',
+        '  vec3 col = mix(core, edge, 1.0 - glow);',
+        '  // Depth dimming for 3D feel',
+        '  float depthFade = 1.0 - vDepth * 0.6;',
+        '  gl_FragColor = vec4(col * depthFade, glow * vAlpha * depthFade);',
+        '}'
       ].join('\n'),
     });
-    var pts = new THREE.Points(geo, mat); scene.add(pts);
+    var pts = new THREE.Points(geo, mat);
+    scene.add(pts);
 
+    /* ── 3D floating neon ring (depth element) ── */
+    var ringGeo = new THREE.TorusGeometry(3.5, 0.03, 8, 64);
+    var ringMat = new THREE.MeshBasicMaterial({
+      color: 0xff2222, transparent: true, opacity: 0.12,
+      blending: THREE.AdditiveBlending, depthWrite: false
+    });
+    var ring1 = new THREE.Mesh(ringGeo, ringMat);
+    ring1.rotation.x = Math.PI * 0.4;
+    ring1.position.z = -2;
+    scene.add(ring1);
+
+    var ring2 = new THREE.Mesh(ringGeo, ringMat.clone());
+    ring2.material.opacity = 0.08;
+    ring2.rotation.x = Math.PI * 0.55;
+    ring2.rotation.y = Math.PI * 0.3;
+    ring2.position.z = -4;
+    ring2.scale.setScalar(0.7);
+    scene.add(ring2);
+
+    /* ── Scan line (horizontal sweep) ── */
+    var scanGeo = new THREE.PlaneGeometry(20, 0.05);
+    var scanMat = new THREE.MeshBasicMaterial({
+      color: 0xff3333, transparent: true, opacity: 0.2,
+      blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide
+    });
+    var scanLine = new THREE.Mesh(scanGeo, scanMat);
+    scanLine.position.z = 2;
+    scene.add(scanLine);
+
+    /* ── Animation ── */
     var running = false, raf = 0, clock = new THREE.Clock();
     function anim() {
       raf = requestAnimationFrame(anim);
       var t = clock.getElapsedTime();
       mat.uniforms.uTime.value = t;
+
+      // Move particles — drift upward, sway side to side
       var arr = geo.attributes.position.array;
       for (var p = 0; p < CT; p++) {
         var i3 = p * 3;
-        arr[i3] += Math.sin(t * 0.3 + phases[p]) * 0.003;
-        arr[i3+1] += 0.003 + Math.sin(t * 0.2 + phases[p] * 1.5) * 0.002;
-        if (arr[i3+1] > 4) arr[i3+1] = -4;
-        if (arr[i3] > 7) arr[i3] = -7; if (arr[i3] < -7) arr[i3] = 7;
+        arr[i3]   += Math.sin(t * 0.4 + phases[p]) * 0.004;
+        arr[i3+1] += 0.004 + Math.sin(t * 0.25 + phases[p] * 1.5) * 0.003;
+        arr[i3+2] += Math.sin(t * 0.15 + phases[p] * 0.7) * 0.002;
+        if (arr[i3+1] > 5) arr[i3+1] = -5;
+        if (arr[i3] > 9) arr[i3] = -9;
+        if (arr[i3] < -9) arr[i3] = 9;
       }
       geo.attributes.position.needsUpdate = true;
+
+      // Rotate rings slowly for 3D depth
+      ring1.rotation.z = t * 0.08;
+      ring1.rotation.y = Math.sin(t * 0.1) * 0.2;
+      ring2.rotation.z = -t * 0.06;
+      ring2.rotation.x = Math.PI * 0.55 + Math.sin(t * 0.12) * 0.15;
+
+      // Scan line sweep
+      scanLine.position.y = Math.sin(t * 0.8) * 3;
+      scanMat.opacity = 0.1 + Math.abs(Math.sin(t * 0.8)) * 0.12;
+
+      // Neon light pulse
+      neonPL1.intensity = 1.0 + Math.sin(t * 2) * 0.3;
+      neonPL2.intensity = 0.5 + Math.sin(t * 1.5 + 1) * 0.2;
+
       renderer.render(scene, cam);
     }
+
     var obs = new IntersectionObserver(function (en) {
       if (en[0].isIntersecting) { if (!running) { running = true; clock.start(); anim(); } }
       else { running = false; cancelAnimationFrame(raf); }
     }, { threshold: 0.05 });
     obs.observe(sec);
+
     window.addEventListener('resize', function () {
       var nw = sec.offsetWidth, nh = sec.offsetHeight;
       cam.aspect = nw / nh; cam.updateProjectionMatrix(); renderer.setSize(nw, nh);
