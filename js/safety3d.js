@@ -864,6 +864,297 @@
 
 
   /* ═══════════════════════════════════════════
+     6 ▸ CERTIFICATION BADGE — 3D Premium Seal
+     ═══════════════════════════════════════════ */
+  function initCertBadge() {
+    var wrap = document.getElementById('certBadge3d');
+    var cvs  = document.getElementById('certBadgeCanvas');
+    if (!wrap || !cvs || NOMO) return;
+
+    var W = wrap.offsetWidth || 200, H = wrap.offsetHeight || 240;
+    var renderer = new THREE.WebGLRenderer({ canvas: cvs, antialias: true, alpha: true });
+    renderer.setPixelRatio(PR);
+    renderer.setSize(W, H);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.3;
+
+    var scene = new THREE.Scene();
+    var cam = new THREE.PerspectiveCamera(36, W / H, 0.1, 60);
+    cam.position.set(0, -0.05, 7.0);
+    cam.lookAt(0, -0.05, 0);
+
+    /* Env map */
+    var pmrem = new THREE.PMREMGenerator(renderer);
+    var envSc = new THREE.Scene();
+    envSc.background = new THREE.Color(0xfff8e1);
+    envSc.add(new THREE.AmbientLight(0xffe0a0, 0.5));
+    var ed = new THREE.DirectionalLight(0xffffff, 0.6);
+    ed.position.set(3, 5, 4); envSc.add(ed);
+    var envMap = pmrem.fromScene(envSc, 0.04).texture;
+    pmrem.dispose();
+
+    /* Lights */
+    var keyL = new THREE.DirectionalLight(0xfff5e0, 1.6);
+    keyL.position.set(3, 5, 6); scene.add(keyL);
+    var fillL = new THREE.DirectionalLight(0xffe0b0, 0.5);
+    fillL.position.set(-4, 2, 3); scene.add(fillL);
+    var rimL = new THREE.DirectionalLight(0xffd700, 0.3);
+    rimL.position.set(0, -3, 4); scene.add(rimL);
+    scene.add(new THREE.AmbientLight(0xfff8e1, 0.4));
+
+    /* Materials */
+    var goldMat = new THREE.MeshStandardMaterial({
+      color: 0xDAA520, roughness: 0.2, metalness: 0.85,
+      envMap: envMap, envMapIntensity: 1.3
+    });
+    var goldSatin = new THREE.MeshStandardMaterial({
+      color: 0xCDA000, roughness: 0.35, metalness: 0.75,
+      envMap: envMap, envMapIntensity: 1.0
+    });
+    var creamMat = new THREE.MeshStandardMaterial({
+      color: 0xFFF8DC, roughness: 0.6, metalness: 0.05,
+      envMap: envMap, envMapIntensity: 0.3
+    });
+    var ribbonMat = new THREE.MeshStandardMaterial({
+      color: 0xE8665A, roughness: 0.5, metalness: 0.1,
+      envMap: envMap, envMapIntensity: 0.4,
+      side: THREE.DoubleSide
+    });
+    var darkGoldMat = new THREE.MeshStandardMaterial({
+      color: 0x8B6914, roughness: 0.4, metalness: 0.6,
+      envMap: envMap, envMapIntensity: 0.8
+    });
+
+    var badgeRoot = new THREE.Group();
+    scene.add(badgeRoot);
+
+    /* ── OUTER GOLD RING ── */
+    var outerRing = new THREE.Mesh(
+      new THREE.TorusGeometry(1.55, 0.18, 24, 64),
+      goldMat
+    );
+    badgeRoot.add(outerRing);
+
+    /* Outer rim highlight */
+    var outerRim = new THREE.Mesh(
+      new THREE.TorusGeometry(1.55, 0.04, 12, 64),
+      goldSatin
+    );
+    outerRim.position.z = 0.16;
+    badgeRoot.add(outerRim);
+
+    /* ── INNER GOLD RING (detail rim) ── */
+    var innerRing = new THREE.Mesh(
+      new THREE.TorusGeometry(1.3, 0.05, 16, 64),
+      goldSatin
+    );
+    innerRing.position.z = 0.05;
+    badgeRoot.add(innerRing);
+
+    /* ── CREAM CENTER DISC ── */
+    var centerDisc = new THREE.Mesh(
+      new THREE.CylinderGeometry(1.28, 1.28, 0.15, 64),
+      creamMat
+    );
+    centerDisc.rotation.x = Math.PI / 2;
+    centerDisc.position.z = -0.02;
+    badgeRoot.add(centerDisc);
+
+    /* ── DASHED RING DETAIL ── */
+    var DASH_COUNT = 36;
+    var dashGeo = new THREE.BoxGeometry(0.06, 0.015, 0.03);
+    for (var di = 0; di < DASH_COUNT; di++) {
+      var da = (di / DASH_COUNT) * Math.PI * 2;
+      var dash = new THREE.Mesh(dashGeo, goldSatin);
+      dash.position.set(Math.cos(da) * 1.15, Math.sin(da) * 1.15, 0.08);
+      dash.rotation.z = da;
+      badgeRoot.add(dash);
+    }
+
+    /* ── MEDAL ICON (top center) ── */
+    (function buildMedalIcon() {
+      var ig = new THREE.Group();
+      ig.position.set(0, 0.35, 0.1);
+
+      // Medal body
+      var medalBody = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.22, 0.22, 0.06, 32),
+        goldMat
+      );
+      medalBody.rotation.x = Math.PI / 2;
+      ig.add(medalBody);
+
+      // Medal rim
+      var medalRim = new THREE.Mesh(
+        new THREE.TorusGeometry(0.22, 0.02, 8, 32),
+        goldSatin
+      );
+      medalRim.position.z = 0.03;
+      ig.add(medalRim);
+
+      // Star icon in center
+      var starShape = new THREE.Shape();
+      var STAR_PTS = 5, outerR = 0.12, innerR = 0.05;
+      for (var si = 0; si < STAR_PTS * 2; si++) {
+        var sa = (si / (STAR_PTS * 2)) * Math.PI * 2 - Math.PI / 2;
+        var sr = si % 2 === 0 ? outerR : innerR;
+        if (si === 0) starShape.moveTo(Math.cos(sa) * sr, Math.sin(sa) * sr);
+        else starShape.lineTo(Math.cos(sa) * sr, Math.sin(sa) * sr);
+      }
+      starShape.closePath();
+      var starMesh = new THREE.Mesh(
+        new THREE.ExtrudeGeometry(starShape, { depth: 0.03, bevelEnabled: true, bevelThickness: 0.005, bevelSize: 0.005, bevelSegments: 2 }),
+        goldMat
+      );
+      starMesh.position.z = 0.02;
+      ig.add(starMesh);
+
+      badgeRoot.add(ig);
+    })();
+
+    /* ── TEXT: "CERTIFIED" ── */
+    (function buildText() {
+      // Use canvas texture for sharp text
+      var tCanvas = document.createElement('canvas');
+      var tW = 512, tH = 256;
+      tCanvas.width = tW; tCanvas.height = tH;
+      var ctx = tCanvas.getContext('2d');
+      ctx.clearRect(0, 0, tW, tH);
+
+      // CERTIFIED
+      ctx.fillStyle = '#7B3F00';
+      ctx.font = 'bold 90px "Bubblegum Sans", cursive, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('CERTIFIED', tW / 2, tH * 0.38);
+
+      // Dietitian Approved
+      ctx.font = 'bold 40px "Nunito", sans-serif';
+      ctx.fillStyle = '#8B5A2B';
+      ctx.letterSpacing = '2px';
+      ctx.fillText('DIETITIAN APPROVED', tW / 2, tH * 0.65);
+
+      var tex = new THREE.CanvasTexture(tCanvas);
+      tex.colorSpace = THREE.SRGBColorSpace;
+      tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+
+      var textPlane = new THREE.Mesh(
+        new THREE.PlaneGeometry(2.1, 1.05),
+        new THREE.MeshStandardMaterial({
+          map: tex, transparent: true, alphaTest: 0.01,
+          roughness: 0.7, metalness: 0.0
+        })
+      );
+      textPlane.position.set(0, -0.25, 0.1);
+      badgeRoot.add(textPlane);
+    })();
+
+    /* ── RIBBONS ── */
+    (function buildRibbons() {
+      var rShape = new THREE.Shape();
+      rShape.moveTo(0, 0);
+      rShape.lineTo(0.22, 0);
+      rShape.lineTo(0.22, -0.7);
+      rShape.lineTo(0.11, -0.55);
+      rShape.lineTo(0, -0.7);
+      rShape.closePath();
+
+      var rGeo = new THREE.ExtrudeGeometry(rShape, {
+        depth: 0.04, bevelEnabled: true, bevelThickness: 0.008,
+        bevelSize: 0.008, bevelSegments: 2
+      });
+
+      // Left ribbon
+      var rLeft = new THREE.Mesh(rGeo, ribbonMat);
+      rLeft.position.set(-0.5, -1.35, -0.12);
+      rLeft.rotation.z = 0.2;
+      badgeRoot.add(rLeft);
+
+      // Right ribbon
+      var rRight = new THREE.Mesh(rGeo, ribbonMat);
+      rRight.position.set(0.28, -1.35, -0.12);
+      rRight.rotation.z = -0.2;
+      badgeRoot.add(rRight);
+    })();
+
+    /* ── FIVE GOLD STARS ── */
+    (function buildStars() {
+      var starShape = new THREE.Shape();
+      var PTS = 5, oR = 0.08, iR = 0.035;
+      for (var s = 0; s < PTS * 2; s++) {
+        var a = (s / (PTS * 2)) * Math.PI * 2 - Math.PI / 2;
+        var r = s % 2 === 0 ? oR : iR;
+        if (s === 0) starShape.moveTo(Math.cos(a) * r, Math.sin(a) * r);
+        else starShape.lineTo(Math.cos(a) * r, Math.sin(a) * r);
+      }
+      starShape.closePath();
+      var sGeo = new THREE.ExtrudeGeometry(starShape, {
+        depth: 0.02, bevelEnabled: true, bevelThickness: 0.004,
+        bevelSize: 0.004, bevelSegments: 1
+      });
+
+      for (var si = 0; si < 5; si++) {
+        var star = new THREE.Mesh(sGeo, goldMat);
+        star.position.set((si - 2) * 0.24, -1.85, 0.02);
+        badgeRoot.add(star);
+      }
+    })();
+
+    /* ── Subtle emboss bevels around the badge ── */
+    var bevelBack = new THREE.Mesh(
+      new THREE.CylinderGeometry(1.6, 1.6, 0.08, 64),
+      darkGoldMat
+    );
+    bevelBack.rotation.x = Math.PI / 2;
+    bevelBack.position.z = -0.12;
+    badgeRoot.add(bevelBack);
+
+    /* ── Mouse parallax ── */
+    var mNX = 0, mNY = 0;
+    wrap.addEventListener('mousemove', function (ev) {
+      var r = wrap.getBoundingClientRect();
+      mNX = ((ev.clientX - r.left) / r.width - 0.5) * 2;
+      mNY = ((ev.clientY - r.top) / r.height - 0.5) * 2;
+    });
+    wrap.addEventListener('mouseleave', function () { mNX = 0; mNY = 0; });
+
+    /* ── Animation ── */
+    var running = false, raf = 0, clk = new THREE.Clock();
+    function anim() {
+      raf = requestAnimationFrame(anim);
+      var t = clk.getElapsedTime();
+
+      // Gentle floating
+      badgeRoot.position.y = Math.sin(t * 1.2) * 0.04;
+
+      // Slow Y rotation (showcase)
+      badgeRoot.rotation.y = Math.sin(t * 0.5) * 0.15;
+
+      // Mouse parallax
+      badgeRoot.rotation.y += mNX * 0.12;
+      badgeRoot.rotation.x = lerp(badgeRoot.rotation.x, -mNY * 0.08, 0.05);
+
+      // Subtle shimmer on gold ring
+      goldMat.envMapIntensity = 1.2 + Math.sin(t * 2) * 0.15;
+
+      renderer.render(scene, cam);
+    }
+
+    var obs = new IntersectionObserver(function (en) {
+      if (en[0].isIntersecting) { if (!running) { running = true; clk.start(); anim(); } }
+      else { running = false; cancelAnimationFrame(raf); }
+    }, { threshold: 0.05 });
+    obs.observe(wrap);
+
+    window.addEventListener('resize', function () {
+      var nw = wrap.offsetWidth || 280, nh = wrap.offsetHeight || 340;
+      cam.aspect = nw / nh; cam.updateProjectionMatrix(); renderer.setSize(nw, nh);
+    });
+  }
+
+
+  /* ═══════════════════════════════════════════
      BOOT ALL
      ═══════════════════════════════════════════ */
   function bootAll() {
@@ -872,6 +1163,7 @@
     initRatioTilt();
     initNutritionTilt();
     initLiveParticles();
+    initCertBadge();
   }
 
   if (document.readyState === 'loading') {

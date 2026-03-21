@@ -513,7 +513,7 @@
   align-items: start;
 }
 
-/* ---- Certified Badge ---- */
+/* ---- Certified Badge (3D) ---- */
 .nutrition-badge-area {
   display: flex;
   justify-content: center;
@@ -521,132 +521,16 @@
   padding-top: var(--space-lg);
 }
 
-.cert-badge {
-  position: relative;
-  width: 240px;
-}
-
-.cert-badge-inner {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Ribbons hanging behind circle */
-.cert-ribbon-left,
-.cert-ribbon-right {
-  position: absolute;
-  top: 140px;
-  width: 48px;
-  height: 80px;
-  z-index: 0;
-}
-
-.cert-ribbon-left {
-  left: 48px;
-  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
-  transform: rotate(-12deg);
-  transform-origin: top center;
-}
-
-.cert-ribbon-right {
-  right: 48px;
-  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
-  transform: rotate(12deg);
-  transform-origin: top center;
-}
-
-.cert-circle {
+.cert-badge-3d {
   width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background:
-    conic-gradient(
-      from 0deg,
-      var(--accent-yellow) 0deg,
-      #FFD700 45deg,
-      var(--accent-yellow) 90deg,
-      #FFC107 135deg,
-      var(--accent-yellow) 180deg,
-      #FFD700 225deg,
-      var(--accent-yellow) 270deg,
-      #FFC107 315deg,
-      var(--accent-yellow) 360deg
-    );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow:
-    0 8px 30px rgba(255,193,7,0.35),
-    0 2px 8px rgba(0,0,0,0.15),
-    inset 0 2px 4px rgba(255,255,255,0.6),
-    inset 0 -2px 4px rgba(0,0,0,0.1);
+  height: 240px;
   position: relative;
-  z-index: 1;
 }
 
-.cert-circle::before {
-  content: '';
-  position: absolute;
-  inset: 6px;
-  border-radius: 50%;
-  border: 3px dashed rgba(139,69,19,0.3);
-}
-
-.cert-circle-inner {
-  width: 170px;
-  height: 170px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 40% 35%, #FFFDE7 0%, #FFF9C4 40%, #FFF176 80%, #FFD54F 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-  box-shadow:
-    inset 0 2px 6px rgba(255,255,255,0.8),
-    inset 0 -2px 6px rgba(0,0,0,0.05);
-}
-
-.cert-icon {
-  font-size: 42px;
-  color: #B8860B;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
-}
-
-.cert-text {
-  font-family: 'Bubblegum Sans', cursive;
-  font-size: var(--font-size-lg);
-  color: #8B4513;
-  letter-spacing: 3px;
-  font-weight: 700;
-}
-
-.cert-subtext {
-  font-size: var(--font-size-xs);
-  color: #A0522D;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.cert-stars {
-  display: flex;
-  gap: 6px;
-  margin-top: var(--space-xl);
-  position: relative;
-  z-index: 2;
-}
-
-.cert-stars span {
-  font-size: 24px;
-  color: #FFB300;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+.cert-badge-3d canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
 }
 
 /* ---- Nutrition Info ---- */
@@ -872,41 +756,9 @@
     font-size: var(--font-size-3xl);
   }
 
-  .cert-badge {
-    width: 200px;
-  }
-
-  .cert-circle {
-    width: 170px;
-    height: 170px;
-  }
-
-  .cert-circle-inner {
-    width: 144px;
-    height: 144px;
-  }
-
-  .cert-icon {
-    font-size: 34px;
-  }
-
-  .cert-text {
-    font-size: var(--font-size-base);
-  }
-
-  .cert-ribbon-left,
-  .cert-ribbon-right {
-    width: 40px;
-    height: 65px;
-    top: 120px;
-  }
-
-  .cert-ribbon-left {
-    left: 38px;
-  }
-
-  .cert-ribbon-right {
-    right: 38px;
+  .cert-badge-3d {
+    width: 160px;
+    height: 200px;
   }
 }
 
